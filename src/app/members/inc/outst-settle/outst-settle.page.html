@@ -1,0 +1,143 @@
+<ion-header color="primary">
+    <ion-toolbar class="toolbar-background-md">
+        <ion-title>
+            <ion-chip outline class="ion-margin-vertical chip">
+                <ion-icon class="chip" name="clipboard"></ion-icon>OUTSTANDING & EXCESS
+                <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+            </ion-chip>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>      
+    <ion-card-header>
+        <ion-card-subtitle *ngIf="isOutstAvail"> {{ outsts.length }} record(s) avilable</ion-card-subtitle>
+        <ion-card-subtitle *ngIf="!isOutstAvail">No Outstanding or Excess found.. </ion-card-subtitle>
+        <ion-grid *ngIf="isOutstAvail">
+                <ion-row>
+                    <ion-col>
+                        <ion-card-subtitle> Total outstanding: </ion-card-subtitle>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card-title> Rs.{{ttlOutst | number : '1.2-2'}}</ion-card-title>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-card-subtitle> Current Payment: </ion-card-subtitle>
+                    </ion-col>
+                    <ion-col>
+                        Rs.{{totalPaid | number : '1.2-2'}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-card-subtitle> Effective Balance: </ion-card-subtitle>
+                    </ion-col>
+                    <ion-col>
+                        Rs.{{effectivePaid | number : '1.2-2'}}
+                    </ion-col>
+                </ion-row>
+                
+        </ion-grid>
+    </ion-card-header>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle> Outstanding/Excess settlements</ion-card-subtitle>
+        </ion-card-header>
+        <ion-list style="margin-bottom: 40px;">
+            <ion-item-sliding *ngFor="let pay of oustPays; let idx = index">
+                <ion-item class="list-small-amrgin">			
+                    <ion-label text-wrap class="ion-no-margin">
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="2" class="ion-float-left">
+                                    <ion-text color="light">
+                                        <ion-badge mode="ios" class="list-header" color="primary">
+                                            <ion-icon class="chip" name="clipboard"></ion-icon> {{ pay.odrId }}
+                                        </ion-badge>
+                                    </ion-text>
+                                </ion-col>
+                                <ion-col size="6" class="ion-float-left">
+                                    <ion-text color="light">
+                                        <p class="list-sub-header ion-text-right">
+                                            Rs.{{ pay.amount }}
+                                        </p>
+                                    </ion-text>
+                                </ion-col>
+                                <ion-col size="2" class="ion-float-right">
+                                    <ion-badge class="ion-float-right" mode="ios" *ngIf="pay.isOutstPay" color="danger">
+                                        <ion-icon name="add"></ion-icon>
+                                    </ion-badge>
+                                    <ion-badge class="ion-float-right" mode="ios" *ngIf="!pay.isOutstPay" color="tertiary">
+                                        <ion-icon name="remove"></ion-icon>
+                                    </ion-badge>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option color="danger" class="ion-text-capitalize" (click)="removeItem(idx, pay.amount)">
+                            <ion-icon name="close"></ion-icon>Remove
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button style="width: 100%;" class="ion-float-right" (click)="confirmSettles()">
+                        <ion-icon name="arrow-round-back"></ion-icon>Confirm & Go Back
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-list style="margin-bottom: 40px;">
+        <ion-item background="dark" *ngFor="let outst of outsts" class="list-small-amrgin" (click)="openOutstMore(outst)">			
+            <ion-label text-wrap class="ion-no-margin">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="2" class="ion-float-left">
+                            <ion-text color="light">
+                                <ion-badge mode="ios" class="list-header" color="primary">
+                                    <ion-icon class="chip" name="clipboard"></ion-icon> {{ outst.odr_id }}
+                                </ion-badge>
+                            </ion-text>
+                        </ion-col>
+                        <ion-col size="6" class="ion-float-left">
+                            <ion-text color="light">
+                                <p class="list-sub-header">
+                                    <ion-icon name="calendar"></ion-icon>
+                                    {{ outst.odr_datetime }}
+                                </p>
+                            </ion-text>
+                        </ion-col>
+                        <ion-col size="2" class="ion-float-right">
+                            <ion-badge class="ion-float-right" mode="ios" *ngIf="outst.isOutst" color="danger">
+                                <ion-icon name="wallet"></ion-icon>
+                            </ion-badge>
+                            <ion-badge class="ion-float-right" mode="ios" *ngIf="!outst.isOutst" color="tertiary">
+                                <ion-icon name="wallet"></ion-icon>
+                            </ion-badge>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col class="ion-float-left"><b>Total</b></ion-col>
+                        <ion-col class="ion-float-left"><b>Paid Amount</b></ion-col>
+                        <ion-col class="ion-float-left"><b>Out/Exc</b></ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col class="ion-float-left">{{ outst.odr_amount }}</ion-col>
+                        <ion-col class="ion-float-left">{{ outst.odr_paid_amount }}</ion-col>
+                        <ion-col class="ion-float-left">{{ outst.out }}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

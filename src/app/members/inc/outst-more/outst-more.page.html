@@ -1,0 +1,108 @@
+<ion-header color="primary">
+    <ion-toolbar class="toolbar-background-md">
+        <ion-title>
+            <ion-chip outline class="ion-margin-vertical chip">
+            <ion-icon class="chip" name="clipboard"></ion-icon>OUT/EXC - PAYMENTS 
+            <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+            </ion-chip>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>    
+    <ion-card>  
+    <ion-list style="margin-bottom: 40px;">
+        <ion-card-header>
+            <ion-card-title> Base Invoice #: {{outst.odr_id}}</ion-card-title>
+            <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card-subtitle> Bill Amount: </ion-card-subtitle>
+                        </ion-col>
+                        <ion-col>Rs.{{outst.odr_amount | number : '1.2-2'}}</ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card-subtitle> Out/Exc Amount: </ion-card-subtitle>
+                        </ion-col>
+                        <ion-col>
+                            <ion-card-title> Rs.{{outst.out | number : '1.2-2'}}</ion-card-title>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card-subtitle> Current Payment: </ion-card-subtitle>
+                        </ion-col>
+                        <ion-col>
+                            Rs.{{currPay | number : '1.2-2'}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card-subtitle> Effective Payment: </ion-card-subtitle>
+                        </ion-col>
+                        <ion-col>
+                            Rs.{{effectivePaid | number : '1.2-2'}}
+                        </ion-col>
+                    </ion-row>
+            </ion-grid>
+            <ion-item-divider></ion-item-divider>
+            <ion-item>
+                <ion-grid >
+                    <ion-row >
+                        <ion-col size="6" style="padding-top: 15px;">
+                            <b *ngIf="isOutst" class="ion-float-left"> Make Payment: </b>
+                            <b *ngIf="!isOutst" class="ion-float-left"> Bring Forward: </b>
+                        </ion-col>
+                        <ion-col size="2">
+                            <p style="margin-top: 10px">Rs.</p>
+                        </ion-col>
+                        <ion-col size="4">
+                            <ion-input [readonly]="!isOutst" type="number" (keyup)="chkPayBalence($event)" 
+                            placeholder="Enter Here.." [(ngModel)]="outstPayment.amount"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                
+                    <ion-row>
+                        <ion-col size="12">    
+                            <ion-button style="width: 100%;" class="ion-float-right" (click)="payForOdr()"><ion-icon name="arrow-round-back"></ion-icon>Confirm & Go Back</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-card-subtitle *ngIf="isPayAvali"> {{ payments.length }} payment record(s) avilable</ion-card-subtitle>
+        </ion-card-header>
+            
+            <ion-card-subtitle *ngIf="!isPayAvali" class="ion-margin-start">No payment records available.. </ion-card-subtitle>
+            <ion-item background="dark" *ngFor="let payment of payments" class="list-small-amrgin">			
+                
+                <!-- <ion-item> -->
+                <ion-label text-wrap class="ion-no-margin">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <ion-text color="light">
+                                    <ion-badge mode="ios" class="list-header" color="primary">
+                                        <ion-icon class="chip" name="calendar"></ion-icon> {{ payment.paid_date }}
+                                    </ion-badge>
+                                </ion-text>
+                            </ion-col>
+                            <ion-col  class="ion-float-right">
+                                <ion-text color="light" class="ion-text-right">
+                                    <p class="list-sub-header">
+                                        Rs.{{ payment.paid_amount }}
+                                    </p>
+                                </ion-text>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-label>
+                <!-- </ion-item> -->
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

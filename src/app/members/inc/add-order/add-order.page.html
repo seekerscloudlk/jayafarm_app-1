@@ -1,0 +1,283 @@
+<ion-header color="primary">
+    <ion-toolbar class="toolbar-background-md">
+      <ion-title>
+        <ion-chip outline class="ion-margin-vertical chip">
+          <ion-icon class="chip" name="clipboard"></ion-icon>ORDER
+          <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+        </ion-chip>
+        <ion-chip color="light" class="chip-notice">   
+            <ion-icon name="bicycle" color="success" ></ion-icon>      
+                <h5 mode="ios"> {{curTrip.tripId}} </h5>
+          </ion-chip>
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content style="padding-bottom: 40px;">
+        <ion-card-header>
+            <ion-button (click)="addReturn()"><ion-icon name="add"></ion-icon>Return</ion-button>
+            <ion-button color="primary" (click)="openHistory()"><ion-icon name="checkmark-circle-outline"></ion-icon>Order History</ion-button>
+            <ion-card-title>Add Order </ion-card-title>
+            <ion-card-subtitle>{{customer.cust_name}} | {{customer.is_vat}}</ion-card-subtitle>
+            <ion-card-subtitle>{{customer.address_line1}}, {{customer.address_line2}}, {{customer.address_line3}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-list >   
+            <ion-item-divider class="ion-margin-remove"></ion-item-divider>         
+            <ion-item-sliding *ngFor="let odrItem of currOrder.order_items; let idx = index">
+
+                <ion-item>	
+                    <div class="item-card">
+                        <ion-select slot="start"  mode="ios" placeholder="Select Item" 
+                        [(ngModel)]="odrItem.item_id" (ionChange)="calcPrice(odrItem.item_id)" (ionChange)="toggleUpdateItemList(odrItem.item_id)" style="max-width: 100%;">
+                            
+                            <ion-select-option *ngFor="let tripItem of curTrip.tripItems" value="{{tripItem.itemId}}"
+                            [disabled]="tripItem.isSelected || tripItem.balanceQty == 0">
+                                {{tripItem.itemName}} | {{tripItem.balanceQty}}{{tripItem.itemUnitName}}
+                            </ion-select-option>
+
+                        </ion-select>
+                        <ion-item>
+                            <ion-input type="number" [(ngModel)]="odrItem.price_sold" placeholder="Selling Price"></ion-input>
+                            <ion-input type="number" (keyup)="chkItemBalence($event, odrItem.item_id)" 
+                            (blur)="finalizeItem($event)" (blur)=setInvoicePaidAuto($event) placeholder="Qty" [(ngModel)]="odrItem.qty"></ion-input>
+                            <div text-right>{{odrItem.qty*odrItem.price_sold | number : '1.2-2'}}</div>
+                        </ion-item>
+                    </div>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option color="danger" class="ion-text-capitalize" (click)="removeItem(odrItem)"  [class.disable-btn]="submitting">
+                            <ion-icon name="close"></ion-icon>Remove
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-item style="color: #3171e0;" (click)="addItem()">
+            <ion-icon name="add" color="primary"></ion-icon>Add new
+        </ion-item>
+        <ion-item >
+            <b>Total Payed Amount </b>
+            <ion-input type="number" [(ngModel)]="currOrder.odr_paid_amount" (keyup)="setEffectiveBalance($event)"  class="ion-text-right" placeholder="Enter Here.."></ion-input>
+        </ion-item>
+        <ion-item >
+            <ion-textarea auto-grow="true" placeholder="Remarks.." [(ngModel)]="currOrder.odr_remark"></ion-textarea>
+        </ion-item>
+            
+        <ion-card>
+            <ion-card-header>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="10">
+                            <ion-card-title>Outstanding/Excess Settlements</ion-card-title>
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-button color="primary" (click)="outstSettle()"><ion-icon name="add"></ion-icon></ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card-subtitle> Effective Paid Amount: </ion-card-subtitle>
+                        </ion-col>
+                        <ion-col>
+                            Rs.{{effectivePaid | number : '1.2-2'}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-card-subtitle> Tot. Out/Exc Deduct: </ion-card-subtitle>
+                        </ion-col>
+                        <ion-col>
+                            Rs.{{outstDeduct | number : '1.2-2'}}
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-header>
+            <ion-list style="margin-bottom: 40px;">
+                <ion-item-sliding *ngFor="let pay of outstSettles; let idx = index">
+                    <ion-item class="list-small-amrgin">			
+                        <ion-label text-wrap class="ion-no-margin">
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col size="2" class="ion-float-left">
+                                        <ion-text color="light">
+                                            <ion-badge mode="ios" class="list-header" color="primary">
+                                                <ion-icon class="chip" name="clipboard"></ion-icon> {{ pay.odrId }}
+                                            </ion-badge>
+                                        </ion-text>
+                                    </ion-col>
+                                    <ion-col size="6" class="ion-float-left">
+                                        <ion-text color="light">
+                                            <p class="list-sub-header ion-text-right">
+                                                Rs.{{ pay.amount }}
+                                            </p>
+                                        </ion-text>
+                                    </ion-col>
+                                    <ion-col size="2" class="ion-float-right">
+                                        <ion-badge class="ion-float-right" mode="ios" *ngIf="pay.isOutstPay" color="danger">
+                                            <ion-icon name="add"></ion-icon>
+                                        </ion-badge>
+                                        <ion-badge class="ion-float-right" mode="ios" *ngIf="!pay.isOutstPay" color="tertiary">
+                                            <ion-icon name="remove"></ion-icon>
+                                        </ion-badge>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item-options side="end">
+                        <ion-item-option color="danger" class="ion-text-capitalize" (click)="removeSettlePay(idx, pay.amount)">
+                                <ion-icon name="close"></ion-icon>Remove
+                        </ion-item-option>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
+        </ion-card>
+
+        <ion-card style="margin-bottom: 40px;">
+            <ion-card-header>
+                <ion-button class="ion-margin" (click)="processOrder()" mode="ios" slots="start" expand="block" type="submit" [disabled]="!isOrdeValid">Refresh Invoice</ion-button>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-card-title>Invoice Preview</ion-card-title>
+                            <ion-card-subtitle>{{customer.cust_name}}</ion-card-subtitle>
+                            <p>{{customer.address_line1}}, {{customer.address_line2}}, {{customer.address_line3}}</p>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col class="ion-float-left">
+                            <div>Invoice Date</div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div> {{currOrder.odr_datetime}} </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col class="ion-float-left">
+                            <div>Sales Rep</div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div> {{rep.repFname}} {{rep.repLname}}</div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-item>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Item | Price</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Qty</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right"> <h5><b>Amount</b></h5> </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-item>
+                <ion-item *ngFor="let item of currOrder.order_items">
+                    <ion-grid *ngIf="item.qty">
+                        <div style="margin-left: 5px;"><h3><b>{{item.item_name}}</b></h3></div>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <div>Rs.{{item.price_sold | number : '1.2-2'}}</div>
+                            </ion-col>
+                            <ion-col class="ion-float-left">
+                                <div>X {{item.qty}}</div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    Rs.{{item.price_sold*item.qty | number : '1.2-2'}}
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-item>
+                <ion-item>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Total Amount</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    <h5><b>Rs.{{currOrder.odr_amount-currOrder.vat_amount | number : '1.2-2'}}</b></h5>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>VAT</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    <h5><b>Rs.{{currOrder.vat_amount | number : '1.2-2'}}</b></h5>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Tot. Bill Amount</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    <h5><b>Rs.{{currOrder.odr_amount | number : '1.2-2'}}</b></h5>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Paid Amount</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    <h5><b>Rs.{{currOrder.odr_paid_amount | number : '1.2-2'}}</b></h5>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row style="background-color: rgb(107, 107, 107); color: #fff;">
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Tot. Out/Exc Deduction</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    <h5><b>Rs.{{outstDeduct | number : '1.2-2'}}</b></h5>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row style="background-color: rgb(42, 42, 42); color: #fff;">
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Effective Paid Amount</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    <h5><b>Rs.{{effectivePaid | number : '1.2-2'}}</b></h5>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row style="background-color: rgb(5, 5, 5); color: #fff;">
+                            <ion-col class="ion-float-left">
+                                <div><h5><b>Invoice Outst.</b></h5></div>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <div class="ion-text-right">
+                                    <h5><b>Rs.{{tempOutstanding | number : '1.2-2'}}</b></h5>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        
+                    </ion-grid>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-button class="ion-margin" [hidden]="!currOrder.isWorking" (click)="submitOrder()" mode="ios" slots="start" 
+        expand="block" [disabled]="!isOrdeValid">Print Customer Copy</ion-button>
+        <ion-button class="ion-margin" [hidden]="currOrder.isWorking" (click)="printInvoice(false)" mode="ios" slots="start" 
+        expand="block" [disabled]="!isOrdeValid">Print Rep Copy</ion-button>
+</ion-content>

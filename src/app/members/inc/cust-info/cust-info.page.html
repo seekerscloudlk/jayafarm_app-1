@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>
+          <ion-chip outline class="ion-margin-vertical chip">
+              <ion-icon class="chip" name="information-circle-outline"></ion-icon>
+              <ion-label> CUSTOMER INFO</ion-label>
+              <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+          </ion-chip>
+      </ion-title>
+      <ion-buttons slot="end">
+          <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+      </ion-buttons>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <ion-card>
+      <ion-card-header>
+          <ion-card-subtitle>{{customer.cat_name}} | {{customer.is_vat}}</ion-card-subtitle>
+          <ion-card-title>{{customer.cust_name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+      <ion-item-group>
+              <ion-item-divider>
+                  <ion-label>Address</ion-label>
+              </ion-item-divider>
+              
+              <ion-item>
+                  <ion-icon name="pin"></ion-icon>
+                  <ion-label>Line 1</ion-label>
+                  <ion-label slot="end" >{{customer.address_line1}}</ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-icon name="pin"></ion-icon>
+                  <ion-label>Line 2</ion-label>
+                  <ion-label slot="end" >{{customer.address_line2}}</ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-icon name="pin"></ion-icon>
+                  <ion-label>Line 3</ion-label>
+                  <ion-label slot="end" >{{customer.address_line3}}</ion-label>
+              </ion-item>
+
+              <ion-item-divider>
+                  <ion-label>Contact</ion-label>
+              </ion-item-divider>
+              <ion-item>
+                  <ion-icon name="mail"></ion-icon>
+                  <ion-label>E-mail</ion-label>
+                  <ion-label slot="end">{{customer.cust_email}}</ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-icon name="call"></ion-icon>
+                  <ion-label>Telephone</ion-label>
+                  <ion-label slot="end">{{customer.cust_tp}}</ion-label>
+              </ion-item>
+          </ion-item-group>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

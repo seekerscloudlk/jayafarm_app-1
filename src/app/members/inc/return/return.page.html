@@ -1,0 +1,108 @@
+<ion-header color="primary">
+    <ion-toolbar class="toolbar-background-md">
+        <ion-title>
+            <ion-chip outline class="ion-margin-vertical chip">
+            <ion-icon class="chip" name="clipboard"></ion-icon>RETURN
+            <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+            </ion-chip>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content style="padding-bottom: 40px;">
+    <ion-card-header>
+        <ion-card-title>Add Return </ion-card-title>
+        <ion-card-subtitle>{{customer.cust_name}}</ion-card-subtitle>
+        <p>{{customer.address_line1}}, {{customer.address_line2}}, {{customer.address_line3}}</p>
+    </ion-card-header>
+    
+        <ion-list >
+            <ion-item-divider></ion-item-divider>
+            
+            <ion-item-sliding *ngFor="let retItem of curReturn.retItems; let idx = index">
+
+                <ion-item>	
+                    <!-- <div class="item-card"> -->
+                        <ion-select slot="start"  mode="ios" placeholder="Select Item" 
+                        [(ngModel)]="retItem.item_id" (ionChange)="calcPrice(retItem.item_id)" (ionChange)="toggleUpdateItemList(retItem.item_id)" style="max-width: 100%;">
+                            
+                            <ion-select-option *ngFor="let item of items" value="{{item.item_id}}"
+                            [disabled]="item.isSelected">
+                                {{item.item_name}}
+                            </ion-select-option>
+
+                        </ion-select>
+                        <ion-input class="ion-text-right" slot="end" type="number" placeholder="Qty" [(ngModel)]="retItem.qty"></ion-input>
+        
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option color="danger" class="ion-text-capitalize" (click)="removeItem(retItem)"  [class.disable-btn]="submitting">
+                            <ion-icon name="close"></ion-icon>Remove
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-item style="color: #3171e0;" (click)="addItem()">
+            <ion-icon name="add" color="primary"></ion-icon>Add new
+        </ion-item>
+
+        <ion-card style="margin-bottom: 40px;">
+            <ion-card-header> 
+            <ion-card-title>Return Docket Preview</ion-card-title>
+            <ion-card-subtitle>{{customer.cust_name}}</ion-card-subtitle>
+            <p>{{customer.address_line1}}, {{customer.address_line2}}, {{customer.address_line3}}</p>
+            <p></p>
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="ion-float-left">
+                        <div>Return Date</div>
+                    </ion-col>
+                    <ion-col class="ion-float-right">
+                        <div> {{curReturn.date}} </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-float-left">
+                        <div>Sales Rep</div>
+                    </ion-col>
+                    <ion-col class="ion-float-right">
+                        <div> {{rep.repFname}} {{rep.repLname}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col class="ion-float-left">
+                            <div><h5><b>Item</b></h5></div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div><h5><b>Qty</b></h5></div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item> 
+            <ion-item *ngFor="let item of curReturn.retItems">
+
+                <ion-grid *ngIf="item.qty">
+                    <ion-row>
+                        <ion-col class="ion-float-left">
+                            <div class="ion-test-left">{{item.item_name}}</div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div class="ion-test-right">X {{item.qty}} {{item.item_unit_name}}</div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-button class="ion-margin" [hidden]="!curReturn.isWorking" (click)="submitOrder()" mode="ios" slots="start" 
+    expand="block">Print Customer Copy</ion-button>
+    <ion-button class="ion-margin" [hidden]="curReturn.isWorking" (click)="printDocket(false)" mode="ios" slots="start" 
+    expand="block">Print Rep Copy</ion-button>
+</ion-content>

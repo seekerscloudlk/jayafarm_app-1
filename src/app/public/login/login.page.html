@@ -1,0 +1,45 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  <ion-button (click)="login()" expand="block">Login</ion-button>
+  <ion-button expand="block" color="secondary" routerLink="/register" routerDirection="forward">Register</ion-button>
+</ion-content> -->
+
+<ion-header color="primary">
+  <ion-toolbar>
+    <ion-title>
+      <ion-chip outline class="ion-margin-vertical chip">
+        <ion-icon class="chip" name="log-in"></ion-icon>
+        <ion-label> SIGN-IN</ion-label>
+        <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+      </ion-chip>
+      <ion-buttons slot="end">
+          <ion-menu-button><ion-icon class="menu" name="log-in"></ion-icon></ion-menu-button>
+      </ion-buttons>
+    </ion-title>
+   </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-card mode="ios">
+      <ion-list>
+        <ion-item class="ion-margin-bottom">
+          <ion-icon name="person"></ion-icon>
+          <ion-label position="floating">Rep ID</ion-label>
+          <ion-input type='number' formControlName="repID"></ion-input>
+        </ion-item> 
+        <ion-item class="ion-margin-bottom">
+          <ion-icon name="unlock"></ion-icon>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type='password' formControlName="password"></ion-input>
+        </ion-item>   
+      </ion-list>
+    </ion-card>
+    <ion-button class="ion-margin" mode="ios" slots="start" expand="block" type="submit" [disabled]="!loginForm.valid">Sign-in</ion-button>
+  </form>
+</ion-content>

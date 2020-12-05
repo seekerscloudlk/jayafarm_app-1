@@ -1,0 +1,60 @@
+<ion-header color="primary">
+    <ion-toolbar class="toolbar-background-md">
+        <ion-title>
+            <ion-chip outline class="ion-margin-vertical chip">
+            <ion-icon class="chip" name="clipboard"></ion-icon>SALES HISTORY
+            <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+            </ion-chip>
+            <!-- <ion-chip color="light" class="chip-notice">   
+                <ion-icon name="bicycle" color="success" ></ion-icon>      
+                    <h5 mode="ios"> {{curTrip.tripId}} </h5>
+            </ion-chip> -->
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>      
+    <ion-list style="margin-bottom: 40px;">
+        <ion-card-header>
+          <ion-card-subtitle *ngIf="isOrderAvail"> {{ orders.length }} record(s) avilable</ion-card-subtitle>
+          <ion-card-subtitle *ngIf="!isOrderAvail">No sales history records available </ion-card-subtitle>
+          <p *ngIf="isOrderAvail">Total outstanding: Rs.{{outst}}</p>
+        </ion-card-header>
+        
+            <ion-item background="dark" *ngFor="let order of orders" class="list-small-amrgin" (click)="openOrder(order)">			
+                <ion-label text-wrap class="ion-no-margin">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="ion-float-left">
+                                <ion-text color="light">
+                                    <ion-badge mode="ios" class="list-header" color="primary">
+                                        <ion-icon class="chip" name="clipboard"></ion-icon> {{ order.odr_id }}
+                                      </ion-badge>
+                                </ion-text>
+                            </ion-col>
+                            <ion-col class="ion-float-left">
+                                <ion-text color="light">
+                                    <p class="list-sub-header">
+                                        <ion-icon name="calendar"></ion-icon>
+                                        {{ order.odr_datetime }}
+                                    </p>
+                                </ion-text>
+                            </ion-col>
+                            <ion-col class="ion-float-right">
+                                <ion-badge class="ion-float-right" mode="ios" *ngIf="order.isOutst" color="danger">
+                                    <ion-icon name="wallet"></ion-icon>
+                                </ion-badge>
+                                <ion-badge class="ion-float-right" mode="ios" *ngIf="order.isEx" color="tertiary">
+                                    <ion-icon name="wallet"></ion-icon>
+                                </ion-badge>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-label>
+            </ion-item>
+      </ion-list>
+  </ion-content>

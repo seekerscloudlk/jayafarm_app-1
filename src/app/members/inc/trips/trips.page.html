@@ -1,0 +1,115 @@
+<ion-header color="primary">
+  <ion-toolbar class="toolbar-background-md">
+    <ion-title>
+      <ion-chip outline class="ion-margin-vertical chip">
+        <ion-icon class="chip" name="filing"></ion-icon> TRIPS
+        <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+      </ion-chip>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>   
+  <ion-card>
+    <ion-card-header>
+        <ion-card-subtitle>Currently Opened Trip</ion-card-subtitle>
+        <ion-card-title>Ref No. {{curTrip.tripId}}</ion-card-title>
+        <!-- <ion-button (click)="removeLocalTripStorage()">removeLocalTripStorage</ion-button> -->
+        <!-- <ion-button (click)="getLocalTrip()">setLocalTrip</ion-button> --> 
+    </ion-card-header>
+    <ion-card-content>
+        <ion-grid>
+            <ion-row style="background-color: black;">
+                <ion-col size="6" class="jf-col-header">
+                  <div>
+                    Item
+                  </div>
+                </ion-col>
+                <ion-col  size="3" class="jf-col-header">
+                  <div style="border:1px solid black">
+                    Loaded
+                  </div>
+                </ion-col>
+                <ion-col  size="3" class="jf-col-header">
+                  <div style="border:1px solid black">
+                    Balance
+                  </div>
+                </ion-col>
+            </ion-row>
+
+
+            {{curTrip.tripItems}}
+            <ion-row style="border-bottom: 1px solid red" *ngFor="let item of curTrip.tripItems;">
+              <ion-col size="6">
+                <div>
+                  {{item.itemName}}
+                </div>
+              </ion-col>
+              <ion-col  size="3">
+                <div>
+                    {{item.loadQty}}{{item.itemUnitName}}
+                </div>
+              </ion-col>
+              <ion-col  size="3">
+                <div>
+                    {{item.balanceQty}}{{item.itemUnitName}}
+                </div>
+              </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+    </ion-card-content>
+</ion-card>   
+    <ion-card>
+    <ion-list>
+        <ion-card-header>
+            <ion-card-subtitle *ngIf="isTripsAvailable()">{{ closedTrips.length }} closed trip(s) avilable.</ion-card-subtitle>
+            
+            <ion-chip outline class="ion-margin-vertical" color="dark">
+                <p>Rows per page</p>
+                <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" mode="ios" [(ngModel)]="closedTripListRows" (ionChange)="fetchSVRClosedTrips()">
+                    <ion-select-option *ngFor='let key of  [10,20,50,100,"List All"]' value="{{key}}">
+                        {{key}}
+                    </ion-select-option>
+                </ion-select>
+                <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+              </ion-chip>
+        </ion-card-header>
+        
+        <ion-item-sliding *ngFor="let trip of closedTrips" class="list-small-amrgin">
+            <ion-item background="dark">			
+                <ion-label text-wrap class="ion-no-margin">
+                    <ion-text slot="start" >
+                        <ion-badge mode="ios" class="list-header" color="primary">
+                            <ion-icon name="filing"></ion-icon> {{ trip.tripId }}
+                        </ion-badge>
+                    </ion-text>
+                    <ion-text>
+                        <p class="list-sub-header">
+                            <ion-icon name="calendar"></ion-icon>
+                            {{ trip.tripStTime }} - {{ trip.tripEndTime }}
+                        </p>
+                    </ion-text>
+                </ion-label>
+            </ion-item>
+            
+            <ion-item-options side="end">
+                <ion-item-option color="primary" class="ion-text-capitalize" (click)="openTripMore(trip)"  [class.disable-btn]="submitting">
+                    <ion-icon name="more"></ion-icon>More
+                </ion-item-option>
+                <!-- <ion-item-option color="dark" class="ion-text-capitalize" (click)="presentModal(cust)"  [class.disable-btn]="submitting">
+                        <ion-icon name="add-circle-outline"></ion-icon>Order
+                </ion-item-option> -->
+            </ion-item-options>
+        </ion-item-sliding>
+        </ion-list>
+    </ion-card>
+    <ion-buttons slot="end">
+        <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+</ion-content>
+

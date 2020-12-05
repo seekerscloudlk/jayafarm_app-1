@@ -1,0 +1,60 @@
+
+<ion-app>
+  <ion-menu side="start" menuId="first" contentId="sideMenu">
+      <ion-header color="primary">
+          <ion-toolbar>
+            <ion-title>
+              <ion-chip outline class="ion-margin-vertical chip">
+                <ion-icon class="chip" name="contact"></ion-icon>
+                <ion-label> {{rep.repFname}} {{rep.repLname}} </ion-label>
+                <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+              </ion-chip>
+              <ion-buttons slot="end">
+                  <ion-menu-button><ion-icon class="menu" name="log-in"></ion-icon></ion-menu-button>
+              </ion-buttons>
+            </ion-title>
+          </ion-toolbar> 
+        </ion-header>
+      <ion-content>
+        <!-- <ion-list *ngFor="let page of navigate">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item [routerLink]="page.url" routerDirection="forward" (click)="page.click">
+                <ion-icon [name]="page.icon" slot="start"></ion-icon>
+                {{page.title}}
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list> -->
+        <!-- <ion-list *ngFor="let page of navigate">
+            <ion-menu-toggle>
+                <ion-item ion-button click]="page.click">
+                  <ion-icon name="page.icon"></ion-icon> {{page.title}}
+                </ion-item>
+              </ion-menu-toggle>
+        </ion-list> -->
+        <ion-list>
+            <ion-menu-toggle>
+            <ion-item ion-button (click)="logout()">
+                <ion-icon name="log-out" slot="start"></ion-icon> Logout App
+            </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle>
+                <!-- <ion-item ion-button (click)="openPrint()">
+                <ion-icon name="print" slot="start"></ion-icon> Print
+                </ion-item> -->
+                <ion-item ion-button (click)="openTrip()">
+                    <ion-icon name="filing" slot="start"></ion-icon> Trips Info
+                </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+        </ion-content>
+        </ion-menu>
+    <ion-router-outlet id="sideMenu"></ion-router-outlet>
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed" [hidden]="!isLogedIn() || isOnKeyboard">
+        <ion-fab-button class="jf-fab">
+            <ion-menu-button ><ion-icon class="chip" name="more"></ion-icon></ion-menu-button>
+            <!-- <ion-icon name="more"></ion-icon> -->
+        </ion-fab-button>
+    </ion-fab>
+</ion-app>
+
+

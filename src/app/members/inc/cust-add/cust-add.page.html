@@ -1,0 +1,63 @@
+<ion-header color="primary">
+    <ion-toolbar class="toolbar-background-md">
+        <ion-title>
+            <ion-chip outline class="ion-margin-vertical chip">
+            <ion-icon class="chip" name="business"></ion-icon>CUSTOMER - ADD NEW 
+            <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+            </ion-chip>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="addCustForm" (ngSubmit)="addCust()">
+        <ion-card mode="ios">
+            <ion-list>
+                <ion-item class="ion-margin-bottom">
+                    <ion-icon name="business"></ion-icon>
+                    <ion-label position="floating">Customer Name</ion-label>
+                    <ion-input formControlName="cust_name"></ion-input>
+                </ion-item> 
+                <ion-item class="ion-margin-bottom">
+                    <ion-icon name="locate"></ion-icon>
+                    <ion-label position="floating">Address Line 1</ion-label>
+                    <ion-input formControlName="address_line1"></ion-input>
+                </ion-item>
+                <ion-item class="ion-margin-bottom">
+                    <ion-icon name="locate"></ion-icon>
+                    <ion-label position="floating">Address Line 2</ion-label>
+                    <ion-input formControlName="address_line2"></ion-input>
+                </ion-item>
+                <ion-item class="ion-margin-bottom">
+                    <ion-icon name="locate"></ion-icon>
+                    <ion-label position="floating">Address Line 3</ion-label>
+                    <ion-input formControlName="address_line3"></ion-input>
+                </ion-item>
+                <ion-item class="ion-margin-bottom">
+                    <ion-icon name="mail"></ion-icon>
+                    <ion-label position="floating">E-Mail</ion-label>
+                    <ion-input type='email' email formControlName="cust_email"></ion-input>
+                </ion-item>
+                <ion-item class="ion-margin-bottom">
+                    <ion-icon name="call"></ion-icon>
+                    <ion-label position="floating">Telephone</ion-label>
+                    <ion-input type='tel' formControlName="cust_tp"></ion-input>
+                </ion-item>
+                <ion-item class="ion-margin-bottom">
+                    <ion-icon name="pricetags" slot="start"></ion-icon>
+                    <ion-label position="floating">Customer Category</ion-label>
+                    <ion-select slot="end"  mode="ios" placeholder="Select Category" 
+                    formControlName="cat_id" style="max-width: 100%;">
+                            <ion-select-option *ngFor="let cat of custCats" value="{{cat.cat_id}}">
+                                {{cat.cat_name}}
+                            </ion-select-option>
+                        </ion-select>
+                </ion-item>   
+            </ion-list>
+        </ion-card>
+    <ion-button class="ion-margin" mode="ios" slots="start" expand="block" type="submit" [disabled]="!addCustForm.valid">Add Customer</ion-button>
+    </form>
+  </ion-content>

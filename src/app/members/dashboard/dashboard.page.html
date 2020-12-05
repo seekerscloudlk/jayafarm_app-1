@@ -1,0 +1,76 @@
+<ion-header color="primary">
+  <ion-toolbar class="toolbar-background-md">
+    <ion-title>
+      <ion-chip outline class="ion-margin-vertical chip">
+        <ion-icon class="chip ion-no-margin" name="map"></ion-icon>
+        <ion-select style="margin-top: 10px;" [interfaceOptions]="customPopoverOptions" interface="popover" mode="ios" placeholder="Route" [(ngModel)]="currRootId" (ionChange)="setRouteCusts()">
+            <ion-select-option *ngFor="let route of routes" value="{{route.route_id}}">
+                {{route.route_name}}
+            </ion-select-option>
+        </ion-select>
+        <ion-spinner style="margin-left: 16px;" name="crescent" size="small" color="light" [hidden]="!submitting"></ion-spinner>
+      </ion-chip>
+
+      <ion-chip color="light" class="chip-notice"  (click)="checkAndUpdateRep()">   
+        <ion-icon name="bicycle" [color]="istmpCurrTripIdSet() ? 'success':'danger'" ></ion-icon>      
+            <ion-icon name="warning" [hidden]="istmpCurrTripIdSet()"></ion-icon>
+            <h5 style="margin-top: 12px;" mode="ios" [hidden]="!istmpCurrTripIdSet()"> {{tmpCurrTripId}} </h5>
+      </ion-chip>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>      
+  <ion-list #custList class="sheet-list">
+      <ion-card-header>
+          <ion-grid>
+                <ion-row>
+                    <ion-col size="8" style="padding-top: 20px">
+                        <ion-card-subtitle *ngIf="isRootCustAvail">{{ currRootCusts.length }} customer(s) avilable</ion-card-subtitle>
+                        <ion-card-subtitle *ngIf="!isRootCustAvail && isRootSelected">No customers registerd for this route </ion-card-subtitle>
+                        <ion-card-subtitle *ngIf="!isRootSelected">Please select the route.. </ion-card-subtitle>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-button class="ion-text-capitalize" *ngIf="isRootSelected" (click)="openAddCust()">
+                            <ion-icon name="add"></ion-icon>Customer
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+          </ion-grid>
+        
+        
+      </ion-card-header>
+      
+      <ion-item-sliding *ngFor="let cust of currRootCusts" class="list-small-amrgin">
+          <ion-item background="dark" (click)="addOrder(cust)">			
+              <ion-label text-wrap class="ion-no-margin">
+                  <ion-text color="dark" slot="start">
+                    <ion-badge mode="ios" class="list-header" color="primary">
+                      <ion-icon name="business" size="small"></ion-icon> {{ cust.cust_name }} | {{ cust.is_vat }}
+                    </ion-badge>
+                  </ion-text>
+                  
+                  <ion-text color="light">
+                      <p class="list-sub-header">
+                          <ion-icon name="pin"></ion-icon>
+                          {{ cust.address_line1 }} {{ cust.address_line2 }} {{cust.address_line3}}
+                      </p>
+                  </ion-text>
+              </ion-label>
+          </ion-item>
+          
+          <ion-item-options side="end">
+              <ion-item-option color="primary" class="ion-text-capitalize" (click)="openCustInfo(cust)"  [class.disable-btn]="submitting" >
+                  <ion-icon name="more"></ion-icon>More
+              </ion-item-option>
+              <ion-item-option color="dark" class="ion-text-capitalize" (click)="addOrder(cust)"  [class.disable-btn]="submitting || !istmpCurrTripIdSet()">
+                      <ion-icon name="add-circle-outline"></ion-icon>Order
+              </ion-item-option>
+              <ion-item-option color="secondary" class="ion-text-capitalize" (click)="openHistory(cust.cust_id)" >
+                <ion-icon name="checkmark-circle-outline"></ion-icon>History
+        </ion-item-option>
+          </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+</ion-content>
+

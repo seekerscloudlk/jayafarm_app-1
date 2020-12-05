@@ -1,0 +1,111 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            <ion-chip outline class="ion-margin-vertical chip">
+                <ion-icon class="chip" name="information-circle-outline"></ion-icon>
+                <ion-label> INVOICE</ion-label>
+                <ion-spinner style="margin-left: 16px;" name="crescent" color="light" [hidden]="!submitting"></ion-spinner>
+            </ion-chip>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="ion-text-capitalize" (click)="dismiss()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar> 
+  </ion-header>
+<ion-content>
+    <ion-card style="margin-bottom: 40px; margin-left: 0px;" >
+        <ion-card-header>
+            <ion-card-title>Invoice #{{order.odr_id}}</ion-card-title>
+            <!-- <ion-card-subtitle>{{order.odr_datetime}}</ion-card-subtitle> -->
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="ion-float-left">
+                        <div>Invoice Date</div>
+                    </ion-col>
+                    <ion-col class="ion-float-right">
+                        <div> {{order.odr_datetime}} </div>
+                    </ion-col>
+                </ion-row>
+                <!-- <ion-row>
+                    <ion-col class="ion-float-left">
+                        <div>Sales Rep</div>
+                    </ion-col>
+                    <ion-col class="ion-float-right">
+                        <div> {{rep.repFname}} {{rep.repLname}}</div>
+                    </ion-col>
+                </ion-row> -->
+            </ion-grid>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col class="ion-float-left">
+                            <div><h5><b>Item | Price</b></h5></div>
+                        </ion-col>
+                        <ion-col class="ion-float-left">
+                            <div><h5><b>Qty</b></h5></div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div class="ion-text-right"> <h5><b>Amount</b></h5> </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item *ngFor="let item of order.odr_items">
+
+                <ion-grid>
+                    <div style="margin-left: 5px;"><h3><b>{{item.item_name}}</b></h3></div>
+                    <ion-row>
+                        <ion-col class="ion-float-left">
+                            <div>Rs.{{item.price_sold}}</div>
+                        </ion-col>
+                        <ion-col class="ion-float-left">
+                            <div>X {{item.qty}}</div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div class="ion-text-right">
+                                Rs.{{item.price_sold*item.qty | number : '1.2-2'}}
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row style="background-color: rgb(107, 107, 107); color: #fff;">
+                        <ion-col class="ion-float-left">
+                            <div>Sold price diff.</div>
+                        </ion-col>
+                        <ion-col class="ion-float-left">
+                            <div class="ion-text-right"> {{item.sold_price_diff}}</div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row style="background-color: rgb(42, 42, 42); color: #fff;">
+                        <ion-col class="ion-float-left">
+                            <div><h5><b>Total Bill Amount</b></h5></div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div class="ion-text-right">
+                                <h5><b>Rs.{{order.odr_amount | number : '1.2-2'}}</b></h5>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row style="background-color: rgb(5, 5, 5); color: #fff;">
+                        <ion-col class="ion-float-left">
+                            <div><h5><b>Paid Amount</b></h5></div>
+                        </ion-col>
+                        <ion-col class="ion-float-right">
+                            <div class="ion-text-right">
+                                <h5><b>Rs.{{order.odr_paid_amount | number : '1.2-2'}}</b></h5>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item >
+                <ion-textarea placeholder="Remarks.." readonly value="{{order.odr_remark}}"></ion-textarea>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
