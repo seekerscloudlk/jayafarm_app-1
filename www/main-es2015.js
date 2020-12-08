@@ -1023,9 +1023,10 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _members_inc_trips_trips_module__WEBPACK_IMPORTED_MODULE_12__["TripsPageModule"],
             _members_inc_print_print_module__WEBPACK_IMPORTED_MODULE_13__["PrintPageModule"],
             _members_inc_trips_more_trips_more_module__WEBPACK_IMPORTED_MODULE_14__["TripsMorePageModule"],
-            ngx_pipes__WEBPACK_IMPORTED_MODULE_17__["NgPipesModule"]
+            ngx_pipes__WEBPACK_IMPORTED_MODULE_17__["NgPipesModule"],
         ],
         providers: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_18__["CurrencyPipe"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
@@ -2073,7 +2074,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Dev\Projects\JF\App\jayafarm\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /media/hasika/_dde_data/SEEKERS CLOUD/other/anton/JF App/jayafarm_app/src/main.ts */"./src/main.ts");
 
 
 /***/ })

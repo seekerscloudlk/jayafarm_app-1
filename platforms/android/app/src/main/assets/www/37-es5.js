@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -93,9 +97,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./cubic-bezier-2812fda3.js */
     "./node_modules/@ionic/core/dist/esm/cubic-bezier-2812fda3.js");
 
-    var Menu =
-    /*#__PURE__*/
-    function () {
+    var Menu = /*#__PURE__*/function () {
       function Menu(hostRef) {
         _classCallCheck(this, Menu);
 
@@ -179,102 +181,117 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function connectedCallback() {
-          var _this = this;
+        value: function () {
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this = this;
 
-          var el, parent, content;
-          return regeneratorRuntime.async(function connectedCallback$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (this.type === undefined) {
-                    this.type = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('menuType', this.mode === 'ios' ? 'reveal' : 'overlay');
-                  }
-
-                  el = this.el;
-                  parent = el.parentNode;
-
-                  if (this.contentId === undefined) {
-                    console.warn("[DEPRECATED][ion-menu] Using the [main] attribute is deprecated, please use the \"contentId\" property instead:\nBEFORE:\n  <ion-menu>...</ion-menu>\n  <div main>...</div>\n\nAFTER:\n  <ion-menu contentId=\"my-content\"></ion-menu>\n  <div id=\"my-content\">...</div>\n");
-                  }
-
-                  content = this.contentId !== undefined ? document.getElementById(this.contentId) : parent && parent.querySelector && parent.querySelector('[main]');
-
-                  if (!(!content || !content.tagName)) {
-                    _context.next = 8;
-                    break;
-                  }
-
-                  // requires content element
-                  console.error('Menu: must have a "content" element to listen for drag events on.');
-                  return _context.abrupt("return");
-
-                case 8:
-                  this.contentEl = content; // add menu's content classes
-
-                  content.classList.add('menu-content');
-                  this.typeChanged(this.type, undefined);
-                  this.sideChanged(); // register this menu with the app's menu controller
-
-                  _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._register(this);
-
-                  _context.next = 15;
-                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
-                  /*! ./index-624eea58.js */
-                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
-
-                case 15:
-                  _context.t0 = {
-                    el: document,
-                    gestureName: 'menu-swipe',
-                    gesturePriority: 30,
-                    threshold: 10,
-                    canStart: function canStart(ev) {
-                      return _this.canStart(ev);
-                    },
-                    onWillStart: function onWillStart() {
-                      return _this.onWillStart();
-                    },
-                    onStart: function onStart() {
-                      return _this.onStart();
-                    },
-                    onMove: function onMove(ev) {
-                      return _this.onMove(ev);
-                    },
-                    onEnd: function onEnd(ev) {
-                      return _this.onEnd(ev);
+            var el, parent, content;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (this.type === undefined) {
+                      this.type = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('menuType', this.mode === 'ios' ? 'reveal' : 'overlay');
                     }
-                  };
-                  this.gesture = _context.sent.createGesture(_context.t0);
-                  this.updateState();
 
-                case 18:
-                case "end":
-                  return _context.stop();
+                    el = this.el;
+                    parent = el.parentNode;
+
+                    if (this.contentId === undefined) {
+                      console.warn("[DEPRECATED][ion-menu] Using the [main] attribute is deprecated, please use the \"contentId\" property instead:\nBEFORE:\n  <ion-menu>...</ion-menu>\n  <div main>...</div>\n\nAFTER:\n  <ion-menu contentId=\"my-content\"></ion-menu>\n  <div id=\"my-content\">...</div>\n");
+                    }
+
+                    content = this.contentId !== undefined ? document.getElementById(this.contentId) : parent && parent.querySelector && parent.querySelector('[main]');
+
+                    if (!(!content || !content.tagName)) {
+                      _context.next = 8;
+                      break;
+                    }
+
+                    // requires content element
+                    console.error('Menu: must have a "content" element to listen for drag events on.');
+                    return _context.abrupt("return");
+
+                  case 8:
+                    this.contentEl = content; // add menu's content classes
+
+                    content.classList.add('menu-content');
+                    this.typeChanged(this.type, undefined);
+                    this.sideChanged(); // register this menu with the app's menu controller
+
+                    _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._register(this);
+
+                    _context.next = 15;
+                    return Promise.resolve().then(__webpack_require__.bind(null,
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
+
+                  case 15:
+                    this.gesture = _context.sent.createGesture({
+                      el: document,
+                      gestureName: 'menu-swipe',
+                      gesturePriority: 30,
+                      threshold: 10,
+                      canStart: function canStart(ev) {
+                        return _this.canStart(ev);
+                      },
+                      onWillStart: function onWillStart() {
+                        return _this.onWillStart();
+                      },
+                      onStart: function onStart() {
+                        return _this.onStart();
+                      },
+                      onMove: function onMove(ev) {
+                        return _this.onMove(ev);
+                      },
+                      onEnd: function onEnd(ev) {
+                        return _this.onEnd(ev);
+                      }
+                    });
+                    this.updateState();
+
+                  case 17:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
+          }
+
+          return connectedCallback;
+        }()
       }, {
         key: "componentDidLoad",
-        value: function componentDidLoad() {
-          return regeneratorRuntime.async(function componentDidLoad$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  this.ionMenuChange.emit({
-                    disabled: this.disabled,
-                    open: this._isOpen
-                  });
-                  this.updateState();
+        value: function () {
+          var _componentDidLoad = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    this.ionMenuChange.emit({
+                      disabled: this.disabled,
+                      open: this._isOpen
+                    });
+                    this.updateState();
 
-                case 2:
-                case "end":
-                  return _context2.stop();
+                  case 2:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function componentDidLoad() {
+            return _componentDidLoad.apply(this, arguments);
+          }
+
+          return componentDidLoad;
+        }()
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -380,122 +397,146 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "_setOpen",
-        value: function _setOpen(shouldOpen) {
-          var animated,
-              _args3 = arguments;
-          return regeneratorRuntime.async(function _setOpen$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  animated = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : true;
+        value: function () {
+          var _setOpen2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(shouldOpen) {
+            var animated,
+                _args3 = arguments;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    animated = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : true;
 
-                  if (!(!this._isActive() || this.isAnimating || shouldOpen === this._isOpen)) {
-                    _context3.next = 3;
-                    break;
-                  }
+                    if (!(!this._isActive() || this.isAnimating || shouldOpen === this._isOpen)) {
+                      _context3.next = 3;
+                      break;
+                    }
 
-                  return _context3.abrupt("return", false);
+                    return _context3.abrupt("return", false);
 
-                case 3:
-                  this.beforeAnimation(shouldOpen);
-                  _context3.next = 6;
-                  return regeneratorRuntime.awrap(this.loadAnimation());
+                  case 3:
+                    this.beforeAnimation(shouldOpen);
+                    _context3.next = 6;
+                    return this.loadAnimation();
 
-                case 6:
-                  _context3.next = 8;
-                  return regeneratorRuntime.awrap(this.startAnimation(shouldOpen, animated));
+                  case 6:
+                    _context3.next = 8;
+                    return this.startAnimation(shouldOpen, animated);
 
-                case 8:
-                  this.afterAnimation(shouldOpen);
-                  return _context3.abrupt("return", true);
+                  case 8:
+                    this.afterAnimation(shouldOpen);
+                    return _context3.abrupt("return", true);
 
-                case 10:
-                case "end":
-                  return _context3.stop();
+                  case 10:
+                  case "end":
+                    return _context3.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee3, this);
+          }));
+
+          function _setOpen(_x) {
+            return _setOpen2.apply(this, arguments);
+          }
+
+          return _setOpen;
+        }()
       }, {
         key: "loadAnimation",
-        value: function loadAnimation() {
-          var width;
-          return regeneratorRuntime.async(function loadAnimation$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  // Menu swipe animation takes the menu's inner width as parameter,
-                  // If `offsetWidth` changes, we need to create a new animation.
-                  width = this.menuInnerEl.offsetWidth;
+        value: function () {
+          var _loadAnimation = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var width;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    // Menu swipe animation takes the menu's inner width as parameter,
+                    // If `offsetWidth` changes, we need to create a new animation.
+                    width = this.menuInnerEl.offsetWidth;
 
-                  if (!(width === this.width && this.animation !== undefined)) {
-                    _context4.next = 3;
-                    break;
-                  }
+                    if (!(width === this.width && this.animation !== undefined)) {
+                      _context4.next = 3;
+                      break;
+                    }
 
-                  return _context4.abrupt("return");
+                    return _context4.abrupt("return");
 
-                case 3:
-                  this.width = width; // Destroy existing animation
+                  case 3:
+                    this.width = width; // Destroy existing animation
 
-                  if (this.animation) {
-                    this.animation.destroy();
-                    this.animation = undefined;
-                  } // Create new animation
+                    if (this.animation) {
+                      this.animation.destroy();
+                      this.animation = undefined;
+                    } // Create new animation
 
 
-                  _context4.next = 7;
-                  return regeneratorRuntime.awrap(_index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._createAnimation(this.type, this));
+                    _context4.next = 7;
+                    return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"]._createAnimation(this.type, this);
 
-                case 7:
-                  this.animation = _context4.sent;
+                  case 7:
+                    this.animation = _context4.sent;
 
-                  if (!_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true)) {
-                    this.animation.duration(0);
-                  }
+                    if (!_config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true)) {
+                      this.animation.duration(0);
+                    }
 
-                  this.animation.fill('both');
+                    this.animation.fill('both');
 
-                case 10:
-                case "end":
-                  return _context4.stop();
+                  case 10:
+                  case "end":
+                    return _context4.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee4, this);
+          }));
+
+          function loadAnimation() {
+            return _loadAnimation.apply(this, arguments);
+          }
+
+          return loadAnimation;
+        }()
       }, {
         key: "startAnimation",
-        value: function startAnimation(shouldOpen, animated) {
-          var isReversed, ani;
-          return regeneratorRuntime.async(function startAnimation$(_context5) {
-            while (1) {
-              switch (_context5.prev = _context5.next) {
-                case 0:
-                  isReversed = !shouldOpen;
-                  ani = this.animation.direction(isReversed ? 'reverse' : 'normal').easing(isReversed ? 'cubic-bezier(0.4, 0.0, 0.6, 1)' : 'cubic-bezier(0.0, 0.0, 0.2, 1)');
+        value: function () {
+          var _startAnimation = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(shouldOpen, animated) {
+            var isReversed, ani;
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    isReversed = !shouldOpen;
+                    ani = this.animation.direction(isReversed ? 'reverse' : 'normal').easing(isReversed ? 'cubic-bezier(0.4, 0.0, 0.6, 1)' : 'cubic-bezier(0.0, 0.0, 0.2, 1)');
 
-                  if (!animated) {
-                    _context5.next = 7;
+                    if (!animated) {
+                      _context5.next = 7;
+                      break;
+                    }
+
+                    _context5.next = 5;
+                    return ani.playAsync();
+
+                  case 5:
+                    _context5.next = 8;
                     break;
-                  }
 
-                  _context5.next = 5;
-                  return regeneratorRuntime.awrap(ani.playAsync());
+                  case 7:
+                    ani.playSync();
 
-                case 5:
-                  _context5.next = 8;
-                  break;
-
-                case 7:
-                  ani.playSync();
-
-                case 8:
-                case "end":
-                  return _context5.stop();
+                  case 8:
+                  case "end":
+                    return _context5.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee5, this);
+          }));
+
+          function startAnimation(_x2, _x3) {
+            return _startAnimation.apply(this, arguments);
+          }
+
+          return startAnimation;
+        }()
       }, {
         key: "_isActive",
         value: function _isActive() {
@@ -710,9 +751,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               isPaneVisible = this.isPaneVisible;
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "navigation",
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "menu-type-".concat(type), true), _defineProperty(_class, 'menu-enabled', !disabled), _defineProperty(_class, 'menu-side-end', isEndSide), _defineProperty(_class, 'menu-side-start', !isEndSide), _defineProperty(_class, 'menu-pane-visible', isPaneVisible), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "menu-type-".concat(type), true), _defineProperty(_class, 'menu-enabled', !disabled), _defineProperty(_class, 'menu-side-end', isEndSide), _defineProperty(_class, 'menu-side-start', !isEndSide), _defineProperty(_class, 'menu-pane-visible', isPaneVisible), _class)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "menu-inner",
+            "class": "menu-inner",
             ref: function ref(el) {
               return _this3.menuInnerEl = el;
             }
@@ -720,7 +761,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             ref: function ref(el) {
               return _this3.backdropEl = el;
             },
-            class: "menu-backdrop",
+            "class": "menu-backdrop",
             tappable: false,
             stopPropagation: false
           }));
@@ -766,44 +807,48 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var SHOW_BACKDROP = 'show-backdrop';
     var MENU_CONTENT_OPEN = 'menu-content-open'; // Given a menu, return whether or not the menu toggle should be visible
 
-    var updateVisibility = function updateVisibility(menu) {
-      var menuEl;
-      return regeneratorRuntime.async(function updateVisibility$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              _context6.next = 2;
-              return regeneratorRuntime.awrap(_index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu));
+    var updateVisibility = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(menu) {
+        var menuEl;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu);
 
-            case 2:
-              menuEl = _context6.sent;
-              _context6.t0 = menuEl;
+              case 2:
+                menuEl = _context6.sent;
+                _context6.t0 = menuEl;
 
-              if (!_context6.t0) {
-                _context6.next = 8;
-                break;
-              }
+                if (!_context6.t0) {
+                  _context6.next = 8;
+                  break;
+                }
 
-              _context6.next = 7;
-              return regeneratorRuntime.awrap(menuEl.isActive());
+                _context6.next = 7;
+                return menuEl.isActive();
 
-            case 7:
-              _context6.t0 = _context6.sent;
+              case 7:
+                _context6.t0 = _context6.sent;
 
-            case 8:
-              return _context6.abrupt("return", !!_context6.t0);
+              case 8:
+                return _context6.abrupt("return", !!_context6.t0);
 
-            case 9:
-            case "end":
-              return _context6.stop();
+              case 9:
+              case "end":
+                return _context6.stop();
+            }
           }
-        }
-      });
-    };
+        }, _callee6);
+      }));
 
-    var MenuButton =
-    /*#__PURE__*/
-    function () {
+      return function updateVisibility(_x4) {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    var MenuButton = /*#__PURE__*/function () {
       function MenuButton(hostRef) {
         var _this4 = this;
 
@@ -826,9 +871,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
          */
 
         this.type = 'button';
-
-        this.onClick = function _callee() {
-          return regeneratorRuntime.async(function _callee$(_context7) {
+        this.onClick = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
               switch (_context7.prev = _context7.next) {
                 case 0:
@@ -839,8 +883,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   return _context7.stop();
               }
             }
-          });
-        };
+          }, _callee7);
+        }));
       }
 
       _createClass(MenuButton, [{
@@ -850,24 +894,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "visibilityChanged",
-        value: function visibilityChanged() {
-          return regeneratorRuntime.async(function visibilityChanged$(_context8) {
-            while (1) {
-              switch (_context8.prev = _context8.next) {
-                case 0:
-                  _context8.next = 2;
-                  return regeneratorRuntime.awrap(updateVisibility(this.menu));
+        value: function () {
+          var _visibilityChanged = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+              while (1) {
+                switch (_context8.prev = _context8.next) {
+                  case 0:
+                    _context8.next = 2;
+                    return updateVisibility(this.menu);
 
-                case 2:
-                  this.visible = _context8.sent;
+                  case 2:
+                    this.visible = _context8.sent;
 
-                case 3:
-                case "end":
-                  return _context8.stop();
+                  case 3:
+                  case "end":
+                    return _context8.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee8, this);
+          }));
+
+          function visibilityChanged() {
+            return _visibilityChanged.apply(this, arguments);
+          }
+
+          return visibilityChanged;
+        }()
       }, {
         key: "render",
         value: function render() {
@@ -885,7 +937,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             onClick: this.onClick,
             "aria-disabled": disabled ? 'true' : null,
             "aria-hidden": hidden ? 'true' : null,
-            class: Object.assign(Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["c"])(color)), {
+            "class": Object.assign(Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["c"])(color)), {
               'button': true,
               'menu-button-hidden': hidden,
               'menu-button-disabled': disabled,
@@ -894,7 +946,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             })
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", Object.assign({}, attrs, {
             disabled: disabled,
-            class: "button-native"
+            "class": "button-native"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             icon: menuIcon,
             mode: mode,
@@ -913,9 +965,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return MenuButton;
     }();
 
-    var MenuController =
-    /*#__PURE__*/
-    function () {
+    var MenuController = /*#__PURE__*/function () {
       function MenuController(hostRef) {
         _classCallCheck(this, MenuController);
 
@@ -1069,28 +1119,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "registerAnimation",
-        value: function registerAnimation(name, animation) {
-          return regeneratorRuntime.async(function registerAnimation$(_context9) {
-            while (1) {
-              switch (_context9.prev = _context9.next) {
-                case 0:
-                  return _context9.abrupt("return", _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].registerAnimation(name, animation));
+        value: function () {
+          var _registerAnimation = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(name, animation) {
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+              while (1) {
+                switch (_context9.prev = _context9.next) {
+                  case 0:
+                    return _context9.abrupt("return", _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].registerAnimation(name, animation));
 
-                case 1:
-                case "end":
-                  return _context9.stop();
+                  case 1:
+                  case "end":
+                    return _context9.stop();
+                }
               }
-            }
-          });
-        }
+            }, _callee9);
+          }));
+
+          function registerAnimation(_x5, _x6) {
+            return _registerAnimation.apply(this, arguments);
+          }
+
+          return registerAnimation;
+        }()
       }]);
 
       return MenuController;
     }();
 
-    var MenuToggle =
-    /*#__PURE__*/
-    function () {
+    var MenuToggle = /*#__PURE__*/function () {
       function MenuToggle(hostRef) {
         var _this5 = this;
 
@@ -1119,24 +1175,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "visibilityChanged",
-        value: function visibilityChanged() {
-          return regeneratorRuntime.async(function visibilityChanged$(_context10) {
-            while (1) {
-              switch (_context10.prev = _context10.next) {
-                case 0:
-                  _context10.next = 2;
-                  return regeneratorRuntime.awrap(updateVisibility(this.menu));
+        value: function () {
+          var _visibilityChanged2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+              while (1) {
+                switch (_context10.prev = _context10.next) {
+                  case 0:
+                    _context10.next = 2;
+                    return updateVisibility(this.menu);
 
-                case 2:
-                  this.visible = _context10.sent;
+                  case 2:
+                    this.visible = _context10.sent;
 
-                case 3:
-                case "end":
-                  return _context10.stop();
+                  case 3:
+                  case "end":
+                    return _context10.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee10, this);
+          }));
+
+          function visibilityChanged() {
+            return _visibilityChanged2.apply(this, arguments);
+          }
+
+          return visibilityChanged;
+        }()
       }, {
         key: "render",
         value: function render() {
@@ -1147,7 +1211,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
             "aria-hidden": hidden ? 'true' : null,
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'menu-toggle-hidden', hidden), _class2)
+            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'menu-toggle-hidden', hidden), _class2)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }], [{

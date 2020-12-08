@@ -31,7 +31,7 @@ export interface Order {
     odr_id: number;
     odr_datetime: string;
     odr_amount: number;
-    odr_paid_amount: number;
+    odr_paid_amount: string;
     odr_is_doubt: boolean;
     cust_id: number;
     trip_id: number;

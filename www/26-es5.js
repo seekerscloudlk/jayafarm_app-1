@@ -37,9 +37,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./config-3c7f3790.js */
     "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
 
-    var Img =
-    /*#__PURE__*/
-    function () {
+    var Img = /*#__PURE__*/function () {
       function Img(hostRef) {
         var _this = this;
 
@@ -118,7 +116,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "render",
         value: function render() {
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
+            "class": Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("img", {
             decoding: "async",
             src: this.loadSrc,

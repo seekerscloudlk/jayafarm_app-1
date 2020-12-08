@@ -51,9 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var ProgressBar =
-    /*#__PURE__*/
-    function () {
+    var ProgressBar = /*#__PURE__*/function () {
       function ProgressBar(hostRef) {
         _classCallCheck(this, ProgressBar);
 
@@ -103,7 +101,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             "aria-valuenow": type === 'determinate' ? value : null,
             "aria-valuemin": "0",
             "aria-valuemax": "1",
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "progress-bar-".concat(type), true), _defineProperty(_Object$assign, 'progress-paused', paused), _defineProperty(_Object$assign, 'progress-bar-reversed', document.dir === 'rtl' ? !reversed : reversed), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "progress-bar-".concat(type), true), _defineProperty(_Object$assign, 'progress-paused', paused), _defineProperty(_Object$assign, 'progress-bar-reversed', document.dir === 'rtl' ? !reversed : reversed), _Object$assign))
           }, type === 'indeterminate' ? renderIndeterminate() : renderProgress(value, buffer));
         }
       }], [{
@@ -118,13 +116,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var renderIndeterminate = function renderIndeterminate() {
       return [Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: "indeterminate-bar-primary"
+        "class": "indeterminate-bar-primary"
       }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-        class: "progress-indeterminate"
+        "class": "progress-indeterminate"
       })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: "indeterminate-bar-secondary"
+        "class": "indeterminate-bar-secondary"
       }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-        class: "progress-indeterminate"
+        "class": "progress-indeterminate"
       }))];
     };
 
@@ -132,14 +130,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var finalValue = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, value, 1);
       var finalBuffer = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(0, buffer, 1);
       return [Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: "progress",
+        "class": "progress",
         style: {
           transform: "scaleX(".concat(finalValue, ")")
         }
       }), finalBuffer !== 1 && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: "buffer-circles"
+        "class": "buffer-circles"
       }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: "progress-buffer-bar",
+        "class": "progress-buffer-bar",
         style: {
           transform: "scaleX(".concat(finalBuffer, ")")
         }

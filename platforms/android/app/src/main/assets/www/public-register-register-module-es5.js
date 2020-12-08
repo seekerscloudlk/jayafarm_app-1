@@ -210,9 +210,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var RegisterPage =
-    /*#__PURE__*/
-    function () {
+    var RegisterPage = /*#__PURE__*/function () {
       function RegisterPage() {
         _classCallCheck(this, RegisterPage);
       }
@@ -229,10 +227,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-register',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./register.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/public/register/register.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/public/register/register.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./register.page.scss */
-      "./src/app/public/register/register.page.scss")).default]
+      "./src/app/public/register/register.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], RegisterPage);
     /***/
   }

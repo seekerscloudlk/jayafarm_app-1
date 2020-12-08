@@ -272,9 +272,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ../order-info/order-info.page */
     "./src/app/members/inc/order-info/order-info.page.ts");
 
-    var OrderHistoryPage =
-    /*#__PURE__*/
-    function () {
+    var OrderHistoryPage = /*#__PURE__*/function () {
       function OrderHistoryPage(modalController, authService, http, storage, plt, alertController, datepipe, navParams) {
         _classCallCheck(this, OrderHistoryPage);
 
@@ -335,9 +333,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "dismiss",
         value: function dismiss() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
@@ -357,9 +353,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openOrder",
         value: function openOrder(order) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var modal;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
@@ -418,10 +412,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-order-history',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./order-history.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/order-history/order-history.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/order-history/order-history.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./order-history.page.scss */
-      "./src/app/members/inc/order-history/order-history.page.scss")).default]
+      "./src/app/members/inc/order-history/order-history.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _services_storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["DatePipe"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]])], OrderHistoryPage);
     /***/
   },
@@ -617,9 +611,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
 
-    var OrderInfoPage =
-    /*#__PURE__*/
-    function () {
+    var OrderInfoPage = /*#__PURE__*/function () {
       function OrderInfoPage(modalController, navParams) {
         _classCallCheck(this, OrderInfoPage);
 
@@ -655,10 +647,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-order-info',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./order-info.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/order-info/order-info.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/order-info/order-info.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./order-info.page.scss */
-      "./src/app/members/inc/order-info/order-info.page.scss")).default]
+      "./src/app/members/inc/order-info/order-info.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]])], OrderInfoPage);
     /***/
   }

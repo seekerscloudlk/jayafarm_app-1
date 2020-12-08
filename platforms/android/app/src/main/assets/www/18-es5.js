@@ -51,9 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var Checkbox =
-    /*#__PURE__*/
-    function () {
+    var Checkbox = /*#__PURE__*/function () {
       function Checkbox(hostRef) {
         var _this = this;
 
@@ -188,9 +186,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             "aria-disabled": disabled ? 'true' : null,
             "aria-checked": "".concat(checked),
             "aria-labelledby": labelId,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'checkbox-checked', checked), _defineProperty(_Object$assign, 'checkbox-disabled', disabled), _defineProperty(_Object$assign, 'checkbox-indeterminate', indeterminate), _defineProperty(_Object$assign, 'interactive', true), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'checkbox-checked', checked), _defineProperty(_Object$assign, 'checkbox-disabled', disabled), _defineProperty(_Object$assign, 'checkbox-indeterminate', indeterminate), _defineProperty(_Object$assign, 'interactive', true), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("svg", {
-            class: "checkbox-icon",
+            "class": "checkbox-icon",
             viewBox: "0 0 24 24"
           }, path), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             type: "button",

@@ -1,3 +1,13 @@
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -95,9 +105,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var VIEW_STATE_ATTACHED = 2;
     var VIEW_STATE_DESTROYED = 3;
 
-    var ViewController =
-    /*#__PURE__*/
-    function () {
+    var ViewController = /*#__PURE__*/function () {
       function ViewController(component, params) {
         _classCallCheck(this, ViewController);
 
@@ -108,33 +116,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(ViewController, [{
         key: "init",
-        value: function init(container) {
-          var component;
-          return regeneratorRuntime.async(function init$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  this.state = VIEW_STATE_ATTACHED;
+        value: function () {
+          var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(container) {
+            var component;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    this.state = VIEW_STATE_ATTACHED;
 
-                  if (this.element) {
-                    _context.next = 6;
-                    break;
-                  }
+                    if (this.element) {
+                      _context.next = 6;
+                      break;
+                    }
 
-                  component = this.component;
-                  _context.next = 5;
-                  return regeneratorRuntime.awrap(Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_4__["a"])(this.delegate, container, component, ['ion-page', 'ion-page-invisible'], this.params));
+                    component = this.component;
+                    _context.next = 5;
+                    return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_4__["a"])(this.delegate, container, component, ['ion-page', 'ion-page-invisible'], this.params);
 
-                case 5:
-                  this.element = _context.sent;
+                  case 5:
+                    this.element = _context.sent;
 
-                case 6:
-                case "end":
-                  return _context.stop();
+                  case 6:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function init(_x) {
+            return _init.apply(this, arguments);
+          }
+
+          return init;
+        }()
         /**
          * DOM WRITE
          */
@@ -231,9 +247,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       });
     };
 
-    var Nav =
-    /*#__PURE__*/
-    function () {
+    var Nav = /*#__PURE__*/function () {
       function Nav(hostRef) {
         _classCallCheck(this, Nav);
 
@@ -284,62 +298,55 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "componentDidLoad",
-        value: function componentDidLoad() {
-          return regeneratorRuntime.async(function componentDidLoad$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  this.rootChanged();
-                  _context2.next = 3;
-                  return regeneratorRuntime.awrap(__webpack_require__.e(
-                  /*! import() | swipe-back-35ad8e37-js */
-                  "swipe-back-35ad8e37-js").then(__webpack_require__.bind(null,
-                  /*! ./swipe-back-35ad8e37.js */
-                  "./node_modules/@ionic/core/dist/esm/swipe-back-35ad8e37.js")));
+        value: function () {
+          var _componentDidLoad = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    this.rootChanged();
+                    _context2.next = 3;
+                    return __webpack_require__.e(
+                    /*! import() | swipe-back-35ad8e37-js */
+                    "swipe-back-35ad8e37-js").then(__webpack_require__.bind(null,
+                    /*! ./swipe-back-35ad8e37.js */
+                    "./node_modules/@ionic/core/dist/esm/swipe-back-35ad8e37.js"));
 
-                case 3:
-                  _context2.t0 = this.el;
-                  _context2.t1 = this.canStart.bind(this);
-                  _context2.t2 = this.onStart.bind(this);
-                  _context2.t3 = this.onMove.bind(this);
-                  _context2.t4 = this.onEnd.bind(this);
-                  this.gesture = _context2.sent.createSwipeBackGesture(_context2.t0, _context2.t1, _context2.t2, _context2.t3, _context2.t4);
-                  this.swipeGestureChanged();
+                  case 3:
+                    this.gesture = _context2.sent.createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+                    this.swipeGestureChanged();
 
-                case 10:
-                case "end":
-                  return _context2.stop();
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function componentDidLoad() {
+            return _componentDidLoad.apply(this, arguments);
+          }
+
+          return componentDidLoad;
+        }()
       }, {
         key: "componentDidUnload",
         value: function componentDidUnload() {
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
+          var _iterator = _createForOfIteratorHelper(this.views),
+              _step;
 
           try {
-            for (var _iterator = this.views[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
               var view = _step.value;
               Object(_index_4d91f03a_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_3__["d"]);
 
               view._destroy();
             }
           } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _iterator.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
+            _iterator.f();
           }
 
           if (this.gesture) {
@@ -574,22 +581,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               resolve({
                 changed: true,
                 element: enteringEl,
-                markVisible: function markVisible() {
-                  return regeneratorRuntime.async(function markVisible$(_context3) {
-                    while (1) {
-                      switch (_context3.prev = _context3.next) {
-                        case 0:
-                          mark();
-                          _context3.next = 3;
-                          return regeneratorRuntime.awrap(finish);
+                markVisible: function () {
+                  var _markVisible = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                      while (1) {
+                        switch (_context3.prev = _context3.next) {
+                          case 0:
+                            mark();
+                            _context3.next = 3;
+                            return finish;
 
-                        case 3:
-                        case "end":
-                          return _context3.stop();
+                          case 3:
+                          case "end":
+                            return _context3.stop();
+                        }
                       }
-                    }
-                  });
-                }
+                    }, _callee3);
+                  }));
+
+                  function markVisible() {
+                    return _markVisible.apply(this, arguments);
+                  }
+
+                  return markVisible;
+                }()
               });
               return p;
             }
@@ -622,26 +637,34 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getRouteId",
-        value: function getRouteId() {
-          var active;
-          return regeneratorRuntime.async(function getRouteId$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  active = this.getActiveSync();
-                  return _context4.abrupt("return", active ? {
-                    id: active.element.tagName,
-                    params: active.params,
-                    element: active.element
-                  } : undefined);
+        value: function () {
+          var _getRouteId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var active;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    active = this.getActiveSync();
+                    return _context4.abrupt("return", active ? {
+                      id: active.element.tagName,
+                      params: active.params,
+                      element: active.element
+                    } : undefined);
 
-                case 2:
-                case "end":
-                  return _context4.stop();
+                  case 2:
+                  case "end":
+                    return _context4.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee4, this);
+          }));
+
+          function getRouteId() {
+            return _getRouteId.apply(this, arguments);
+          }
+
+          return getRouteId;
+        }()
         /**
          * Get the active view.
          */
@@ -816,87 +839,95 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "runTransition",
-        value: function runTransition(ti) {
-          var leavingView, enteringView, requiresTransition, result;
-          return regeneratorRuntime.async(function runTransition$(_context5) {
-            while (1) {
-              switch (_context5.prev = _context5.next) {
-                case 0:
-                  _context5.prev = 0;
-                  // set that this nav is actively transitioning
-                  this.ionNavWillChange.emit();
-                  this.isTransitioning = true;
-                  this.prepareTI(ti);
-                  leavingView = this.getActiveSync();
-                  enteringView = this.getEnteringView(ti, leavingView);
+        value: function () {
+          var _runTransition = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(ti) {
+            var leavingView, enteringView, requiresTransition, result;
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    _context5.prev = 0;
+                    // set that this nav is actively transitioning
+                    this.ionNavWillChange.emit();
+                    this.isTransitioning = true;
+                    this.prepareTI(ti);
+                    leavingView = this.getActiveSync();
+                    enteringView = this.getEnteringView(ti, leavingView);
 
-                  if (!(!leavingView && !enteringView)) {
-                    _context5.next = 8;
-                    break;
-                  }
+                    if (!(!leavingView && !enteringView)) {
+                      _context5.next = 8;
+                      break;
+                    }
 
-                  throw new Error('no views in the stack to be removed');
+                    throw new Error('no views in the stack to be removed');
 
-                case 8:
-                  if (!(enteringView && enteringView.state === VIEW_STATE_NEW)) {
+                  case 8:
+                    if (!(enteringView && enteringView.state === VIEW_STATE_NEW)) {
+                      _context5.next = 11;
+                      break;
+                    }
+
                     _context5.next = 11;
+                    return enteringView.init(this.el);
+
+                  case 11:
+                    this.postViewInit(enteringView, leavingView, ti); // Needs transition?
+
+                    requiresTransition = (ti.enteringRequiresTransition || ti.leavingRequiresTransition) && enteringView !== leavingView;
+
+                    if (!requiresTransition) {
+                      _context5.next = 19;
+                      break;
+                    }
+
+                    _context5.next = 16;
+                    return this.transition(enteringView, leavingView, ti);
+
+                  case 16:
+                    _context5.t0 = _context5.sent;
+                    _context5.next = 20;
                     break;
-                  }
 
-                  _context5.next = 11;
-                  return regeneratorRuntime.awrap(enteringView.init(this.el));
+                  case 19:
+                    _context5.t0 = {
+                      // transition is not required, so we are already done!
+                      // they're inserting/removing the views somewhere in the middle or
+                      // beginning, so visually nothing needs to animate/transition
+                      // resolve immediately because there's no animation that's happening
+                      hasCompleted: true,
+                      requiresTransition: false
+                    };
 
-                case 11:
-                  this.postViewInit(enteringView, leavingView, ti); // Needs transition?
-
-                  requiresTransition = (ti.enteringRequiresTransition || ti.leavingRequiresTransition) && enteringView !== leavingView;
-
-                  if (!requiresTransition) {
-                    _context5.next = 19;
+                  case 20:
+                    result = _context5.t0;
+                    this.success(result, ti);
+                    this.ionNavDidChange.emit();
+                    _context5.next = 28;
                     break;
-                  }
 
-                  _context5.next = 16;
-                  return regeneratorRuntime.awrap(this.transition(enteringView, leavingView, ti));
+                  case 25:
+                    _context5.prev = 25;
+                    _context5.t1 = _context5["catch"](0);
+                    this.failed(_context5.t1, ti);
 
-                case 16:
-                  _context5.t0 = _context5.sent;
-                  _context5.next = 20;
-                  break;
+                  case 28:
+                    this.isTransitioning = false;
+                    this.nextTrns();
 
-                case 19:
-                  _context5.t0 = {
-                    // transition is not required, so we are already done!
-                    // they're inserting/removing the views somewhere in the middle or
-                    // beginning, so visually nothing needs to animate/transition
-                    // resolve immediately because there's no animation that's happening
-                    hasCompleted: true,
-                    requiresTransition: false
-                  };
-
-                case 20:
-                  result = _context5.t0;
-                  this.success(result, ti);
-                  this.ionNavDidChange.emit();
-                  _context5.next = 28;
-                  break;
-
-                case 25:
-                  _context5.prev = 25;
-                  _context5.t1 = _context5["catch"](0);
-                  this.failed(_context5.t1, ti);
-
-                case 28:
-                  this.isTransitioning = false;
-                  this.nextTrns();
-
-                case 30:
-                case "end":
-                  return _context5.stop();
+                  case 30:
+                  case "end":
+                    return _context5.stop();
+                }
               }
-            }
-          }, null, this, [[0, 25]]);
-        }
+            }, _callee5, this, [[0, 25]]);
+          }));
+
+          function runTransition(_x2) {
+            return _runTransition.apply(this, arguments);
+          }
+
+          return runTransition;
+        }()
       }, {
         key: "prepareTI",
         value: function prepareTI(ti) {
@@ -955,12 +986,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           } // Check all the inserted view are correct
 
 
-          var _iteratorNormalCompletion2 = true;
-          var _didIteratorError2 = false;
-          var _iteratorError2 = undefined;
+          var _iterator2 = _createForOfIteratorHelper(viewControllers),
+              _step2;
 
           try {
-            for (var _iterator2 = viewControllers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
               var view = _step2.value;
               view.delegate = ti.opts.delegate;
               var nav = view.nav;
@@ -974,18 +1004,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }
           } catch (err) {
-            _didIteratorError2 = true;
-            _iteratorError2 = err;
+            _iterator2.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                _iterator2.return();
-              }
-            } finally {
-              if (_didIteratorError2) {
-                throw _iteratorError2;
-              }
-            }
+            _iterator2.f();
           }
 
           ti.insertViews = viewControllers;
@@ -1060,29 +1081,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (insertViews) {
             // add the views to the
             var insertIndex = ti.insertStart;
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
+
+            var _iterator3 = _createForOfIteratorHelper(insertViews),
+                _step3;
 
             try {
-              for (var _iterator3 = insertViews[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+              for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
                 var _view = _step3.value;
                 this.insertViewAt(_view, insertIndex);
                 insertIndex++;
               }
             } catch (err) {
-              _didIteratorError3 = true;
-              _iteratorError3 = err;
+              _iterator3.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-                  _iterator3.return();
-                }
-              } finally {
-                if (_didIteratorError3) {
-                  throw _iteratorError3;
-                }
-              }
+              _iterator3.f();
             }
 
             if (ti.enteringRequiresTransition) {
@@ -1097,12 +1109,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
           if (destroyQueue && destroyQueue.length > 0) {
-            var _iteratorNormalCompletion4 = true;
-            var _didIteratorError4 = false;
-            var _iteratorError4 = undefined;
+            var _iterator4 = _createForOfIteratorHelper(destroyQueue),
+                _step4;
 
             try {
-              for (var _iterator4 = destroyQueue[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+              for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
                 var _view2 = _step4.value;
                 Object(_index_4d91f03a_js__WEBPACK_IMPORTED_MODULE_5__["l"])(_view2.element, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_3__["b"]);
                 Object(_index_4d91f03a_js__WEBPACK_IMPORTED_MODULE_5__["l"])(_view2.element, _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_3__["c"]);
@@ -1110,90 +1121,79 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               } // once all lifecycle events has been delivered, we can safely detroy the views
 
             } catch (err) {
-              _didIteratorError4 = true;
-              _iteratorError4 = err;
+              _iterator4.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
-                  _iterator4.return();
-                }
-              } finally {
-                if (_didIteratorError4) {
-                  throw _iteratorError4;
-                }
-              }
+              _iterator4.f();
             }
 
-            var _iteratorNormalCompletion5 = true;
-            var _didIteratorError5 = false;
-            var _iteratorError5 = undefined;
+            var _iterator5 = _createForOfIteratorHelper(destroyQueue),
+                _step5;
 
             try {
-              for (var _iterator5 = destroyQueue[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+              for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
                 var _view3 = _step5.value;
                 this.destroyView(_view3);
               }
             } catch (err) {
-              _didIteratorError5 = true;
-              _iteratorError5 = err;
+              _iterator5.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
-                  _iterator5.return();
-                }
-              } finally {
-                if (_didIteratorError5) {
-                  throw _iteratorError5;
-                }
-              }
+              _iterator5.f();
             }
           }
         }
       }, {
         key: "transition",
-        value: function transition(enteringView, leavingView, ti) {
-          var _this = this;
+        value: function () {
+          var _transition = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(enteringView, leavingView, ti) {
+            var _this = this;
 
-          var opts, progressCallback, mode, enteringEl, leavingEl, animationOpts, _ref, hasCompleted;
+            var opts, progressCallback, mode, enteringEl, leavingEl, animationOpts, _yield$Object, hasCompleted;
 
-          return regeneratorRuntime.async(function transition$(_context6) {
-            while (1) {
-              switch (_context6.prev = _context6.next) {
-                case 0:
-                  // we should animate (duration > 0) if the pushed page is not the first one (startup)
-                  // or if it is a portal (modal, actionsheet, etc.)
-                  opts = ti.opts;
-                  progressCallback = opts.progressAnimation ? function (ani) {
-                    return _this.sbAni = ani;
-                  } : undefined;
-                  mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-                  enteringEl = enteringView.element;
-                  leavingEl = leavingView && leavingView.element;
-                  animationOpts = Object.assign({
-                    mode: mode,
-                    showGoBack: this.canGoBackSync(enteringView),
-                    baseEl: this.el,
-                    animationBuilder: this.animation || opts.animationBuilder || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('navAnimation'),
-                    progressCallback: progressCallback,
-                    animated: this.animated && _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true),
-                    enteringEl: enteringEl,
-                    leavingEl: leavingEl
-                  }, opts);
-                  _context6.next = 8;
-                  return regeneratorRuntime.awrap(Object(_index_4d91f03a_js__WEBPACK_IMPORTED_MODULE_5__["t"])(animationOpts));
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    // we should animate (duration > 0) if the pushed page is not the first one (startup)
+                    // or if it is a portal (modal, actionsheet, etc.)
+                    opts = ti.opts;
+                    progressCallback = opts.progressAnimation ? function (ani) {
+                      return _this.sbAni = ani;
+                    } : undefined;
+                    mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
+                    enteringEl = enteringView.element;
+                    leavingEl = leavingView && leavingView.element;
+                    animationOpts = Object.assign({
+                      mode: mode,
+                      showGoBack: this.canGoBackSync(enteringView),
+                      baseEl: this.el,
+                      animationBuilder: this.animation || opts.animationBuilder || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('navAnimation'),
+                      progressCallback: progressCallback,
+                      animated: this.animated && _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true),
+                      enteringEl: enteringEl,
+                      leavingEl: leavingEl
+                    }, opts);
+                    _context6.next = 8;
+                    return Object(_index_4d91f03a_js__WEBPACK_IMPORTED_MODULE_5__["t"])(animationOpts);
 
-                case 8:
-                  _ref = _context6.sent;
-                  hasCompleted = _ref.hasCompleted;
-                  return _context6.abrupt("return", this.transitionFinish(hasCompleted, enteringView, leavingView, opts));
+                  case 8:
+                    _yield$Object = _context6.sent;
+                    hasCompleted = _yield$Object.hasCompleted;
+                    return _context6.abrupt("return", this.transitionFinish(hasCompleted, enteringView, leavingView, opts));
 
-                case 11:
-                case "end":
-                  return _context6.stop();
+                  case 11:
+                  case "end":
+                    return _context6.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee6, this);
+          }));
+
+          function transition(_x3, _x4, _x5) {
+            return _transition.apply(this, arguments);
+          }
+
+          return transition;
+        }()
       }, {
         key: "transitionFinish",
         value: function transitionFinish(hasCompleted, enteringView, leavingView, opts) {
@@ -1394,9 +1394,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Promise.resolve(false);
     };
 
-    var NavLink =
-    /*#__PURE__*/
-    function () {
+    var NavLink = /*#__PURE__*/function () {
       function NavLink(hostRef) {
         var _this3 = this;
 
@@ -1431,9 +1429,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return NavLink;
     }();
 
-    var NavPop =
-    /*#__PURE__*/
-    function () {
+    var NavPop = /*#__PURE__*/function () {
       function NavPop(hostRef) {
         var _this4 = this;
 
@@ -1468,9 +1464,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return NavPop;
     }();
 
-    var NavPush =
-    /*#__PURE__*/
-    function () {
+    var NavPush = /*#__PURE__*/function () {
       function NavPush(hostRef) {
         var _this5 = this;
 
@@ -1505,9 +1499,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return NavPush;
     }();
 
-    var NavSetRoot =
-    /*#__PURE__*/
-    function () {
+    var NavSetRoot = /*#__PURE__*/function () {
       function NavSetRoot(hostRef) {
         var _this6 = this;
 

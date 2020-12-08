@@ -216,9 +216,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
 
-    var OrderInfoPage =
-    /*#__PURE__*/
-    function () {
+    var OrderInfoPage = /*#__PURE__*/function () {
       function OrderInfoPage(modalController, navParams) {
         _classCallCheck(this, OrderInfoPage);
 
@@ -254,10 +252,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-order-info',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./order-info.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/order-info/order-info.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/order-info/order-info.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./order-info.page.scss */
-      "./src/app/members/inc/order-info/order-info.page.scss")).default]
+      "./src/app/members/inc/order-info/order-info.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]])], OrderInfoPage);
     /***/
   }

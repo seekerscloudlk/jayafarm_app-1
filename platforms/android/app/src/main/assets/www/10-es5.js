@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -45,9 +49,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var BackButton =
-    /*#__PURE__*/
-    function () {
+    var BackButton = /*#__PURE__*/function () {
       function BackButton(hostRef) {
         var _this = this;
 
@@ -66,47 +68,53 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.type = 'button';
 
-        this.onClick = function _callee(ev) {
-          var nav;
-          return regeneratorRuntime.async(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  nav = _this.el.closest('ion-nav');
-                  ev.preventDefault();
-                  _context.t0 = nav;
+        this.onClick = /*#__PURE__*/function () {
+          var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(ev) {
+            var nav;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    nav = _this.el.closest('ion-nav');
+                    ev.preventDefault();
+                    _context.t0 = nav;
 
-                  if (!_context.t0) {
-                    _context.next = 7;
-                    break;
-                  }
+                    if (!_context.t0) {
+                      _context.next = 7;
+                      break;
+                    }
 
-                  _context.next = 6;
-                  return regeneratorRuntime.awrap(nav.canGoBack());
+                    _context.next = 6;
+                    return nav.canGoBack();
 
-                case 6:
-                  _context.t0 = _context.sent;
+                  case 6:
+                    _context.t0 = _context.sent;
 
-                case 7:
-                  if (!_context.t0) {
-                    _context.next = 9;
-                    break;
-                  }
+                  case 7:
+                    if (!_context.t0) {
+                      _context.next = 9;
+                      break;
+                    }
 
-                  return _context.abrupt("return", nav.pop({
-                    skipIfBusy: true
-                  }));
+                    return _context.abrupt("return", nav.pop({
+                      skipIfBusy: true
+                    }));
 
-                case 9:
-                  return _context.abrupt("return", Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(_this.defaultHref, ev, 'back'));
+                  case 9:
+                    return _context.abrupt("return", Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(_this.defaultHref, ev, 'back'));
 
-                case 10:
-                case "end":
-                  return _context.stop();
+                  case 10:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          });
-        };
+            }, _callee);
+          }));
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }();
       }
 
       _createClass(BackButton, [{
@@ -125,18 +133,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var showBackButton = defaultHref !== undefined;
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'button', true), _defineProperty(_Object$assign, 'back-button-disabled', disabled), _defineProperty(_Object$assign, 'back-button-has-icon-only', hasIconOnly), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _defineProperty(_Object$assign, 'show-back-button', showBackButton), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'button', true), _defineProperty(_Object$assign, 'back-button-disabled', disabled), _defineProperty(_Object$assign, 'back-button-has-icon-only', hasIconOnly), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _defineProperty(_Object$assign, 'show-back-button', showBackButton), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             type: type,
             disabled: disabled,
-            class: "button-native"
+            "class": "button-native"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "button-inner"
+            "class": "button-inner"
           }, backButtonIcon && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             icon: backButtonIcon,
             lazy: false
           }), backButtonText && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "button-text"
+            "class": "button-text"
           }, backButtonText)), mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
             type: this.rippleType
           })));

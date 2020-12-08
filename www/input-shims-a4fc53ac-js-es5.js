@@ -72,7 +72,7 @@
       var clone = cloneMap.get(componentEl);
 
       if (clone) {
-        cloneMap.delete(componentEl);
+        cloneMap["delete"](componentEl);
         clone.remove();
       }
 
@@ -380,7 +380,7 @@
             fn();
           }
 
-          hideCaretMap.delete(componentEl);
+          hideCaretMap["delete"](componentEl);
         }
 
         if (scrollAssist) {
@@ -390,7 +390,7 @@
             _fn();
           }
 
-          scrollAssistMap.delete(componentEl);
+          scrollAssistMap["delete"](componentEl);
         }
       };
 

@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -153,9 +157,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return baseAnimation.addElement(baseEl).easing('ease-in-out').duration(200).addAnimation([backdropAnimation, wrapperAnimation]);
     };
 
-    var Loading =
-    /*#__PURE__*/
-    function () {
+    var Loading = /*#__PURE__*/function () {
       function Loading(hostRef) {
         var _this = this;
 
@@ -222,30 +224,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "present",
-        value: function present() {
-          var _this2 = this;
+        value: function () {
+          var _present = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this2 = this;
 
-          return regeneratorRuntime.async(function present$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.next = 2;
-                  return regeneratorRuntime.awrap(Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'loadingEnter', iosEnterAnimation, mdEnterAnimation, undefined));
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'loadingEnter', iosEnterAnimation, mdEnterAnimation, undefined);
 
-                case 2:
-                  if (this.duration > 0) {
-                    this.durationTimeout = setTimeout(function () {
-                      return _this2.dismiss();
-                    }, this.duration + 10);
-                  }
+                  case 2:
+                    if (this.duration > 0) {
+                      this.durationTimeout = setTimeout(function () {
+                        return _this2.dismiss();
+                      }, this.duration + 10);
+                    }
 
-                case 3:
-                case "end":
-                  return _context.stop();
+                  case 3:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function present() {
+            return _present.apply(this, arguments);
+          }
+
+          return present;
+        }()
         /**
          * Dismiss the loading overlay after it has been presented.
          *
@@ -296,19 +306,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             style: {
               zIndex: "".concat(40000 + this.overlayIndex)
             },
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'loading-translucent', this.translucent), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'loading-translucent', this.translucent), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
             visible: this.showBackdrop,
             tappable: this.backdropDismiss
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "loading-wrapper",
+            "class": "loading-wrapper",
             role: "dialog"
           }, spinner && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "loading-spinner"
+            "class": "loading-spinner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-spinner", {
             name: spinner
           })), message && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "loading-content",
+            "class": "loading-content",
             innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_6__["s"])(message)
           })));
         }

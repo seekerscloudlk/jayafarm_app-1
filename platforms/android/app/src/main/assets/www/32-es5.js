@@ -1,3 +1,7 @@
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63,9 +67,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var ItemOption =
-    /*#__PURE__*/
-    function () {
+    var ItemOption = /*#__PURE__*/function () {
       function ItemOption(hostRef) {
         _classCallCheck(this, ItemOption);
 
@@ -114,16 +116,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'item-option-disabled', disabled), _defineProperty(_Object$assign, 'item-option-expandable', expandable), _defineProperty(_Object$assign, 'ion-activatable', true), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'item-option-disabled', disabled), _defineProperty(_Object$assign, 'item-option-expandable', expandable), _defineProperty(_Object$assign, 'ion-activatable', true), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            class: "button-native",
+            "class": "button-native",
             disabled: disabled
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "button-inner"
+            "class": "button-inner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "top"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "horizontal-wrapper"
+            "class": "horizontal-wrapper"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "start"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
@@ -149,9 +151,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return ItemOption;
     }();
 
-    var ItemOptions =
-    /*#__PURE__*/
-    function () {
+    var ItemOptions = /*#__PURE__*/function () {
       function ItemOptions(hostRef) {
         _classCallCheck(this, ItemOptions);
 
@@ -169,22 +169,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(ItemOptions, [{
         key: "fireSwipeEvent",
-        value: function fireSwipeEvent() {
-          return regeneratorRuntime.async(function fireSwipeEvent$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  this.ionSwipe.emit({
-                    side: this.side
-                  });
+        value: function () {
+          var _fireSwipeEvent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    this.ionSwipe.emit({
+                      side: this.side
+                    });
 
-                case 1:
-                case "end":
-                  return _context.stop();
+                  case 1:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function fireSwipeEvent() {
+            return _fireSwipeEvent.apply(this, arguments);
+          }
+
+          return fireSwipeEvent;
+        }()
       }, {
         key: "render",
         value: function render() {
@@ -193,7 +201,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           var isEnd = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.side);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "item-options-".concat(mode), true), _defineProperty(_class, 'item-options-start', !isEnd), _defineProperty(_class, 'item-options-end', isEnd), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "item-options-".concat(mode), true), _defineProperty(_class, 'item-options-start', !isEnd), _defineProperty(_class, 'item-options-end', isEnd), _class)
           });
         }
       }, {
@@ -215,9 +223,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var ELASTIC_FACTOR = 0.55;
     var openSlidingItem;
 
-    var ItemSliding =
-    /*#__PURE__*/
-    function () {
+    var ItemSliding = /*#__PURE__*/function () {
       function ItemSliding(hostRef) {
         _classCallCheck(this, ItemSliding);
 
@@ -251,52 +257,59 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function connectedCallback() {
-          var _this = this;
+        value: function () {
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this = this;
 
-          return regeneratorRuntime.async(function connectedCallback$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  this.item = this.el.querySelector('ion-item');
-                  _context2.next = 3;
-                  return regeneratorRuntime.awrap(this.updateOptions());
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    this.item = this.el.querySelector('ion-item');
+                    _context2.next = 3;
+                    return this.updateOptions();
 
-                case 3:
-                  _context2.next = 5;
-                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
-                  /*! ./index-624eea58.js */
-                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
+                  case 3:
+                    _context2.next = 5;
+                    return Promise.resolve().then(__webpack_require__.bind(null,
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
 
-                case 5:
-                  _context2.t0 = {
-                    el: this.el,
-                    gestureName: 'item-swipe',
-                    gesturePriority: 100,
-                    threshold: 5,
-                    canStart: function canStart() {
-                      return _this.canStart();
-                    },
-                    onStart: function onStart() {
-                      return _this.onStart();
-                    },
-                    onMove: function onMove(ev) {
-                      return _this.onMove(ev);
-                    },
-                    onEnd: function onEnd(ev) {
-                      return _this.onEnd(ev);
-                    }
-                  };
-                  this.gesture = _context2.sent.createGesture(_context2.t0);
-                  this.disabledChanged();
+                  case 5:
+                    this.gesture = _context2.sent.createGesture({
+                      el: this.el,
+                      gestureName: 'item-swipe',
+                      gesturePriority: 100,
+                      threshold: 5,
+                      canStart: function canStart() {
+                        return _this.canStart();
+                      },
+                      onStart: function onStart() {
+                        return _this.onStart();
+                      },
+                      onMove: function onMove(ev) {
+                        return _this.onMove(ev);
+                      },
+                      onEnd: function onEnd(ev) {
+                        return _this.onEnd(ev);
+                      }
+                    });
+                    this.disabledChanged();
 
-                case 8:
-                case "end":
-                  return _context2.stop();
+                  case 7:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
+          }
+
+          return connectedCallback;
+        }()
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -342,141 +355,165 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "open",
-        value: function open(side) {
-          var _this2 = this;
+        value: function () {
+          var _open = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(side) {
+            var _this2 = this;
 
-          var optionsToOpen, isStartOpen, isEndOpen;
-          return regeneratorRuntime.async(function open$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  if (!(this.item === null)) {
-                    _context3.next = 2;
-                    break;
-                  }
+            var optionsToOpen, isStartOpen, isEndOpen;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    if (!(this.item === null)) {
+                      _context3.next = 2;
+                      break;
+                    }
 
-                  return _context3.abrupt("return");
+                    return _context3.abrupt("return");
 
-                case 2:
-                  optionsToOpen = this.getOptions(side);
+                  case 2:
+                    optionsToOpen = this.getOptions(side);
 
-                  if (optionsToOpen) {
-                    _context3.next = 5;
-                    break;
-                  }
+                    if (optionsToOpen) {
+                      _context3.next = 5;
+                      break;
+                    }
 
-                  return _context3.abrupt("return");
+                    return _context3.abrupt("return");
 
-                case 5:
-                  /**
-                   * If side is not set, we need to infer the side
-                   * so we know which direction to move the options
-                   */
-                  if (side === undefined) {
-                    side = optionsToOpen === this.leftOptions ? 'start' : 'end';
-                  } // In RTL we want to switch the sides
+                  case 5:
+                    /**
+                     * If side is not set, we need to infer the side
+                     * so we know which direction to move the options
+                     */
+                    if (side === undefined) {
+                      side = optionsToOpen === this.leftOptions ? 'start' : 'end';
+                    } // In RTL we want to switch the sides
 
 
-                  side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(side) ? 'end' : 'start';
-                  isStartOpen = this.openAmount < 0;
-                  isEndOpen = this.openAmount > 0;
-                  /**
-                   * If a side is open and a user tries to
-                   * re-open the same side, we should not do anything
-                   */
+                    side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(side) ? 'end' : 'start';
+                    isStartOpen = this.openAmount < 0;
+                    isEndOpen = this.openAmount > 0;
+                    /**
+                     * If a side is open and a user tries to
+                     * re-open the same side, we should not do anything
+                     */
 
-                  if (!(isStartOpen && optionsToOpen === this.leftOptions)) {
-                    _context3.next = 11;
-                    break;
-                  }
+                    if (!(isStartOpen && optionsToOpen === this.leftOptions)) {
+                      _context3.next = 11;
+                      break;
+                    }
 
-                  return _context3.abrupt("return");
+                    return _context3.abrupt("return");
 
-                case 11:
-                  if (!(isEndOpen && optionsToOpen === this.rightOptions)) {
-                    _context3.next = 13;
-                    break;
-                  }
+                  case 11:
+                    if (!(isEndOpen && optionsToOpen === this.rightOptions)) {
+                      _context3.next = 13;
+                      break;
+                    }
 
-                  return _context3.abrupt("return");
+                    return _context3.abrupt("return");
 
-                case 13:
-                  this.closeOpened();
-                  this.state = 4
-                  /* Enabled */
-                  ;
-                  requestAnimationFrame(function () {
-                    _this2.calculateOptsWidth();
-
-                    var width = side === 'end' ? _this2.optsWidthRightSide : -_this2.optsWidthLeftSide;
-                    openSlidingItem = _this2.el;
-
-                    _this2.setOpenAmount(width, false);
-
-                    _this2.state = side === 'end' ? 8
-                    /* End */
-                    : 16
-                    /* Start */
+                  case 13:
+                    this.closeOpened();
+                    this.state = 4
+                    /* Enabled */
                     ;
-                  });
+                    requestAnimationFrame(function () {
+                      _this2.calculateOptsWidth();
 
-                case 16:
-                case "end":
-                  return _context3.stop();
+                      var width = side === 'end' ? _this2.optsWidthRightSide : -_this2.optsWidthLeftSide;
+                      openSlidingItem = _this2.el;
+
+                      _this2.setOpenAmount(width, false);
+
+                      _this2.state = side === 'end' ? 8
+                      /* End */
+                      : 16
+                      /* Start */
+                      ;
+                    });
+
+                  case 16:
+                  case "end":
+                    return _context3.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee3, this);
+          }));
+
+          function open(_x) {
+            return _open.apply(this, arguments);
+          }
+
+          return open;
+        }()
         /**
          * Close the sliding item. Items can also be closed from the [List](../../list/List).
          */
 
       }, {
         key: "close",
-        value: function close() {
-          return regeneratorRuntime.async(function close$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  this.setOpenAmount(0, true);
+        value: function () {
+          var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    this.setOpenAmount(0, true);
 
-                case 1:
-                case "end":
-                  return _context4.stop();
+                  case 1:
+                  case "end":
+                    return _context4.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee4, this);
+          }));
+
+          function close() {
+            return _close.apply(this, arguments);
+          }
+
+          return close;
+        }()
         /**
          * Close all of the sliding items in the list. Items can also be closed from the [List](../../list/List).
          */
 
       }, {
         key: "closeOpened",
-        value: function closeOpened() {
-          return regeneratorRuntime.async(function closeOpened$(_context5) {
-            while (1) {
-              switch (_context5.prev = _context5.next) {
-                case 0:
-                  if (!(openSlidingItem !== undefined)) {
-                    _context5.next = 4;
-                    break;
-                  }
+        value: function () {
+          var _closeOpened = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    if (!(openSlidingItem !== undefined)) {
+                      _context5.next = 4;
+                      break;
+                    }
 
-                  openSlidingItem.close();
-                  openSlidingItem = undefined;
-                  return _context5.abrupt("return", true);
+                    openSlidingItem.close();
+                    openSlidingItem = undefined;
+                    return _context5.abrupt("return", true);
 
-                case 4:
-                  return _context5.abrupt("return", false);
+                  case 4:
+                    return _context5.abrupt("return", false);
 
-                case 5:
-                case "end":
-                  return _context5.stop();
+                  case 5:
+                  case "end":
+                    return _context5.stop();
+                }
               }
-            }
-          });
-        }
+            }, _callee5);
+          }));
+
+          function closeOpened() {
+            return _closeOpened.apply(this, arguments);
+          }
+
+          return closeOpened;
+        }()
         /**
          * Given an optional side, return the ion-item-options element.
          *
@@ -497,59 +534,67 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "updateOptions",
-        value: function updateOptions() {
-          var options, sides, i, option, side;
-          return regeneratorRuntime.async(function updateOptions$(_context6) {
-            while (1) {
-              switch (_context6.prev = _context6.next) {
-                case 0:
-                  options = this.el.querySelectorAll('ion-item-options');
-                  sides = 0; // Reset left and right options in case they were removed
+        value: function () {
+          var _updateOptions = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            var options, sides, i, option, side;
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    options = this.el.querySelectorAll('ion-item-options');
+                    sides = 0; // Reset left and right options in case they were removed
 
-                  this.leftOptions = this.rightOptions = undefined;
-                  i = 0;
+                    this.leftOptions = this.rightOptions = undefined;
+                    i = 0;
 
-                case 4:
-                  if (!(i < options.length)) {
-                    _context6.next = 13;
+                  case 4:
+                    if (!(i < options.length)) {
+                      _context6.next = 13;
+                      break;
+                    }
+
+                    _context6.next = 7;
+                    return options.item(i).componentOnReady();
+
+                  case 7:
+                    option = _context6.sent;
+                    side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(option.side) ? 'end' : 'start';
+
+                    if (side === 'start') {
+                      this.leftOptions = option;
+                      sides |= 1
+                      /* Start */
+                      ;
+                    } else {
+                      this.rightOptions = option;
+                      sides |= 2
+                      /* End */
+                      ;
+                    }
+
+                  case 10:
+                    i++;
+                    _context6.next = 4;
                     break;
-                  }
 
-                  _context6.next = 7;
-                  return regeneratorRuntime.awrap(options.item(i).componentOnReady());
+                  case 13:
+                    this.optsDirty = true;
+                    this.sides = sides;
 
-                case 7:
-                  option = _context6.sent;
-                  side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(option.side) ? 'end' : 'start';
-
-                  if (side === 'start') {
-                    this.leftOptions = option;
-                    sides |= 1
-                    /* Start */
-                    ;
-                  } else {
-                    this.rightOptions = option;
-                    sides |= 2
-                    /* End */
-                    ;
-                  }
-
-                case 10:
-                  i++;
-                  _context6.next = 4;
-                  break;
-
-                case 13:
-                  this.optsDirty = true;
-                  this.sides = sides;
-
-                case 15:
-                case "end":
-                  return _context6.stop();
+                  case 15:
+                  case "end":
+                    return _context6.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee6, this);
+          }));
+
+          function updateOptions() {
+            return _updateOptions.apply(this, arguments);
+          }
+
+          return updateOptions;
+        }()
       }, {
         key: "canStart",
         value: function canStart() {
@@ -756,7 +801,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'item-sliding-active-slide', this.state !== 2
+            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'item-sliding-active-slide', this.state !== 2
             /* Disabled */
             ), _defineProperty(_class2, 'item-sliding-active-options-end', (this.state & 8
             /* End */

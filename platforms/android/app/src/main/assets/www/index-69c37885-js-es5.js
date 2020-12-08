@@ -1,10 +1,16 @@
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -89,9 +95,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return f(Date.now());
     };
 
-    var Animator =
-    /*#__PURE__*/
-    function () {
+    var Animator = /*#__PURE__*/function () {
       function Animator() {
         _classCallCheck(this, Animator);
 
@@ -353,28 +357,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "beforeClearStyles",
         value: function beforeClearStyles(propertyNames) {
           this._beforeStyles = this._beforeStyles || {};
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
+
+          var _iterator = _createForOfIteratorHelper(propertyNames),
+              _step;
 
           try {
-            for (var _iterator = propertyNames[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
               var prop = _step.value;
               this._beforeStyles[prop] = '';
             }
           } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _iterator.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
+            _iterator.f();
           }
 
           return this;
@@ -443,28 +438,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "afterClearStyles",
         value: function afterClearStyles(propertyNames) {
           this._afterStyles = this._afterStyles || {};
-          var _iteratorNormalCompletion2 = true;
-          var _didIteratorError2 = false;
-          var _iteratorError2 = undefined;
+
+          var _iterator2 = _createForOfIteratorHelper(propertyNames),
+              _step2;
 
           try {
-            for (var _iterator2 = propertyNames[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
               var prop = _step2.value;
               this._afterStyles[prop] = '';
             }
           } catch (err) {
-            _didIteratorError2 = true;
-            _iteratorError2 = err;
+            _iterator2.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                _iterator2.return();
-              }
-            } finally {
-              if (_didIteratorError2) {
-                throw _iteratorError2;
-              }
-            }
+            _iterator2.f();
           }
 
           return this;
@@ -559,30 +545,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
+            var _iterator3 = _createForOfIteratorHelper(children),
+                _step3;
 
             try {
-              for (var _iterator3 = children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+              for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
                 var child = _step3.value;
 
                 // ******** DOM WRITE ****************
                 child._playInit(opts);
               }
             } catch (err) {
-              _didIteratorError3 = true;
-              _iteratorError3 = err;
+              _iterator3.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-                  _iterator3.return();
-                }
-              } finally {
-                if (_didIteratorError3) {
-                  throw _iteratorError3;
-                }
-              }
+              _iterator3.f();
             }
           }
 
@@ -645,30 +621,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion4 = true;
-            var _didIteratorError4 = false;
-            var _iteratorError4 = undefined;
+            var _iterator4 = _createForOfIteratorHelper(children),
+                _step4;
 
             try {
-              for (var _iterator4 = children[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+              for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
                 var child = _step4.value;
 
                 // ******** DOM WRITE ****************
                 child._playProgress(opts);
               }
             } catch (err) {
-              _didIteratorError4 = true;
-              _iteratorError4 = err;
+              _iterator4.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
-                  _iterator4.return();
-                }
-              } finally {
-                if (_didIteratorError4) {
-                  throw _iteratorError4;
-                }
-              }
+              _iterator4.f();
             }
           }
 
@@ -703,30 +669,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             var children = this._childAnimations;
 
             if (children) {
-              var _iteratorNormalCompletion5 = true;
-              var _didIteratorError5 = false;
-              var _iteratorError5 = undefined;
+              var _iterator5 = _createForOfIteratorHelper(children),
+                  _step5;
 
               try {
-                for (var _iterator5 = children[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
                   var child = _step5.value;
 
                   // ******** DOM WRITE ****************
                   child._playToStep(stepValue);
                 }
               } catch (err) {
-                _didIteratorError5 = true;
-                _iteratorError5 = err;
+                _iterator5.e(err);
               } finally {
-                try {
-                  if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
-                    _iterator5.return();
-                  }
-                } finally {
-                  if (_didIteratorError5) {
-                    throw _iteratorError5;
-                  }
-                }
+                _iterator5.f();
               }
             }
 
@@ -796,30 +752,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion6 = true;
-            var _didIteratorError6 = false;
-            var _iteratorError6 = undefined;
+            var _iterator6 = _createForOfIteratorHelper(children),
+                _step6;
 
             try {
-              for (var _iterator6 = children[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+              for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
                 var child = _step6.value;
 
                 // ******** DOM WRITE ****************
                 child._playEnd(stepValue);
               }
             } catch (err) {
-              _didIteratorError6 = true;
-              _iteratorError6 = err;
+              _iterator6.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion6 && _iterator6.return != null) {
-                  _iterator6.return();
-                }
-              } finally {
-                if (_didIteratorError6) {
-                  throw _iteratorError6;
-                }
-              }
+              _iterator6.f();
             }
           }
 
@@ -858,12 +804,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion7 = true;
-            var _didIteratorError7 = false;
-            var _iteratorError7 = undefined;
+            var _iterator7 = _createForOfIteratorHelper(children),
+                _step7;
 
             try {
-              for (var _iterator7 = children[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+              for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
                 var child = _step7.value;
 
                 if (child._hasDuration(opts)) {
@@ -871,18 +816,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _didIteratorError7 = true;
-              _iteratorError7 = err;
+              _iterator7.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion7 && _iterator7.return != null) {
-                  _iterator7.return();
-                }
-              } finally {
-                if (_didIteratorError7) {
-                  throw _iteratorError7;
-                }
-              }
+              _iterator7.f();
             }
           }
 
@@ -903,12 +839,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion8 = true;
-            var _didIteratorError8 = false;
-            var _iteratorError8 = undefined;
+            var _iterator8 = _createForOfIteratorHelper(children),
+                _step8;
 
             try {
-              for (var _iterator8 = children[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+              for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
                 var child = _step8.value;
 
                 if (child._hasDomReads()) {
@@ -916,18 +851,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _didIteratorError8 = true;
-              _iteratorError8 = err;
+              _iterator8.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion8 && _iterator8.return != null) {
-                  _iterator8.return();
-                }
-              } finally {
-                if (_didIteratorError8) {
-                  throw _iteratorError8;
-                }
-              }
+              _iterator8.f();
             }
           }
 
@@ -1065,12 +991,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var easing = forcedLinearEasing ? 'linear' : this.getEasing();
           var durString = dur + 'ms';
-          var _iteratorNormalCompletion9 = true;
-          var _didIteratorError9 = false;
-          var _iteratorError9 = undefined;
+
+          var _iterator9 = _createForOfIteratorHelper(elements),
+              _step9;
 
           try {
-            for (var _iterator9 = elements[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+            for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
               var style = _step9.value.style;
 
               if (dur > 0) {
@@ -1086,18 +1012,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }
           } catch (err) {
-            _didIteratorError9 = true;
-            _iteratorError9 = err;
+            _iterator9.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion9 && _iterator9.return != null) {
-                _iterator9.return();
-              }
-            } finally {
-              if (_didIteratorError9) {
-                throw _iteratorError9;
-              }
-            }
+            _iterator9.f();
           }
         }
         /**
@@ -1135,29 +1052,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion10 = true;
-            var _didIteratorError10 = false;
-            var _iteratorError10 = undefined;
+            var _iterator10 = _createForOfIteratorHelper(children),
+                _step10;
 
             try {
-              for (var _iterator10 = children[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+              for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
                 var child = _step10.value;
 
                 child._setBeforeStyles();
               }
             } catch (err) {
-              _didIteratorError10 = true;
-              _iteratorError10 = err;
+              _iterator10.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion10 && _iterator10.return != null) {
-                  _iterator10.return();
-                }
-              } finally {
-                if (_didIteratorError10) {
-                  throw _iteratorError10;
-                }
-              }
+              _iterator10.f();
             }
           }
 
@@ -1170,67 +1077,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var addClasses = this._beforeAddClasses;
           var removeClasses = this._beforeRemoveClasses;
-          var _iteratorNormalCompletion11 = true;
-          var _didIteratorError11 = false;
-          var _iteratorError11 = undefined;
+
+          var _iterator11 = _createForOfIteratorHelper(elements),
+              _step11;
 
           try {
-            for (var _iterator11 = elements[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+            for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
               var el = _step11.value;
               var elementClassList = el.classList; // css classes to add before the animation
 
               if (addClasses) {
-                var _iteratorNormalCompletion12 = true;
-                var _didIteratorError12 = false;
-                var _iteratorError12 = undefined;
+                var _iterator12 = _createForOfIteratorHelper(addClasses),
+                    _step12;
 
                 try {
-                  for (var _iterator12 = addClasses[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+                  for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
                     var c = _step12.value;
                     // ******** DOM WRITE ****************
                     elementClassList.add(c);
                   }
                 } catch (err) {
-                  _didIteratorError12 = true;
-                  _iteratorError12 = err;
+                  _iterator12.e(err);
                 } finally {
-                  try {
-                    if (!_iteratorNormalCompletion12 && _iterator12.return != null) {
-                      _iterator12.return();
-                    }
-                  } finally {
-                    if (_didIteratorError12) {
-                      throw _iteratorError12;
-                    }
-                  }
+                  _iterator12.f();
                 }
               } // css classes to remove before the animation
 
 
               if (removeClasses) {
-                var _iteratorNormalCompletion13 = true;
-                var _didIteratorError13 = false;
-                var _iteratorError13 = undefined;
+                var _iterator13 = _createForOfIteratorHelper(removeClasses),
+                    _step13;
 
                 try {
-                  for (var _iterator13 = removeClasses[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+                  for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
                     var _c = _step13.value;
                     // ******** DOM WRITE ****************
                     elementClassList.remove(_c);
                   }
                 } catch (err) {
-                  _didIteratorError13 = true;
-                  _iteratorError13 = err;
+                  _iterator13.e(err);
                 } finally {
-                  try {
-                    if (!_iteratorNormalCompletion13 && _iterator13.return != null) {
-                      _iterator13.return();
-                    }
-                  } finally {
-                    if (_didIteratorError13) {
-                      throw _iteratorError13;
-                    }
-                  }
+                  _iterator13.f();
                 }
               } // inline styles to add before the animation
 
@@ -1247,18 +1134,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }
           } catch (err) {
-            _didIteratorError11 = true;
-            _iteratorError11 = err;
+            _iterator11.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion11 && _iterator11.return != null) {
-                _iterator11.return();
-              }
-            } finally {
-              if (_didIteratorError11) {
-                throw _iteratorError11;
-              }
-            }
+            _iterator11.f();
           }
         }
         /**
@@ -1272,59 +1150,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion14 = true;
-            var _didIteratorError14 = false;
-            var _iteratorError14 = undefined;
+            var _iterator14 = _createForOfIteratorHelper(children),
+                _step14;
 
             try {
-              for (var _iterator14 = children[Symbol.iterator](), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+              for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
                 var child = _step14.value;
 
                 // ******** DOM READ ****************
                 child._fireBeforeReadFunc();
               }
             } catch (err) {
-              _didIteratorError14 = true;
-              _iteratorError14 = err;
+              _iterator14.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion14 && _iterator14.return != null) {
-                  _iterator14.return();
-                }
-              } finally {
-                if (_didIteratorError14) {
-                  throw _iteratorError14;
-                }
-              }
+              _iterator14.f();
             }
           }
 
           var readFunctions = this._readCallbacks;
 
           if (readFunctions) {
-            var _iteratorNormalCompletion15 = true;
-            var _didIteratorError15 = false;
-            var _iteratorError15 = undefined;
+            var _iterator15 = _createForOfIteratorHelper(readFunctions),
+                _step15;
 
             try {
-              for (var _iterator15 = readFunctions[Symbol.iterator](), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+              for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
                 var callback = _step15.value;
                 // ******** DOM READ ****************
                 callback();
               }
             } catch (err) {
-              _didIteratorError15 = true;
-              _iteratorError15 = err;
+              _iterator15.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion15 && _iterator15.return != null) {
-                  _iterator15.return();
-                }
-              } finally {
-                if (_didIteratorError15) {
-                  throw _iteratorError15;
-                }
-              }
+              _iterator15.f();
             }
           }
         }
@@ -1339,59 +1197,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion16 = true;
-            var _didIteratorError16 = false;
-            var _iteratorError16 = undefined;
+            var _iterator16 = _createForOfIteratorHelper(children),
+                _step16;
 
             try {
-              for (var _iterator16 = children[Symbol.iterator](), _step16; !(_iteratorNormalCompletion16 = (_step16 = _iterator16.next()).done); _iteratorNormalCompletion16 = true) {
+              for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
                 var child = _step16.value;
 
                 // ******** DOM WRITE ****************
                 child._fireBeforeWriteFunc();
               }
             } catch (err) {
-              _didIteratorError16 = true;
-              _iteratorError16 = err;
+              _iterator16.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion16 && _iterator16.return != null) {
-                  _iterator16.return();
-                }
-              } finally {
-                if (_didIteratorError16) {
-                  throw _iteratorError16;
-                }
-              }
+              _iterator16.f();
             }
           }
 
           var writeFunctions = this._writeCallbacks;
 
           if (writeFunctions) {
-            var _iteratorNormalCompletion17 = true;
-            var _didIteratorError17 = false;
-            var _iteratorError17 = undefined;
+            var _iterator17 = _createForOfIteratorHelper(writeFunctions),
+                _step17;
 
             try {
-              for (var _iterator17 = writeFunctions[Symbol.iterator](), _step17; !(_iteratorNormalCompletion17 = (_step17 = _iterator17.next()).done); _iteratorNormalCompletion17 = true) {
+              for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
                 var callback = _step17.value;
                 // ******** DOM WRITE ****************
                 callback();
               }
             } catch (err) {
-              _didIteratorError17 = true;
-              _iteratorError17 = err;
+              _iterator17.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion17 && _iterator17.return != null) {
-                  _iterator17.return();
-                }
-              } finally {
-                if (_didIteratorError17) {
-                  throw _iteratorError17;
-                }
-              }
+              _iterator17.f();
             }
           }
         }
@@ -1408,12 +1246,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return;
           }
 
-          var _iteratorNormalCompletion18 = true;
-          var _didIteratorError18 = false;
-          var _iteratorError18 = undefined;
+          var _iterator18 = _createForOfIteratorHelper(elements),
+              _step18;
 
           try {
-            for (var _iterator18 = elements[Symbol.iterator](), _step18; !(_iteratorNormalCompletion18 = (_step18 = _iterator18.next()).done); _iteratorNormalCompletion18 = true) {
+            for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
               var el = _step18.value;
               var elementClassList = el.classList; // remove the transition duration/easing
               // ******** DOM WRITE ****************
@@ -1426,28 +1263,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 var beforeAddClasses = this._beforeAddClasses;
 
                 if (beforeAddClasses) {
-                  var _iteratorNormalCompletion19 = true;
-                  var _didIteratorError19 = false;
-                  var _iteratorError19 = undefined;
+                  var _iterator19 = _createForOfIteratorHelper(beforeAddClasses),
+                      _step19;
 
                   try {
-                    for (var _iterator19 = beforeAddClasses[Symbol.iterator](), _step19; !(_iteratorNormalCompletion19 = (_step19 = _iterator19.next()).done); _iteratorNormalCompletion19 = true) {
+                    for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
                       var c = _step19.value;
                       elementClassList.remove(c);
                     }
                   } catch (err) {
-                    _didIteratorError19 = true;
-                    _iteratorError19 = err;
+                    _iterator19.e(err);
                   } finally {
-                    try {
-                      if (!_iteratorNormalCompletion19 && _iterator19.return != null) {
-                        _iterator19.return();
-                      }
-                    } finally {
-                      if (_didIteratorError19) {
-                        throw _iteratorError19;
-                      }
-                    }
+                    _iterator19.f();
                   }
                 } // css classes that were removed before the animation should be added
 
@@ -1455,28 +1282,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 var beforeRemoveClasses = this._beforeRemoveClasses;
 
                 if (beforeRemoveClasses) {
-                  var _iteratorNormalCompletion20 = true;
-                  var _didIteratorError20 = false;
-                  var _iteratorError20 = undefined;
+                  var _iterator20 = _createForOfIteratorHelper(beforeRemoveClasses),
+                      _step20;
 
                   try {
-                    for (var _iterator20 = beforeRemoveClasses[Symbol.iterator](), _step20; !(_iteratorNormalCompletion20 = (_step20 = _iterator20.next()).done); _iteratorNormalCompletion20 = true) {
+                    for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
                       var _c2 = _step20.value;
                       elementClassList.add(_c2);
                     }
                   } catch (err) {
-                    _didIteratorError20 = true;
-                    _iteratorError20 = err;
+                    _iterator20.e(err);
                   } finally {
-                    try {
-                      if (!_iteratorNormalCompletion20 && _iterator20.return != null) {
-                        _iterator20.return();
-                      }
-                    } finally {
-                      if (_didIteratorError20) {
-                        throw _iteratorError20;
-                      }
-                    }
+                    _iterator20.f();
                   }
                 } // inline styles that were added before the animation should be removed
 
@@ -1496,29 +1313,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 var afterAddClasses = this._afterAddClasses;
 
                 if (afterAddClasses) {
-                  var _iteratorNormalCompletion21 = true;
-                  var _didIteratorError21 = false;
-                  var _iteratorError21 = undefined;
+                  var _iterator21 = _createForOfIteratorHelper(afterAddClasses),
+                      _step21;
 
                   try {
-                    for (var _iterator21 = afterAddClasses[Symbol.iterator](), _step21; !(_iteratorNormalCompletion21 = (_step21 = _iterator21.next()).done); _iteratorNormalCompletion21 = true) {
+                    for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
                       var _c3 = _step21.value;
                       // ******** DOM WRITE ****************
                       elementClassList.add(_c3);
                     }
                   } catch (err) {
-                    _didIteratorError21 = true;
-                    _iteratorError21 = err;
+                    _iterator21.e(err);
                   } finally {
-                    try {
-                      if (!_iteratorNormalCompletion21 && _iterator21.return != null) {
-                        _iterator21.return();
-                      }
-                    } finally {
-                      if (_didIteratorError21) {
-                        throw _iteratorError21;
-                      }
-                    }
+                    _iterator21.f();
                   }
                 } // css classes to remove after the animation
 
@@ -1526,29 +1333,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 var afterRemoveClasses = this._afterRemoveClasses;
 
                 if (afterRemoveClasses) {
-                  var _iteratorNormalCompletion22 = true;
-                  var _didIteratorError22 = false;
-                  var _iteratorError22 = undefined;
+                  var _iterator22 = _createForOfIteratorHelper(afterRemoveClasses),
+                      _step22;
 
                   try {
-                    for (var _iterator22 = afterRemoveClasses[Symbol.iterator](), _step22; !(_iteratorNormalCompletion22 = (_step22 = _iterator22.next()).done); _iteratorNormalCompletion22 = true) {
+                    for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
                       var _c4 = _step22.value;
                       // ******** DOM WRITE ****************
                       elementClassList.remove(_c4);
                     }
                   } catch (err) {
-                    _didIteratorError22 = true;
-                    _iteratorError22 = err;
+                    _iterator22.e(err);
                   } finally {
-                    try {
-                      if (!_iteratorNormalCompletion22 && _iterator22.return != null) {
-                        _iterator22.return();
-                      }
-                    } finally {
-                      if (_didIteratorError22) {
-                        throw _iteratorError22;
-                      }
-                    }
+                    _iterator22.f();
                   }
                 } // inline styles to add after the animation
 
@@ -1567,18 +1364,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }
           } catch (err) {
-            _didIteratorError18 = true;
-            _iteratorError18 = err;
+            _iterator18.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion18 && _iterator18.return != null) {
-                _iterator18.return();
-              }
-            } finally {
-              if (_didIteratorError18) {
-                throw _iteratorError18;
-              }
-            }
+            _iterator18.f();
           }
         }
         /**
@@ -1595,12 +1383,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (addWillChange && effects) {
             wc = [];
-            var _iteratorNormalCompletion23 = true;
-            var _didIteratorError23 = false;
-            var _iteratorError23 = undefined;
+
+            var _iterator23 = _createForOfIteratorHelper(effects),
+                _step23;
 
             try {
-              for (var _iterator23 = effects[Symbol.iterator](), _step23; !(_iteratorNormalCompletion23 = (_step23 = _iterator23.next()).done); _iteratorNormalCompletion23 = true) {
+              for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
                 var effect = _step23.value;
                 var propWC = effect.wc;
 
@@ -1611,18 +1399,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _didIteratorError23 = true;
-              _iteratorError23 = err;
+              _iterator23.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion23 && _iterator23.return != null) {
-                  _iterator23.return();
-                }
-              } finally {
-                if (_didIteratorError23) {
-                  throw _iteratorError23;
-                }
-              }
+              _iterator23.f();
             }
 
             willChange = wc.join(',');
@@ -1633,29 +1412,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var elements = this._elements;
 
           if (elements) {
-            var _iteratorNormalCompletion24 = true;
-            var _didIteratorError24 = false;
-            var _iteratorError24 = undefined;
+            var _iterator24 = _createForOfIteratorHelper(elements),
+                _step24;
 
             try {
-              for (var _iterator24 = elements[Symbol.iterator](), _step24; !(_iteratorNormalCompletion24 = (_step24 = _iterator24.next()).done); _iteratorNormalCompletion24 = true) {
+              for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
                 var el = _step24.value;
                 // ******** DOM WRITE ****************
                 el.style.setProperty('will-change', willChange);
               }
             } catch (err) {
-              _didIteratorError24 = true;
-              _iteratorError24 = err;
+              _iterator24.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion24 && _iterator24.return != null) {
-                  _iterator24.return();
-                }
-              } finally {
-                if (_didIteratorError24) {
-                  throw _iteratorError24;
-                }
-              }
+              _iterator24.f();
             }
           }
         }
@@ -1686,30 +1455,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion25 = true;
-            var _didIteratorError25 = false;
-            var _iteratorError25 = undefined;
+            var _iterator25 = _createForOfIteratorHelper(children),
+                _step25;
 
             try {
-              for (var _iterator25 = children[Symbol.iterator](), _step25; !(_iteratorNormalCompletion25 = (_step25 = _iterator25.next()).done); _iteratorNormalCompletion25 = true) {
+              for (_iterator25.s(); !(_step25 = _iterator25.n()).done;) {
                 var child = _step25.value;
 
                 // ******** DOM WRITE ****************
                 child._progressStart();
               }
             } catch (err) {
-              _didIteratorError25 = true;
-              _iteratorError25 = err;
+              _iterator25.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion25 && _iterator25.return != null) {
-                  _iterator25.return();
-                }
-              } finally {
-                if (_didIteratorError25) {
-                  throw _iteratorError25;
-                }
-              }
+              _iterator25.f();
             }
           } // force no duration, linear easing
           // ******** DOM WRITE ****************
@@ -1733,29 +1492,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion26 = true;
-            var _didIteratorError26 = false;
-            var _iteratorError26 = undefined;
+            var _iterator26 = _createForOfIteratorHelper(children),
+                _step26;
 
             try {
-              for (var _iterator26 = children[Symbol.iterator](), _step26; !(_iteratorNormalCompletion26 = (_step26 = _iterator26.next()).done); _iteratorNormalCompletion26 = true) {
+              for (_iterator26.s(); !(_step26 = _iterator26.n()).done;) {
                 var child = _step26.value;
                 // ******** DOM WRITE ****************
                 child.progressStep(stepValue);
               }
             } catch (err) {
-              _didIteratorError26 = true;
-              _iteratorError26 = err;
+              _iterator26.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion26 && _iterator26.return != null) {
-                  _iterator26.return();
-                }
-              } finally {
-                if (_didIteratorError26) {
-                  throw _iteratorError26;
-                }
-              }
+              _iterator26.f();
             }
           } // ******** DOM WRITE ****************
 
@@ -1819,30 +1568,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion27 = true;
-            var _didIteratorError27 = false;
-            var _iteratorError27 = undefined;
+            var _iterator27 = _createForOfIteratorHelper(children),
+                _step27;
 
             try {
-              for (var _iterator27 = children[Symbol.iterator](), _step27; !(_iteratorNormalCompletion27 = (_step27 = _iterator27.next()).done); _iteratorNormalCompletion27 = true) {
+              for (_iterator27.s(); !(_step27 = _iterator27.n()).done;) {
                 var child = _step27.value;
 
                 // ******** DOM WRITE ****************
                 child._progressEnd(shouldComplete, stepValue, dur, isAsync);
               }
             } catch (err) {
-              _didIteratorError27 = true;
-              _iteratorError27 = err;
+              _iterator27.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion27 && _iterator27.return != null) {
-                  _iterator27.return();
-                }
-              } finally {
-                if (_didIteratorError27) {
-                  throw _iteratorError27;
-                }
-              }
+              _iterator27.f();
             }
           }
 
@@ -1902,29 +1641,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion28 = true;
-            var _didIteratorError28 = false;
-            var _iteratorError28 = undefined;
+            var _iterator28 = _createForOfIteratorHelper(children),
+                _step28;
 
             try {
-              for (var _iterator28 = children[Symbol.iterator](), _step28; !(_iteratorNormalCompletion28 = (_step28 = _iterator28.next()).done); _iteratorNormalCompletion28 = true) {
+              for (_iterator28.s(); !(_step28 = _iterator28.n()).done;) {
                 var child = _step28.value;
 
                 child._didFinishAll(hasCompleted, finishAsyncAnimations, finishNoDurationAnimations);
               }
             } catch (err) {
-              _didIteratorError28 = true;
-              _iteratorError28 = err;
+              _iterator28.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion28 && _iterator28.return != null) {
-                  _iterator28.return();
-                }
-              } finally {
-                if (_didIteratorError28) {
-                  throw _iteratorError28;
-                }
-              }
+              _iterator28.f();
             }
           }
 
@@ -1944,56 +1673,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (this._onFinishCallbacks) {
             // run all finish callbacks
-            var _iteratorNormalCompletion29 = true;
-            var _didIteratorError29 = false;
-            var _iteratorError29 = undefined;
+            var _iterator29 = _createForOfIteratorHelper(this._onFinishCallbacks),
+                _step29;
 
             try {
-              for (var _iterator29 = this._onFinishCallbacks[Symbol.iterator](), _step29; !(_iteratorNormalCompletion29 = (_step29 = _iterator29.next()).done); _iteratorNormalCompletion29 = true) {
+              for (_iterator29.s(); !(_step29 = _iterator29.n()).done;) {
                 var callback = _step29.value;
                 callback(this);
               }
             } catch (err) {
-              _didIteratorError29 = true;
-              _iteratorError29 = err;
+              _iterator29.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion29 && _iterator29.return != null) {
-                  _iterator29.return();
-                }
-              } finally {
-                if (_didIteratorError29) {
-                  throw _iteratorError29;
-                }
-              }
+              _iterator29.f();
             }
           }
 
           if (this._onFinishOneTimeCallbacks) {
             // run all "onetime" finish callbacks
-            var _iteratorNormalCompletion30 = true;
-            var _didIteratorError30 = false;
-            var _iteratorError30 = undefined;
+            var _iterator30 = _createForOfIteratorHelper(this._onFinishOneTimeCallbacks),
+                _step30;
 
             try {
-              for (var _iterator30 = this._onFinishOneTimeCallbacks[Symbol.iterator](), _step30; !(_iteratorNormalCompletion30 = (_step30 = _iterator30.next()).done); _iteratorNormalCompletion30 = true) {
+              for (_iterator30.s(); !(_step30 = _iterator30.n()).done;) {
                 var _callback = _step30.value;
 
                 _callback(this);
               }
             } catch (err) {
-              _didIteratorError30 = true;
-              _iteratorError30 = err;
+              _iterator30.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion30 && _iterator30.return != null) {
-                  _iterator30.return();
-                }
-              } finally {
-                if (_didIteratorError30) {
-                  throw _iteratorError30;
-                }
-              }
+              _iterator30.f();
             }
 
             this._onFinishOneTimeCallbacks.length = 0;
@@ -2010,28 +1719,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion31 = true;
-            var _didIteratorError31 = false;
-            var _iteratorError31 = undefined;
+            var _iterator31 = _createForOfIteratorHelper(children),
+                _step31;
 
             try {
-              for (var _iterator31 = children[Symbol.iterator](), _step31; !(_iteratorNormalCompletion31 = (_step31 = _iterator31.next()).done); _iteratorNormalCompletion31 = true) {
+              for (_iterator31.s(); !(_step31 = _iterator31.n()).done;) {
                 var child = _step31.value;
                 child.reverse(shouldReverse);
               }
             } catch (err) {
-              _didIteratorError31 = true;
-              _iteratorError31 = err;
+              _iterator31.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion31 && _iterator31.return != null) {
-                  _iterator31.return();
-                }
-              } finally {
-                if (_didIteratorError31) {
-                  throw _iteratorError31;
-                }
-              }
+              _iterator31.f();
             }
           }
 
@@ -2051,28 +1750,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion32 = true;
-            var _didIteratorError32 = false;
-            var _iteratorError32 = undefined;
+            var _iterator32 = _createForOfIteratorHelper(children),
+                _step32;
 
             try {
-              for (var _iterator32 = children[Symbol.iterator](), _step32; !(_iteratorNormalCompletion32 = (_step32 = _iterator32.next()).done); _iteratorNormalCompletion32 = true) {
+              for (_iterator32.s(); !(_step32 = _iterator32.n()).done;) {
                 var child = _step32.value;
                 child.destroy();
               }
             } catch (err) {
-              _didIteratorError32 = true;
-              _iteratorError32 = err;
+              _iterator32.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion32 && _iterator32.return != null) {
-                  _iterator32.return();
-                }
-              } finally {
-                if (_didIteratorError32) {
-                  throw _iteratorError32;
-                }
-              }
+              _iterator32.f();
             }
           }
 
@@ -2115,12 +1804,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var children = this._childAnimations;
 
           if (children) {
-            var _iteratorNormalCompletion33 = true;
-            var _didIteratorError33 = false;
-            var _iteratorError33 = undefined;
+            var _iterator33 = _createForOfIteratorHelper(children),
+                _step33;
 
             try {
-              for (var _iterator33 = children[Symbol.iterator](), _step33; !(_iteratorNormalCompletion33 = (_step33 = _iterator33.next()).done); _iteratorNormalCompletion33 = true) {
+              for (_iterator33.s(); !(_step33 = _iterator33.n()).done;) {
                 var child = _step33.value;
 
                 var targetEl = child._transEl();
@@ -2130,18 +1818,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               }
             } catch (err) {
-              _didIteratorError33 = true;
-              _iteratorError33 = err;
+              _iterator33.e(err);
             } finally {
-              try {
-                if (!_iteratorNormalCompletion33 && _iterator33.return != null) {
-                  _iterator33.return();
-                }
-              } finally {
-                if (_didIteratorError33) {
-                  throw _iteratorError33;
-                }
-              }
+              _iterator33.f();
             }
           }
 

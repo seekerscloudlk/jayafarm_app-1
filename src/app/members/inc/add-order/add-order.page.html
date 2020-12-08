@@ -40,7 +40,7 @@
 
                         </ion-select>
                         <ion-item>
-                            <ion-input type="number" [(ngModel)]="odrItem.price_sold" placeholder="Selling Price"></ion-input>
+                            <ion-input type="number" disabled [(ngModel)]="odrItem.price_sold" placeholder="Selling Price"></ion-input>
                             <ion-input type="number" (keyup)="chkItemBalence($event, odrItem.item_id)" 
                             (blur)="finalizeItem($event)" (blur)=setInvoicePaidAuto($event) placeholder="Qty" [(ngModel)]="odrItem.qty"></ion-input>
                             <div text-right>{{odrItem.qty*odrItem.price_sold | number : '1.2-2'}}</div>
@@ -59,7 +59,7 @@
         </ion-item>
         <ion-item >
             <b>Total Payed Amount </b>
-            <ion-input type="number" [(ngModel)]="currOrder.odr_paid_amount" (keyup)="setEffectiveBalance($event)"  class="ion-text-right" placeholder="Enter Here.."></ion-input>
+            <ion-input placeholder="0" type="number" [(ngModel)]="currOrder.odr_paid_amount" (keyup)="setEffectiveBalance($event)"  class="ion-text-right" placeholder="Enter Here.."></ion-input>
         </ion-item>
         <ion-item >
             <ion-textarea auto-grow="true" placeholder="Remarks.." [(ngModel)]="currOrder.odr_remark"></ion-textarea>

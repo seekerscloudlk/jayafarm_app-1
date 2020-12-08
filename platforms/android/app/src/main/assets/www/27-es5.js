@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -51,9 +55,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./index-3476b023.js */
     "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
 
-    var InfiniteScroll =
-    /*#__PURE__*/
-    function () {
+    var InfiniteScroll = /*#__PURE__*/function () {
       function InfiniteScroll(hostRef) {
         var _this = this;
 
@@ -160,48 +162,56 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function connectedCallback() {
-          var _this2 = this;
+        value: function () {
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this2 = this;
 
-          var contentEl;
-          return regeneratorRuntime.async(function connectedCallback$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  contentEl = this.el.closest('ion-content');
+            var contentEl;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    contentEl = this.el.closest('ion-content');
 
-                  if (contentEl) {
-                    _context.next = 4;
-                    break;
-                  }
+                    if (contentEl) {
+                      _context.next = 4;
+                      break;
+                    }
 
-                  console.error('<ion-infinite-scroll> must be used inside an <ion-content>');
-                  return _context.abrupt("return");
+                    console.error('<ion-infinite-scroll> must be used inside an <ion-content>');
+                    return _context.abrupt("return");
 
-                case 4:
-                  _context.next = 6;
-                  return regeneratorRuntime.awrap(contentEl.getScrollElement());
+                  case 4:
+                    _context.next = 6;
+                    return contentEl.getScrollElement();
 
-                case 6:
-                  this.scrollEl = _context.sent;
-                  this.thresholdChanged();
-                  this.disabledChanged();
+                  case 6:
+                    this.scrollEl = _context.sent;
+                    this.thresholdChanged();
+                    this.disabledChanged();
 
-                  if (this.position === 'top') {
-                    Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
-                      if (_this2.scrollEl) {
-                        _this2.scrollEl.scrollTop = _this2.scrollEl.scrollHeight - _this2.scrollEl.clientHeight;
-                      }
-                    });
-                  }
+                    if (this.position === 'top') {
+                      Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
+                        if (_this2.scrollEl) {
+                          _this2.scrollEl.scrollTop = _this2.scrollEl.scrollHeight - _this2.scrollEl.clientHeight;
+                        }
+                      });
+                    }
 
-                case 10:
-                case "end":
-                  return _context.stop();
+                  case 10:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
+          }
+
+          return connectedCallback;
+        }()
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -221,75 +231,83 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "complete",
-        value: function complete() {
-          var _this3 = this;
+        value: function () {
+          var _complete = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this3 = this;
 
-          var scrollEl, prev;
-          return regeneratorRuntime.async(function complete$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  scrollEl = this.scrollEl;
+            var scrollEl, prev;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    scrollEl = this.scrollEl;
 
-                  if (!(!this.isLoading || !scrollEl)) {
-                    _context2.next = 3;
-                    break;
-                  }
+                    if (!(!this.isLoading || !scrollEl)) {
+                      _context2.next = 3;
+                      break;
+                    }
 
-                  return _context2.abrupt("return");
+                    return _context2.abrupt("return");
 
-                case 3:
-                  this.isLoading = false;
+                  case 3:
+                    this.isLoading = false;
 
-                  if (this.position === 'top') {
-                    /**
-                     * New content is being added at the top, but the scrollTop position stays the same,
-                     * which causes a scroll jump visually. This algorithm makes sure to prevent this.
-                     * (Frame 1)
-                     *    - complete() is called, but the UI hasn't had time to update yet.
-                     *    - Save the current content dimensions.
-                     *    - Wait for the next frame using _dom.read, so the UI will be updated.
-                     * (Frame 2)
-                     *    - Read the new content dimensions.
-                     *    - Calculate the height difference and the new scroll position.
-                     *    - Delay the scroll position change until other possible dom reads are done using _dom.write to be performant.
-                     * (Still frame 2, if I'm correct)
-                     *    - Change the scroll position (= visually maintain the scroll position).
-                     *    - Change the state to re-enable the InfiniteScroll.
-                     *    - This should be after changing the scroll position, or it could
-                     *    cause the InfiniteScroll to be triggered again immediately.
-                     * (Frame 3)
-                     *    Done.
-                     */
-                    this.isBusy = true; // ******** DOM READ ****************
-                    // Save the current content dimensions before the UI updates
+                    if (this.position === 'top') {
+                      /**
+                       * New content is being added at the top, but the scrollTop position stays the same,
+                       * which causes a scroll jump visually. This algorithm makes sure to prevent this.
+                       * (Frame 1)
+                       *    - complete() is called, but the UI hasn't had time to update yet.
+                       *    - Save the current content dimensions.
+                       *    - Wait for the next frame using _dom.read, so the UI will be updated.
+                       * (Frame 2)
+                       *    - Read the new content dimensions.
+                       *    - Calculate the height difference and the new scroll position.
+                       *    - Delay the scroll position change until other possible dom reads are done using _dom.write to be performant.
+                       * (Still frame 2, if I'm correct)
+                       *    - Change the scroll position (= visually maintain the scroll position).
+                       *    - Change the state to re-enable the InfiniteScroll.
+                       *    - This should be after changing the scroll position, or it could
+                       *    cause the InfiniteScroll to be triggered again immediately.
+                       * (Frame 3)
+                       *    Done.
+                       */
+                      this.isBusy = true; // ******** DOM READ ****************
+                      // Save the current content dimensions before the UI updates
 
-                    prev = scrollEl.scrollHeight - scrollEl.scrollTop; // ******** DOM READ ****************
+                      prev = scrollEl.scrollHeight - scrollEl.scrollTop; // ******** DOM READ ****************
 
-                    requestAnimationFrame(function () {
-                      Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
-                        // UI has updated, save the new content dimensions
-                        var scrollHeight = scrollEl.scrollHeight; // New content was added on top, so the scroll position should be changed immediately to prevent it from jumping around
+                      requestAnimationFrame(function () {
+                        Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
+                          // UI has updated, save the new content dimensions
+                          var scrollHeight = scrollEl.scrollHeight; // New content was added on top, so the scroll position should be changed immediately to prevent it from jumping around
 
-                        var newScrollTop = scrollHeight - prev; // ******** DOM WRITE ****************
+                          var newScrollTop = scrollHeight - prev; // ******** DOM WRITE ****************
 
-                        requestAnimationFrame(function () {
-                          Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
-                            scrollEl.scrollTop = newScrollTop;
-                            _this3.isBusy = false;
+                          requestAnimationFrame(function () {
+                            Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
+                              scrollEl.scrollTop = newScrollTop;
+                              _this3.isBusy = false;
+                            });
                           });
                         });
                       });
-                    });
-                  }
+                    }
 
-                case 5:
-                case "end":
-                  return _context2.stop();
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function complete() {
+            return _complete.apply(this, arguments);
+          }
+
+          return complete;
+        }()
       }, {
         key: "canStart",
         value: function canStart() {
@@ -314,7 +332,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           var disabled = this.disabled;
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'infinite-scroll-loading', this.isLoading), _defineProperty(_class, 'infinite-scroll-enabled', !disabled), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'infinite-scroll-loading', this.isLoading), _defineProperty(_class, 'infinite-scroll-enabled', !disabled), _class)
           });
         }
       }, {
@@ -340,9 +358,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return InfiniteScroll;
     }();
 
-    var InfiniteScrollContent =
-    /*#__PURE__*/
-    function () {
+    var InfiniteScrollContent = /*#__PURE__*/function () {
       function InfiniteScrollContent(hostRef) {
         _classCallCheck(this, InfiniteScrollContent);
 
@@ -364,15 +380,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, "infinite-scroll-content-".concat(mode), true), _class2)
+            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, "infinite-scroll-content-".concat(mode), true), _class2)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "infinite-loading"
+            "class": "infinite-loading"
           }, this.loadingSpinner && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "infinite-loading-spinner"
+            "class": "infinite-loading-spinner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-spinner", {
             name: this.loadingSpinner
           })), this.loadingText && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "infinite-loading-text",
+            "class": "infinite-loading-text",
             innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_2__["s"])(this.loadingText)
           })));
         }

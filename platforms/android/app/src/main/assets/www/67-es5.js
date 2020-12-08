@@ -51,9 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var TabBar =
-    /*#__PURE__*/
-    function () {
+    var TabBar = /*#__PURE__*/function () {
       function TabBar(hostRef) {
         _classCallCheck(this, TabBar);
 
@@ -111,7 +109,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "tablist",
             "aria-hidden": keyboardVisible ? 'true' : null,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'tab-bar-translucent', translucent), _defineProperty(_Object$assign, 'tab-bar-hidden', keyboardVisible), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'tab-bar-translucent', translucent), _defineProperty(_Object$assign, 'tab-bar-hidden', keyboardVisible), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {
@@ -136,9 +134,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return TabBar;
     }();
 
-    var TabButton =
-    /*#__PURE__*/
-    function () {
+    var TabButton = /*#__PURE__*/function () {
       function TabButton(hostRef) {
         var _this2 = this;
 
@@ -225,7 +221,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             tabindex: tabIndex,
             "aria-selected": selected ? 'true' : null,
             id: tab !== undefined ? "tab-button-".concat(tab) : null,
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'tab-selected', selected), _defineProperty(_class, 'tab-disabled', disabled), _defineProperty(_class, 'tab-has-label', hasLabel), _defineProperty(_class, 'tab-has-icon', hasIcon), _defineProperty(_class, 'tab-has-label-only', hasLabel && !hasIcon), _defineProperty(_class, 'tab-has-icon-only', hasIcon && !hasLabel), _defineProperty(_class, "tab-layout-".concat(layout), true), _defineProperty(_class, 'ion-activatable', true), _defineProperty(_class, 'ion-selectable', true), _defineProperty(_class, 'ion-focusable', true), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'tab-selected', selected), _defineProperty(_class, 'tab-disabled', disabled), _defineProperty(_class, 'tab-has-label', hasLabel), _defineProperty(_class, 'tab-has-icon', hasIcon), _defineProperty(_class, 'tab-has-label-only', hasLabel && !hasIcon), _defineProperty(_class, 'tab-has-icon-only', hasIcon && !hasLabel), _defineProperty(_class, "tab-layout-".concat(layout), true), _defineProperty(_class, 'ion-activatable', true), _defineProperty(_class, 'ion-selectable', true), _defineProperty(_class, 'ion-focusable', true), _class)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("a", Object.assign({}, attrs, {
             tabIndex: -1
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {

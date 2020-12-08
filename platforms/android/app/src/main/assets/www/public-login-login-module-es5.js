@@ -222,9 +222,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/forms */
     "./node_modules/@angular/forms/fesm2015/forms.js");
 
-    var LoginPage =
-    /*#__PURE__*/
-    function () {
+    var LoginPage = /*#__PURE__*/function () {
       function LoginPage(authService, formBuilder) {
         _classCallCheck(this, LoginPage);
 
@@ -264,10 +262,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-login',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./login.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/public/login/login.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/public/login/login.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./login.page.scss */
-      "./src/app/public/login/login.page.scss")).default]
+      "./src/app/public/login/login.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"]])], LoginPage);
     /***/
   }

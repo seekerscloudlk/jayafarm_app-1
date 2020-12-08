@@ -154,9 +154,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
     var SPINNERS = spinners;
 
-    var Spinner =
-    /*#__PURE__*/
-    function () {
+    var Spinner = /*#__PURE__*/function () {
       function Spinner(hostRef) {
         _classCallCheck(this, Spinner);
 
@@ -204,7 +202,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(self.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "spinner-".concat(spinnerName), true), _defineProperty(_Object$assign, 'spinner-paused', !!self.paused || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('_testing')), _Object$assign)),
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(self.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "spinner-".concat(spinnerName), true), _defineProperty(_Object$assign, 'spinner-paused', !!self.paused || _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('_testing')), _Object$assign)),
             role: "progressbar",
             style: spinner.elmDuration ? {
               animationDuration: duration + 'ms'

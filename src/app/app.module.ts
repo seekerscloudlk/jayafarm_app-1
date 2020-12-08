@@ -17,7 +17,7 @@ import { TripsMorePageModule } from './members/inc/trips-more/trips-more.module'
 import { Base64 } from '@ionic-native/base64/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { NgPipesModule} from 'ngx-pipes';
-import { DatePipe } from '@angular/common'
+import { DatePipe, CurrencyPipe } from '@angular/common'
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,9 +33,10 @@ import { DatePipe } from '@angular/common'
     TripsPageModule,
     PrintPageModule,
     TripsMorePageModule,
-    NgPipesModule
+    NgPipesModule,
   ],
   providers: [
+    CurrencyPipe,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

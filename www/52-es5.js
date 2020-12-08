@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -51,9 +55,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./haptic-c8f1473e.js */
     "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
 
-    var Reorder =
-    /*#__PURE__*/
-    function () {
+    var Reorder = /*#__PURE__*/function () {
       function Reorder(hostRef) {
         _classCallCheck(this, Reorder);
 
@@ -70,11 +72,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "render",
         value: function render() {
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
+            "class": Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             name: "reorder",
             lazy: false,
-            class: "reorder-icon"
+            "class": "reorder-icon"
           })));
         }
       }], [{
@@ -87,9 +89,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Reorder;
     }();
 
-    var ReorderGroup =
-    /*#__PURE__*/
-    function () {
+    var ReorderGroup = /*#__PURE__*/function () {
       function ReorderGroup(hostRef) {
         _classCallCheck(this, ReorderGroup);
 
@@ -121,64 +121,71 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function connectedCallback() {
-          var _this = this;
+        value: function () {
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this = this;
 
-          var contentEl;
-          return regeneratorRuntime.async(function connectedCallback$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  contentEl = this.el.closest('ion-content');
+            var contentEl;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    contentEl = this.el.closest('ion-content');
 
-                  if (!contentEl) {
-                    _context.next = 5;
-                    break;
-                  }
-
-                  _context.next = 4;
-                  return regeneratorRuntime.awrap(contentEl.getScrollElement());
-
-                case 4:
-                  this.scrollEl = _context.sent;
-
-                case 5:
-                  _context.next = 7;
-                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
-                  /*! ./index-624eea58.js */
-                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
-
-                case 7:
-                  _context.t0 = {
-                    el: this.el,
-                    gestureName: 'reorder',
-                    gesturePriority: 110,
-                    threshold: 0,
-                    direction: 'y',
-                    passive: false,
-                    canStart: function canStart(detail) {
-                      return _this.canStart(detail);
-                    },
-                    onStart: function onStart(ev) {
-                      return _this.onStart(ev);
-                    },
-                    onMove: function onMove(ev) {
-                      return _this.onMove(ev);
-                    },
-                    onEnd: function onEnd() {
-                      return _this.onEnd();
+                    if (!contentEl) {
+                      _context.next = 5;
+                      break;
                     }
-                  };
-                  this.gesture = _context.sent.createGesture(_context.t0);
-                  this.disabledChanged();
 
-                case 10:
-                case "end":
-                  return _context.stop();
+                    _context.next = 4;
+                    return contentEl.getScrollElement();
+
+                  case 4:
+                    this.scrollEl = _context.sent;
+
+                  case 5:
+                    _context.next = 7;
+                    return Promise.resolve().then(__webpack_require__.bind(null,
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
+
+                  case 7:
+                    this.gesture = _context.sent.createGesture({
+                      el: this.el,
+                      gestureName: 'reorder',
+                      gesturePriority: 110,
+                      threshold: 0,
+                      direction: 'y',
+                      passive: false,
+                      canStart: function canStart(detail) {
+                        return _this.canStart(detail);
+                      },
+                      onStart: function onStart(ev) {
+                        return _this.onStart(ev);
+                      },
+                      onMove: function onMove(ev) {
+                        return _this.onMove(ev);
+                      },
+                      onEnd: function onEnd() {
+                        return _this.onEnd();
+                      }
+                    });
+                    this.disabledChanged();
+
+                  case 9:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
+          }
+
+          return connectedCallback;
+        }()
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -439,7 +446,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'reorder-enabled', !this.disabled), _defineProperty(_class, 'reorder-list-active', this.state !== 0), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'reorder-enabled', !this.disabled), _defineProperty(_class, 'reorder-list-active', this.state !== 0), _class)
           });
         }
       }, {

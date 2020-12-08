@@ -69,9 +69,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var Card =
-    /*#__PURE__*/
-    function () {
+    var Card = /*#__PURE__*/function () {
       function Card(hostRef) {
         _classCallCheck(this, Card);
 
@@ -125,7 +123,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             target: this.target
           };
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            class: "card-native",
+            "class": "card-native",
             disabled: this.disabled,
             onClick: function onClick(ev) {
               return Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, routerDirection);
@@ -137,7 +135,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign(Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), {
+            "class": Object.assign(Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), {
               'card-disabled': this.disabled,
               'ion-activatable': this.isClickable()
             })
@@ -153,9 +151,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Card;
     }();
 
-    var CardContent =
-    /*#__PURE__*/
-    function () {
+    var CardContent = /*#__PURE__*/function () {
       function CardContent(hostRef) {
         _classCallCheck(this, CardContent);
 
@@ -169,7 +165,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "card-content-".concat(mode), true), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "card-content-".concat(mode), true), _class)
           });
         }
       }], [{
@@ -182,9 +178,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return CardContent;
     }();
 
-    var CardHeader =
-    /*#__PURE__*/
-    function () {
+    var CardHeader = /*#__PURE__*/function () {
       function CardHeader(hostRef) {
         _classCallCheck(this, CardHeader);
 
@@ -203,7 +197,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({
               'card-header-translucent': this.translucent
             }, mode, true))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
@@ -218,9 +212,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return CardHeader;
     }();
 
-    var CardSubtitle =
-    /*#__PURE__*/
-    function () {
+    var CardSubtitle = /*#__PURE__*/function () {
       function CardSubtitle(hostRef) {
         _classCallCheck(this, CardSubtitle);
 
@@ -234,7 +226,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "heading",
             "aria-level": "3",
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }], [{
@@ -247,9 +239,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return CardSubtitle;
     }();
 
-    var CardTitle =
-    /*#__PURE__*/
-    function () {
+    var CardTitle = /*#__PURE__*/function () {
       function CardTitle(hostRef) {
         _classCallCheck(this, CardTitle);
 
@@ -263,7 +253,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "heading",
             "aria-level": "2",
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }], [{

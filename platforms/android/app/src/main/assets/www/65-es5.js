@@ -50,9 +50,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       'never': ''
     };
 
-    var SplitPane =
-    /*#__PURE__*/
-    function () {
+    var SplitPane = /*#__PURE__*/function () {
       function SplitPane(hostRef) {
         _classCallCheck(this, SplitPane);
 
@@ -195,7 +193,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "split-pane-".concat(mode), true), _defineProperty(_class, 'split-pane-visible', this.visible), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "split-pane-".concat(mode), true), _defineProperty(_class, 'split-pane-visible', this.visible), _class)
           });
         }
       }, {

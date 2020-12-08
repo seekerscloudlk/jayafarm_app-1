@@ -1,12 +1,22 @@
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -687,9 +697,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var MONTH_SHORT_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var VALID_AMPM_PREFIX = [FORMAT_hh, FORMAT_h, FORMAT_mm, FORMAT_m, FORMAT_ss, FORMAT_s];
 
-    var Datetime =
-    /*#__PURE__*/
-    function () {
+    var Datetime = /*#__PURE__*/function () {
       function Datetime(hostRef) {
         var _this = this;
 
@@ -798,69 +806,83 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "open",
-        value: function open() {
-          var _this2 = this;
+        value: function () {
+          var _open = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this2 = this;
 
-          var pickerOptions, picker;
-          return regeneratorRuntime.async(function open$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  if (!(this.disabled || this.isExpanded)) {
-                    _context2.next = 2;
-                    break;
-                  }
+            var pickerOptions, picker;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    if (!(this.disabled || this.isExpanded)) {
+                      _context2.next = 2;
+                      break;
+                    }
 
-                  return _context2.abrupt("return");
+                    return _context2.abrupt("return");
 
-                case 2:
-                  pickerOptions = this.generatePickerOptions();
-                  _context2.next = 5;
-                  return regeneratorRuntime.awrap(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["p"].create(pickerOptions));
+                  case 2:
+                    pickerOptions = this.generatePickerOptions();
+                    _context2.next = 5;
+                    return _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["p"].create(pickerOptions);
 
-                case 5:
-                  picker = _context2.sent;
-                  this.isExpanded = true;
-                  picker.onDidDismiss().then(function () {
-                    _this2.isExpanded = false;
+                  case 5:
+                    picker = _context2.sent;
+                    this.isExpanded = true;
+                    picker.onDidDismiss().then(function () {
+                      _this2.isExpanded = false;
 
-                    _this2.setFocus();
-                  });
-                  picker.addEventListener('ionPickerColChange', function _callee(event) {
-                    var data, colSelectedIndex, colOptions, changeData;
-                    return regeneratorRuntime.async(function _callee$(_context) {
-                      while (1) {
-                        switch (_context.prev = _context.next) {
-                          case 0:
-                            data = event.detail;
-                            colSelectedIndex = data.selectedIndex;
-                            colOptions = data.options;
-                            changeData = {};
-                            changeData[data.name] = {
-                              value: colOptions[colSelectedIndex].value
-                            };
-
-                            _this2.updateDatetimeValue(changeData);
-
-                            picker.columns = _this2.generateColumns();
-
-                          case 7:
-                          case "end":
-                            return _context.stop();
-                        }
-                      }
+                      _this2.setFocus();
                     });
-                  });
-                  _context2.next = 11;
-                  return regeneratorRuntime.awrap(picker.present());
+                    picker.addEventListener('ionPickerColChange', /*#__PURE__*/function () {
+                      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+                        var data, colSelectedIndex, colOptions, changeData;
+                        return regeneratorRuntime.wrap(function _callee$(_context) {
+                          while (1) {
+                            switch (_context.prev = _context.next) {
+                              case 0:
+                                data = event.detail;
+                                colSelectedIndex = data.selectedIndex;
+                                colOptions = data.options;
+                                changeData = {};
+                                changeData[data.name] = {
+                                  value: colOptions[colSelectedIndex].value
+                                };
 
-                case 11:
-                case "end":
-                  return _context2.stop();
+                                _this2.updateDatetimeValue(changeData);
+
+                                picker.columns = _this2.generateColumns();
+
+                              case 7:
+                              case "end":
+                                return _context.stop();
+                            }
+                          }
+                        }, _callee);
+                      }));
+
+                      return function (_x) {
+                        return _ref.apply(this, arguments);
+                      };
+                    }());
+                    _context2.next = 11;
+                    return picker.present();
+
+                  case 11:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function open() {
+            return _open.apply(this, arguments);
+          }
+
+          return open;
+        }()
       }, {
         key: "emitStyle",
         value: function emitStyle() {
@@ -1170,9 +1192,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             "aria-expanded": "".concat(isExpanded),
             "aria-haspopup": "true",
             "aria-labelledby": labelId,
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'datetime-disabled', disabled), _defineProperty(_class, 'datetime-readonly', readonly), _defineProperty(_class, 'datetime-placeholder', addPlaceholderClass), _defineProperty(_class, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["h"])('ion-item', el)), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'datetime-disabled', disabled), _defineProperty(_class, 'datetime-readonly', readonly), _defineProperty(_class, 'datetime-placeholder', addPlaceholderClass), _defineProperty(_class, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["h"])('ion-item', el)), _class)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "datetime-text"
+            "class": "datetime-text"
           }, datetimeText), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             type: "button",
             onFocus: this.onFocus,
@@ -1226,12 +1248,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       for (var i = 0; i < columns.length; i++) {
         col = columns[i];
         columnsWidth.push(0);
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+
+        var _iterator = _createForOfIteratorHelper(col.options),
+            _step;
 
         try {
-          for (var _iterator = col.options[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var option = _step.value;
             width = option.text.length;
 
@@ -1240,18 +1262,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
           }
         } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
+          _iterator.e(err);
         } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
+          _iterator.f();
         }
       }
 
@@ -1299,9 +1312,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
     };
 
-    var Picker =
-    /*#__PURE__*/
-    function () {
+    var Picker = /*#__PURE__*/function () {
       function Picker(hostRef) {
         var _this6 = this;
 
@@ -1371,30 +1382,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(Picker, [{
         key: "present",
-        value: function present() {
-          var _this7 = this;
+        value: function () {
+          var _present = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var _this7 = this;
 
-          return regeneratorRuntime.async(function present$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  _context3.next = 2;
-                  return regeneratorRuntime.awrap(Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'pickerEnter', iosEnterAnimation, iosEnterAnimation, undefined));
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'pickerEnter', iosEnterAnimation, iosEnterAnimation, undefined);
 
-                case 2:
-                  if (this.duration > 0) {
-                    this.durationTimeout = setTimeout(function () {
-                      return _this7.dismiss();
-                    }, this.duration);
-                  }
+                  case 2:
+                    if (this.duration > 0) {
+                      this.durationTimeout = setTimeout(function () {
+                        return _this7.dismiss();
+                      }, this.duration);
+                    }
 
-                case 3:
-                case "end":
-                  return _context3.stop();
+                  case 3:
+                  case "end":
+                    return _context3.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee3, this);
+          }));
+
+          function present() {
+            return _present.apply(this, arguments);
+          }
+
+          return present;
+        }()
         /**
          * Dismiss the picker overlay after it has been presented.
          *
@@ -1485,7 +1504,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             "aria-modal": "true",
-            class: Object.assign((_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "picker-".concat(mode), true), _Object$assign), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)),
+            "class": Object.assign((_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "picker-".concat(mode), true), _Object$assign), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)),
             style: {
               zIndex: "".concat(20000 + this.overlayIndex)
             },
@@ -1494,30 +1513,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             visible: this.showBackdrop,
             tappable: this.backdropDismiss
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-wrapper",
+            "class": "picker-wrapper",
             role: "dialog"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-toolbar"
+            "class": "picker-toolbar"
           }, this.buttons.map(function (b) {
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: buttonWrapperClass(b)
+              "class": buttonWrapperClass(b)
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
               type: "button",
               onClick: function onClick() {
                 return _this8.buttonClick(b);
               },
-              class: buttonClass(b)
+              "class": buttonClass(b)
             }, b.text));
           })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-columns"
+            "class": "picker-columns"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-above-highlight"
+            "class": "picker-above-highlight"
           }), this.presented && this.columns.map(function (c) {
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-picker-column", {
               col: c
             });
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-below-highlight"
+            "class": "picker-below-highlight"
           }))));
         }
       }, {
@@ -1536,9 +1555,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     var buttonWrapperClass = function buttonWrapperClass(button) {
-      var _ref;
+      var _ref2;
 
-      return _ref = {}, _defineProperty(_ref, "picker-toolbar-".concat(button.role), button.role !== undefined), _defineProperty(_ref, 'picker-toolbar-button', true), _ref;
+      return _ref2 = {}, _defineProperty(_ref2, "picker-toolbar-".concat(button.role), button.role !== undefined), _defineProperty(_ref2, 'picker-toolbar-button', true), _ref2;
     };
 
     var buttonClass = function buttonClass(button) {
@@ -1548,9 +1567,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(button.cssClass));
     };
 
-    var PickerColumnCmp =
-    /*#__PURE__*/
-    function () {
+    var PickerColumnCmp = /*#__PURE__*/function () {
       function PickerColumnCmp(hostRef) {
         _classCallCheck(this, PickerColumnCmp);
 
@@ -1571,61 +1588,68 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function connectedCallback() {
-          var _this9 = this;
+        value: function () {
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var _this9 = this;
 
-          var pickerRotateFactor, pickerScaleFactor, mode;
-          return regeneratorRuntime.async(function connectedCallback$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  pickerRotateFactor = 0;
-                  pickerScaleFactor = 0.81;
-                  mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
+            var pickerRotateFactor, pickerScaleFactor, mode;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    pickerRotateFactor = 0;
+                    pickerScaleFactor = 0.81;
+                    mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
 
-                  if (mode === 'ios') {
-                    pickerRotateFactor = -0.46;
-                    pickerScaleFactor = 1;
-                  }
-
-                  this.rotateFactor = pickerRotateFactor;
-                  this.scaleFactor = pickerScaleFactor;
-                  _context4.next = 8;
-                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
-                  /*! ./index-624eea58.js */
-                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
-
-                case 8:
-                  _context4.t0 = {
-                    el: this.el,
-                    gestureName: 'picker-swipe',
-                    gesturePriority: 100,
-                    threshold: 0,
-                    onStart: function onStart(ev) {
-                      return _this9.onStart(ev);
-                    },
-                    onMove: function onMove(ev) {
-                      return _this9.onMove(ev);
-                    },
-                    onEnd: function onEnd(ev) {
-                      return _this9.onEnd(ev);
+                    if (mode === 'ios') {
+                      pickerRotateFactor = -0.46;
+                      pickerScaleFactor = 1;
                     }
-                  };
-                  this.gesture = _context4.sent.createGesture(_context4.t0);
-                  this.gesture.setDisabled(false);
-                  this.tmrId = setTimeout(function () {
-                    _this9.noAnimate = false;
 
-                    _this9.refresh(true);
-                  }, 250);
+                    this.rotateFactor = pickerRotateFactor;
+                    this.scaleFactor = pickerScaleFactor;
+                    _context4.next = 8;
+                    return Promise.resolve().then(__webpack_require__.bind(null,
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
 
-                case 12:
-                case "end":
-                  return _context4.stop();
+                  case 8:
+                    this.gesture = _context4.sent.createGesture({
+                      el: this.el,
+                      gestureName: 'picker-swipe',
+                      gesturePriority: 100,
+                      threshold: 0,
+                      onStart: function onStart(ev) {
+                        return _this9.onStart(ev);
+                      },
+                      onMove: function onMove(ev) {
+                        return _this9.onMove(ev);
+                      },
+                      onEnd: function onEnd(ev) {
+                        return _this9.onEnd(ev);
+                      }
+                    });
+                    this.gesture.setDisabled(false);
+                    this.tmrId = setTimeout(function () {
+                      _this9.noAnimate = false;
+
+                      _this9.refresh(true);
+                    }, 250);
+
+                  case 11:
+                  case "end":
+                    return _context4.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee4, this);
+          }));
+
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
+          }
+
+          return connectedCallback;
+        }()
       }, {
         key: "componentDidLoad",
         value: function componentDidLoad() {
@@ -1917,17 +1941,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var Button = 'button';
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'picker-col', true), _defineProperty(_class2, 'picker-opts-left', this.col.align === 'left'), _defineProperty(_class2, 'picker-opts-right', this.col.align === 'right'), _class2),
+            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'picker-col', true), _defineProperty(_class2, 'picker-opts-left', this.col.align === 'left'), _defineProperty(_class2, 'picker-opts-right', this.col.align === 'right'), _class2),
             style: {
               'max-width': this.col.columnWidth
             }
           }, col.prefix && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-prefix",
+            "class": "picker-prefix",
             style: {
               width: col.prefixWidth
             }
           }, col.prefix), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-opts",
+            "class": "picker-opts",
             style: {
               maxWidth: col.optionsWidth
             },
@@ -1937,14 +1961,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }, col.options.map(function (o, index) {
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(Button, {
               type: "button",
-              class: {
+              "class": {
                 'picker-opt': true,
                 'picker-opt-disabled': !!o.disabled
               },
               "opt-index": index
             }, o.text);
           })), col.suffix && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "picker-suffix",
+            "class": "picker-suffix",
             style: {
               width: col.suffixWidth
             }

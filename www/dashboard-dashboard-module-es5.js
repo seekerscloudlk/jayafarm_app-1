@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header color=\"primary\">\n  <ion-toolbar class=\"toolbar-background-md\">\n    <ion-title>\n      <ion-chip outline class=\"ion-margin-vertical chip\">\n        <ion-icon class=\"chip ion-no-margin\" name=\"map\"></ion-icon>\n        <ion-select style=\"margin-top: 10px;\" [interfaceOptions]=\"customPopoverOptions\" interface=\"popover\" mode=\"ios\" placeholder=\"Route\" [(ngModel)]=\"currRootId\" (ionChange)=\"setRouteCusts()\">\n            <ion-select-option *ngFor=\"let route of routes\" value=\"{{route.route_id}}\">\n                {{route.route_name}}\n            </ion-select-option>\n        </ion-select>\n        <ion-spinner style=\"margin-left: 16px;\" name=\"crescent\" size=\"small\" color=\"light\" [hidden]=\"!submitting\"></ion-spinner>\n      </ion-chip>\n\n      <ion-chip color=\"light\" class=\"chip-notice\"  (click)=\"checkAndUpdateRep()\">   \n        <ion-icon name=\"bicycle\" [color]=\"istmpCurrTripIdSet() ? 'success':'danger'\" ></ion-icon>      \n            <ion-icon name=\"warning\" [hidden]=\"istmpCurrTripIdSet()\"></ion-icon>\n            <h5 style=\"margin-top: 12px;\" mode=\"ios\" [hidden]=\"!istmpCurrTripIdSet()\"> {{tmpCurrTripId}} </h5>\n      </ion-chip>\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>      \n  <ion-list #custList class=\"sheet-list\">\n      <ion-card-header>\n          <ion-grid>\n                <ion-row>\n                    <ion-col size=\"8\" style=\"padding-top: 20px\">\n                        <ion-card-subtitle *ngIf=\"isRootCustAvail\">{{ currRootCusts.length }} customer(s) avilable</ion-card-subtitle>\n                        <ion-card-subtitle *ngIf=\"!isRootCustAvail && isRootSelected\">No customers registerd for this route </ion-card-subtitle>\n                        <ion-card-subtitle *ngIf=\"!isRootSelected\">Please select the route.. </ion-card-subtitle>\n                    </ion-col>\n                    <ion-col size=\"4\">\n                        <ion-button class=\"ion-text-capitalize\" *ngIf=\"isRootSelected\" (click)=\"openAddCust()\">\n                            <ion-icon name=\"add\"></ion-icon>Customer\n                        </ion-button>\n                    </ion-col>\n                </ion-row>\n          </ion-grid>\n        \n        \n      </ion-card-header>\n      \n      <ion-item-sliding *ngFor=\"let cust of currRootCusts\" class=\"list-small-amrgin\">\n          <ion-item background=\"dark\" (click)=\"addOrder(cust)\">\t\t\t\n              <ion-label text-wrap class=\"ion-no-margin\">\n                  <ion-text color=\"dark\" slot=\"start\">\n                    <ion-badge mode=\"ios\" class=\"list-header\" color=\"primary\">\n                      <ion-icon name=\"business\" size=\"small\"></ion-icon> {{ cust.cust_name }} | {{ cust.is_vat }}\n                    </ion-badge>\n                  </ion-text>\n                  \n                  <ion-text color=\"light\">\n                      <p class=\"list-sub-header\">\n                          <ion-icon name=\"pin\"></ion-icon>\n                          {{ cust.address_line1 }} {{ cust.address_line2 }} {{cust.address_line3}}\n                      </p>\n                  </ion-text>\n              </ion-label>\n          </ion-item>\n          \n          <ion-item-options side=\"end\">\n              <ion-item-option color=\"primary\" class=\"ion-text-capitalize\" (click)=\"openCustInfo(cust)\"  [class.disable-btn]=\"submitting\" >\n                  <ion-icon name=\"more\"></ion-icon>More\n              </ion-item-option>\n              <ion-item-option color=\"dark\" class=\"ion-text-capitalize\" (click)=\"addOrder(cust)\"  [class.disable-btn]=\"submitting || !istmpCurrTripIdSet()\">\n                      <ion-icon name=\"add-circle-outline\"></ion-icon>Order\n              </ion-item-option>\n              <ion-item-option color=\"secondary\" class=\"ion-text-capitalize\" (click)=\"openHistory(cust.cust_id)\" >\n                <ion-icon name=\"checkmark-circle-outline\"></ion-icon>History\n        </ion-item-option>\n          </ion-item-options>\n      </ion-item-sliding>\n    </ion-list>\n</ion-content>\n\n";
+    __webpack_exports__["default"] = "<ion-header color=\"primary\">\n  <ion-toolbar class=\"toolbar-background-md\">\n    <ion-title>\n      <ion-chip outline class=\"ion-margin-vertical chip\">\n        <ion-icon class=\"chip ion-no-margin\" name=\"map\"></ion-icon>\n        <ion-select style=\"margin-top: 10px;\" [interfaceOptions]=\"customPopoverOptions\" interface=\"popover\" mode=\"ios\" placeholder=\"Route\" [(ngModel)]=\"currRootId\" (ionChange)=\"setRouteCusts()\">\n            <ion-select-option *ngFor=\"let route of routes\" value=\"{{route.route_id}}\">\n                {{route.route_name}}\n            </ion-select-option>\n        </ion-select>\n        <ion-spinner style=\"margin-left: 16px;\" name=\"crescent\" size=\"small\" color=\"light\" [hidden]=\"!submitting\"></ion-spinner>\n      </ion-chip>\n\n      <ion-chip color=\"light\" class=\"chip-notice\"  (click)=\"checkAndUpdateRep()\">   \n        <ion-icon name=\"bicycle\" [color]=\"istmpCurrTripIdSet() ? 'success':'danger'\" ></ion-icon>      \n            <ion-icon name=\"warning\" [hidden]=\"istmpCurrTripIdSet()\"></ion-icon>\n            <h5 style=\"margin-top: 12px;\" mode=\"ios\" [hidden]=\"!istmpCurrTripIdSet()\"> {{tmpCurrTripId}} </h5>\n      </ion-chip>\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>      \n  <ion-list #custList class=\"sheet-list\">\n      <ion-card-header>\n          <ion-grid>\n                <ion-row>\n                    <ion-col size=\"8\" style=\"padding-top: 20px\">\n                        <ion-card-subtitle *ngIf=\"isRootCustAvail\">{{ currRootCusts.length }} customer(s) avilable</ion-card-subtitle>\n                        <ion-card-subtitle *ngIf=\"!isRootCustAvail && isRootSelected\">No customers registerd for this route </ion-card-subtitle>\n                        <ion-card-subtitle *ngIf=\"!isRootSelected\">Please select the route.. </ion-card-subtitle>\n                    </ion-col>\n                    <!--<ion-col size=\"4\">\n                        <ion-button class=\"ion-text-capitalize\" *ngIf=\"isRootSelected\" (click)=\"openAddCust()\">\n                            <ion-icon name=\"add\"></ion-icon>Customer\n                        </ion-button>\n                    </ion-col>-->\n                </ion-row>\n          </ion-grid>\n        \n        \n      </ion-card-header>\n      \n      <ion-item-sliding *ngFor=\"let cust of currRootCusts\" class=\"list-small-amrgin\">\n          <ion-item background=\"dark\" (click)=\"addOrder(cust)\">\t\t\t\n              <ion-label text-wrap class=\"ion-no-margin\">\n                  <ion-text color=\"dark\" slot=\"start\">\n                    <ion-badge mode=\"ios\" class=\"list-header\" color=\"primary\">\n                      <ion-icon name=\"business\" size=\"small\"></ion-icon> {{ cust.cust_name }} | {{ cust.is_vat }}\n                    </ion-badge>\n                  </ion-text>\n                  \n                  <ion-text color=\"light\">\n                      <p class=\"list-sub-header\">\n                          <ion-icon name=\"pin\"></ion-icon>\n                          {{ cust.address_line1 }} {{ cust.address_line2 }} {{cust.address_line3}}\n                      </p>\n                  </ion-text>\n              </ion-label>\n          </ion-item>\n          \n          <ion-item-options side=\"end\">\n              <ion-item-option color=\"primary\" class=\"ion-text-capitalize\" (click)=\"openCustInfo(cust)\"  [class.disable-btn]=\"submitting\" >\n                  <ion-icon name=\"more\"></ion-icon>More\n              </ion-item-option>\n              <ion-item-option color=\"dark\" class=\"ion-text-capitalize\" (click)=\"addOrder(cust)\"  [class.disable-btn]=\"submitting || !istmpCurrTripIdSet()\">\n                      <ion-icon name=\"add-circle-outline\"></ion-icon>Order\n              </ion-item-option>\n              <ion-item-option color=\"secondary\" class=\"ion-text-capitalize\" (click)=\"openHistory(cust.cust_id)\" >\n                <ion-icon name=\"checkmark-circle-outline\"></ion-icon>History\n        </ion-item-option>\n          </ion-item-options>\n      </ion-item-sliding>\n    </ion-list>\n</ion-content>\n\n";
     /***/
   },
 
@@ -288,9 +288,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ../inc/cust-add/cust-add.page */
     "./src/app/members/inc/cust-add/cust-add.page.ts");
 
-    var DashboardPage =
-    /*#__PURE__*/
-    function () {
+    var DashboardPage = /*#__PURE__*/function () {
       function DashboardPage(authService, router, formBuilder, toast, http, storage, modalController, plt) {
         _classCallCheck(this, DashboardPage);
 
@@ -325,9 +323,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openAddCust",
         value: function openAddCust() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             var modal, ret, isAdd;
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
@@ -395,9 +391,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addOrder",
         value: function addOrder(customer) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var modal;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
@@ -442,9 +436,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openHistory",
         value: function openHistory(cust_id) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
             var modal;
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
@@ -493,9 +485,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openCustInfo",
         value: function openCustInfo(cust) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
             var modal;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
@@ -597,9 +587,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showToast",
         value: function showToast(msg) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
             var toast;
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
@@ -650,16 +638,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"])('custList', {
-      static: false
+      "static": false
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonList"])], DashboardPage.prototype, "custList", void 0);
     DashboardPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
       selector: 'app-dashboard',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./dashboard.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/dashboard/dashboard.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/dashboard/dashboard.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./dashboard.page.scss */
-      "./src/app/members/dashboard/dashboard.page.scss")).default]
+      "./src/app/members/dashboard/dashboard.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormBuilder"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClient"], _services_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["Platform"]])], DashboardPage);
     /***/
   }

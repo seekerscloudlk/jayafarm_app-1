@@ -1,3 +1,7 @@
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -87,9 +91,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var Item =
-    /*#__PURE__*/
-    function () {
+    var Item = /*#__PURE__*/function () {
       function Item(hostRef) {
         _classCallCheck(this, Item);
 
@@ -222,11 +224,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             "aria-disabled": disabled ? 'true' : null,
-            class: Object.assign(Object.assign(Object.assign({}, childStyles), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_Object$assign = {
+            "class": Object.assign(Object.assign(Object.assign({}, childStyles), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_Object$assign = {
               'item': true
             }, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, "item-lines-".concat(lines), lines !== undefined), _defineProperty(_Object$assign, 'item-disabled', disabled), _defineProperty(_Object$assign, 'in-list', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-list', this.el)), _defineProperty(_Object$assign, 'item-multiple-inputs', this.multipleInputs), _defineProperty(_Object$assign, 'ion-activatable', canActivate), _defineProperty(_Object$assign, 'ion-focusable', true), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            class: "item-native",
+            "class": "item-native",
             disabled: disabled,
             onClick: function onClick(ev) {
               return Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, routerDirection);
@@ -234,19 +236,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "start"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "item-inner"
+            "class": "item-inner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "input-wrapper"
+            "class": "input-wrapper"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "end"
           }), showDetail && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             icon: detailIcon,
             lazy: false,
-            class: "item-detail-icon"
+            "class": "item-detail-icon"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "item-inner-highlight"
+            "class": "item-inner-highlight"
           })), canActivate && mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "item-highlight"
+            "class": "item-highlight"
           }));
         }
       }, {
@@ -264,9 +266,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Item;
     }();
 
-    var ItemDivider =
-    /*#__PURE__*/
-    function () {
+    var ItemDivider = /*#__PURE__*/function () {
       function ItemDivider(hostRef) {
         _classCallCheck(this, ItemDivider);
 
@@ -289,13 +289,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_Object$assign2 = {}, _defineProperty(_Object$assign2, mode, true), _defineProperty(_Object$assign2, 'item-divider-sticky', this.sticky), _defineProperty(_Object$assign2, 'item', true), _Object$assign2))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_Object$assign2 = {}, _defineProperty(_Object$assign2, mode, true), _defineProperty(_Object$assign2, 'item-divider-sticky', this.sticky), _defineProperty(_Object$assign2, 'item', true), _Object$assign2))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "start"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "item-divider-inner"
+            "class": "item-divider-inner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "item-divider-wrapper"
+            "class": "item-divider-wrapper"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "end"
           })));
@@ -315,9 +315,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return ItemDivider;
     }();
 
-    var ItemGroup =
-    /*#__PURE__*/
-    function () {
+    var ItemGroup = /*#__PURE__*/function () {
       function ItemGroup(hostRef) {
         _classCallCheck(this, ItemGroup);
 
@@ -332,7 +330,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "group",
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "item-group-".concat(mode), true), _defineProperty(_class, 'item', true), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "item-group-".concat(mode), true), _defineProperty(_class, 'item', true), _class)
           });
         }
       }], [{
@@ -345,9 +343,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return ItemGroup;
     }();
 
-    var Label =
-    /*#__PURE__*/
-    function () {
+    var Label = /*#__PURE__*/function () {
       function Label(hostRef) {
         _classCallCheck(this, Label);
 
@@ -394,7 +390,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var position = this.position;
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_Object$assign3 = {}, _defineProperty(_Object$assign3, mode, true), _defineProperty(_Object$assign3, "label-".concat(position), position !== undefined), _defineProperty(_Object$assign3, "label-no-animate", this.noAnimate), _Object$assign3))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), (_Object$assign3 = {}, _defineProperty(_Object$assign3, mode, true), _defineProperty(_Object$assign3, "label-".concat(position), position !== undefined), _defineProperty(_Object$assign3, "label-no-animate", this.noAnimate), _Object$assign3))
           });
         }
       }, {
@@ -419,9 +415,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Label;
     }();
 
-    var List =
-    /*#__PURE__*/
-    function () {
+    var List = /*#__PURE__*/function () {
       function List(hostRef) {
         _classCallCheck(this, List);
 
@@ -442,31 +436,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(List, [{
         key: "closeSlidingItems",
-        value: function closeSlidingItems() {
-          var item;
-          return regeneratorRuntime.async(function closeSlidingItems$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  item = this.el.querySelector('ion-item-sliding');
+        value: function () {
+          var _closeSlidingItems = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var item;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    item = this.el.querySelector('ion-item-sliding');
 
-                  if (!(item && item.closeOpened)) {
-                    _context.next = 3;
-                    break;
-                  }
+                    if (!(item && item.closeOpened)) {
+                      _context.next = 3;
+                      break;
+                    }
 
-                  return _context.abrupt("return", item.closeOpened());
+                    return _context.abrupt("return", item.closeOpened());
 
-                case 3:
-                  return _context.abrupt("return", false);
+                  case 3:
+                    return _context.abrupt("return", false);
 
-                case 4:
-                case "end":
-                  return _context.stop();
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function closeSlidingItems() {
+            return _closeSlidingItems.apply(this, arguments);
+          }
+
+          return closeSlidingItems;
+        }()
       }, {
         key: "render",
         value: function render() {
@@ -476,7 +478,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var lines = this.lines,
               inset = this.inset;
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, "list-".concat(mode), true), _defineProperty(_class2, 'list-inset', inset), _defineProperty(_class2, "list-lines-".concat(lines), lines !== undefined), _defineProperty(_class2, "list-".concat(mode, "-lines-").concat(lines), lines !== undefined), _class2)
+            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, "list-".concat(mode), true), _defineProperty(_class2, 'list-inset', inset), _defineProperty(_class2, "list-lines-".concat(lines), lines !== undefined), _defineProperty(_class2, "list-".concat(mode, "-lines-").concat(lines), lines !== undefined), _class2)
           });
         }
       }, {
@@ -494,9 +496,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return List;
     }();
 
-    var ListHeader =
-    /*#__PURE__*/
-    function () {
+    var ListHeader = /*#__PURE__*/function () {
       function ListHeader(hostRef) {
         _classCallCheck(this, ListHeader);
 
@@ -508,7 +508,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }], [{
@@ -521,9 +521,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return ListHeader;
     }();
 
-    var Note =
-    /*#__PURE__*/
-    function () {
+    var Note = /*#__PURE__*/function () {
       function Note(hostRef) {
         _classCallCheck(this, Note);
 
@@ -535,7 +533,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function render() {
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(this.color)), _defineProperty({}, mode, true))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }], [{
@@ -548,9 +546,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Note;
     }();
 
-    var SkeletonText =
-    /*#__PURE__*/
-    function () {
+    var SkeletonText = /*#__PURE__*/function () {
       function SkeletonText(hostRef) {
         _classCallCheck(this, SkeletonText);
 
@@ -588,7 +584,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var inMedia = Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-avatar', this.el) || Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-thumbnail', this.el);
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], Object.assign({
-            class: (_class3 = {}, _defineProperty(_class3, mode, true), _defineProperty(_class3, 'skeleton-text-animated', animated), _defineProperty(_class3, 'in-media', inMedia), _class3)
+            "class": (_class3 = {}, _defineProperty(_class3, mode, true), _defineProperty(_class3, 'skeleton-text-animated', animated), _defineProperty(_class3, 'in-media', inMedia), _class3)
           }, this.calculateWidth()), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", null, "\xA0"));
         }
       }, {

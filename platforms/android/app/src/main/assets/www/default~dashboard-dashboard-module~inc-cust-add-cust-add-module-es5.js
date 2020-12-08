@@ -240,9 +240,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/forms */
     "./node_modules/@angular/forms/fesm2015/forms.js");
 
-    var CustAddPage =
-    /*#__PURE__*/
-    function () {
+    var CustAddPage = /*#__PURE__*/function () {
       function CustAddPage(modalController, navParams, authService, storage, http, formBuilder, alertController) {
         _classCallCheck(this, CustAddPage);
 
@@ -278,9 +276,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addCust",
         value: function addCust() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             var _this = this;
 
             var ParseHeaders, url, postData, alert;
@@ -413,10 +409,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-cust-add',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./cust-add.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/cust-add/cust-add.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/cust-add/cust-add.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./cust-add.page.scss */
-      "./src/app/members/inc/cust-add/cust-add.page.scss")).default]
+      "./src/app/members/inc/cust-add/cust-add.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"]])], CustAddPage);
     /***/
   }

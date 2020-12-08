@@ -57,9 +57,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var Button =
-    /*#__PURE__*/
-    function () {
+    var Button = /*#__PURE__*/function () {
       function Button(hostRef) {
         var _this = this;
 
@@ -171,14 +169,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.handleClick,
             "aria-disabled": disabled ? 'true' : null,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, buttonType, true), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(expand), expand !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(finalSize), finalSize !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(shape), shape !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(fill), true), _defineProperty(_Object$assign, "".concat(buttonType, "-strong"), strong), _defineProperty(_Object$assign, 'button-has-icon-only', hasIconOnly), _defineProperty(_Object$assign, 'button-disabled', disabled), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, buttonType, true), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(expand), expand !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(finalSize), finalSize !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(shape), shape !== undefined), _defineProperty(_Object$assign, "".concat(buttonType, "-").concat(fill), true), _defineProperty(_Object$assign, "".concat(buttonType, "-strong"), strong), _defineProperty(_Object$assign, 'button-has-icon-only', hasIconOnly), _defineProperty(_Object$assign, 'button-disabled', disabled), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            class: "button-native",
+            "class": "button-native",
             disabled: disabled,
             onFocus: this.onFocus,
             onBlur: this.onBlur
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "button-inner"
+            "class": "button-inner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "icon-only"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
@@ -408,9 +406,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return req;
     };
 
-    var Icon =
-    /*#__PURE__*/
-    function () {
+    var Icon = /*#__PURE__*/function () {
       function Icon(hostRef) {
         _classCallCheck(this, Icon);
 
@@ -502,12 +498,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var flipRtl = this.flipRtl || this.ariaLabel && this.ariaLabel.indexOf('arrow') > -1 && this.flipRtl !== false;
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "img",
-            class: Object.assign(_defineProperty({}, mode, true), createColorClasses(this.color), (_Object$assign3 = {}, _defineProperty(_Object$assign3, "icon-".concat(this.size), !!this.size), _defineProperty(_Object$assign3, 'flip-rtl', !!flipRtl && this.el.ownerDocument.dir === 'rtl'), _Object$assign3))
+            "class": Object.assign(_defineProperty({}, mode, true), createColorClasses(this.color), (_Object$assign3 = {}, _defineProperty(_Object$assign3, "icon-".concat(this.size), !!this.size), _defineProperty(_Object$assign3, 'flip-rtl', !!flipRtl && this.el.ownerDocument.dir === 'rtl'), _Object$assign3))
           }, this.svgContent ? Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "icon-inner",
+            "class": "icon-inner",
             innerHTML: this.svgContent
           }) : Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "icon-inner"
+            "class": "icon-inner"
           }));
         }
       }, {

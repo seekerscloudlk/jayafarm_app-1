@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -57,9 +61,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var Fab =
-    /*#__PURE__*/
-    function () {
+    var Fab = /*#__PURE__*/function () {
       function Fab(hostRef) {
         var _this = this;
 
@@ -120,20 +122,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "close",
-        value: function close() {
-          return regeneratorRuntime.async(function close$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  this.activated = false;
+        value: function () {
+          var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    this.activated = false;
 
-                case 1:
-                case "end":
-                  return _context.stop();
+                  case 1:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function close() {
+            return _close.apply(this, arguments);
+          }
+
+          return close;
+        }()
       }, {
         key: "getFab",
         value: function getFab() {
@@ -150,7 +160,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onClick: this.onClick,
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "fab-horizontal-".concat(horizontal), horizontal !== undefined), _defineProperty(_class, "fab-vertical-".concat(vertical), vertical !== undefined), _defineProperty(_class, 'fab-edge', edge), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "fab-horizontal-".concat(horizontal), horizontal !== undefined), _defineProperty(_class, "fab-vertical-".concat(vertical), vertical !== undefined), _defineProperty(_class, 'fab-edge', edge), _class)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {
@@ -175,9 +185,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Fab;
     }();
 
-    var FabButton =
-    /*#__PURE__*/
-    function () {
+    var FabButton = /*#__PURE__*/function () {
       function FabButton(hostRef) {
         var _this2 = this;
 
@@ -257,9 +265,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             "aria-disabled": disabled ? 'true' : null,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'fab-button-in-list', inList), _defineProperty(_Object$assign, 'fab-button-translucent-in-list', inList && translucent), _defineProperty(_Object$assign, 'fab-button-close-active', activated), _defineProperty(_Object$assign, 'fab-button-show', show), _defineProperty(_Object$assign, 'fab-button-disabled', disabled), _defineProperty(_Object$assign, 'fab-button-translucent', translucent), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _defineProperty(_Object$assign, "fab-button-".concat(size), size !== undefined), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'fab-button-in-list', inList), _defineProperty(_Object$assign, 'fab-button-translucent-in-list', inList && translucent), _defineProperty(_Object$assign, 'fab-button-close-active', activated), _defineProperty(_Object$assign, 'fab-button-show', show), _defineProperty(_Object$assign, 'fab-button-disabled', disabled), _defineProperty(_Object$assign, 'fab-button-translucent', translucent), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _defineProperty(_Object$assign, "fab-button-".concat(size), size !== undefined), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            class: "button-native",
+            "class": "button-native",
             disabled: disabled,
             onFocus: this.onFocus,
             onBlur: this.onBlur,
@@ -267,12 +275,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               return Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, _this3.routerDirection);
             }
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "close-icon"
+            "class": "close-icon"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             name: "close",
             lazy: false
           })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "button-inner"
+            "class": "button-inner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)));
         }
       }, {
@@ -290,9 +298,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return FabButton;
     }();
 
-    var FabList =
-    /*#__PURE__*/
-    function () {
+    var FabList = /*#__PURE__*/function () {
       function FabList(hostRef) {
         _classCallCheck(this, FabList);
 
@@ -328,7 +334,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'fab-list-active', this.activated), _defineProperty(_class2, "fab-list-side-".concat(this.side), true), _class2)
+            "class": (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'fab-list-active', this.activated), _defineProperty(_class2, "fab-list-side-".concat(this.side), true), _class2)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {

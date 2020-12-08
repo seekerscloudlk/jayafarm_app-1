@@ -51,9 +51,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./index-624eea58.js */
     "./node_modules/@ionic/core/dist/esm/index-624eea58.js");
 
-    var Backdrop =
-    /*#__PURE__*/
-    function () {
+    var Backdrop = /*#__PURE__*/function () {
       function Backdrop(hostRef) {
         _classCallCheck(this, Backdrop);
 
@@ -125,7 +123,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             tabindex: "-1",
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'backdrop-hide', !this.visible), _defineProperty(_class, 'backdrop-no-tappable', !this.tappable), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'backdrop-hide', !this.visible), _defineProperty(_class, 'backdrop-no-tappable', !this.tappable), _class)
           });
         }
       }], [{

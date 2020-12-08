@@ -240,9 +240,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/common */
     "./node_modules/@angular/common/fesm2015/common.js");
 
-    var ReturnPage =
-    /*#__PURE__*/
-    function () {
+    var ReturnPage = /*#__PURE__*/function () {
       function ReturnPage(modalController, authService, http, storage, plt, alertController, datepipe, navParams) {
         _classCallCheck(this, ReturnPage);
 
@@ -282,9 +280,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submitOrder",
         value: function submitOrder() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             var _this2 = this;
 
             var ParseHeaders, url, postData, alert;
@@ -536,9 +532,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "dismiss",
         value: function dismiss() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var _this4 = this;
 
             var alert;
@@ -621,10 +615,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-return',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./return.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/return/return.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/return/return.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./return.page.scss */
-      "./src/app/members/inc/return/return.page.scss")).default]
+      "./src/app/members/inc/return/return.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _services_storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["DatePipe"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]])], ReturnPage);
     /***/
   }

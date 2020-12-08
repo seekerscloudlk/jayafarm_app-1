@@ -5,7 +5,7 @@ import { ModalController, IonSelect, Platform, AlertController  } from '@ionic/a
 import { StorageService, Trip, TripItem, OutstPayment } from '../../../services/storage.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DatePipe } from '@angular/common'
+import { DatePipe, CurrencyPipe } from '@angular/common'
 import { ReturnPage } from '../return/return.page';
 import { OrderHistoryPage } from '../order-history/order-history.page';
 import { OutstSettlePage } from '../outst-settle/outst-settle.page';
@@ -40,6 +40,7 @@ export class AddOrderPage implements OnInit {
     
     
     constructor(
+        private currencyPipe : CurrencyPipe,
         public modalController: ModalController,
         private authService: AuthenticationService,
         private http: HttpClient,
@@ -165,11 +166,18 @@ export class AddOrderPage implements OnInit {
     
 
     calcEffectivePaid(){
-        this.effectivePaid = this.currOrder.odr_paid_amount*1 - this.outstDeduct*1;
+        this.effectivePaid = Number(this.currOrder.odr_paid_amount)*1 - this.outstDeduct*1;
     }
 
     setEffectiveBalance(evt){
+        
+      
+        
         this.effectivePaid = evt.target.value*1 - this.outstDeduct*1;
+
+        /*this.currOrder.odr_paid_amount = this.currencyPipe.transform(this.currOrder.odr_paid_amount);
+        //evt.target.value = this.currOrder.odr_paid_amount;
+        console.log(this.currOrder.odr_paid_amount);*/
     }
 
     async openHistory(){
@@ -209,7 +217,7 @@ export class AddOrderPage implements OnInit {
         str+="VAT(8%)         Rs."+this.currOrder.vat_amount.toFixed(2)+"\n";
         str+="Tot.Bill Amount Rs."+this.currOrder.odr_amount.toFixed(2)+"\n";
         str+="--------------------------------\n";
-        str+="Paid Amount     Rs."+this.currOrder.odr_paid_amount.toFixed(2)+"\n";
+        str+="Paid Amount     Rs."+Number(this.currOrder.odr_paid_amount).toFixed(2)+"\n";
         str+="Current Outst.  Rs."+this.tempOutstanding.toFixed(2)+"\n";
         
         if (this.outstSettles.length > 0) {
@@ -250,7 +258,7 @@ export class AddOrderPage implements OnInit {
         } 
         this.processOrder();
         console.log(this.currOrder.odr_paid_amount);
-        if ((!this.currOrder.odr_paid_amount || this.currOrder.odr_paid_amount == null) && this.currOrder.odr_paid_amount !== 0) {
+        if ((!this.currOrder.odr_paid_amount || this.currOrder.odr_paid_amount == null) && Number(this.currOrder.odr_paid_amount) !== 0) {
             this.authService.showToast("<b>Please enter the 'Total Payed Amount'... <ion-icon name='warning'></ion-icon></b>");
             return;
         } 
@@ -360,7 +368,7 @@ export class AddOrderPage implements OnInit {
     }
 
     calcOrderAmount(){
-        if ((!this.currOrder.odr_paid_amount || this.currOrder.odr_paid_amount == null) && this.currOrder.odr_paid_amount !== 0) {
+        if ((!this.currOrder.odr_paid_amount || this.currOrder.odr_paid_amount == null) && Number(this.currOrder.odr_paid_amount) !== 0) {
             this.authService.showToast("<b>Please enter the 'Total Payed Amount'... <ion-icon name='warning'></ion-icon></b>");
             return;
         }
@@ -468,10 +476,11 @@ export class AddOrderPage implements OnInit {
         console.log(this.curTrip.tripItems)
         this.currOrder.isWorking = true;
         this.currOrder.order_items.push(<OrderItem>{});
-        this.currOrder.odr_paid_amount = 0.00;
+        this.currOrder.odr_paid_amount = '';
         console.log(this.currOrder.order_items)
         // this.isOrderValid();
     }
+
 
     /**
      * Close the current modal page

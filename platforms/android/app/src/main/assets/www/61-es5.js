@@ -1,5 +1,15 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -75,9 +85,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./watch-options-2af96011.js */
     "./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js");
 
-    var Select =
-    /*#__PURE__*/
-    function () {
+    var Select = /*#__PURE__*/function () {
       function Select(hostRef) {
         var _this = this;
 
@@ -116,7 +124,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
          * The interface the select should use: `action-sheet`, `popover` or `alert`.
          */
 
-        this.interface = 'alert';
+        this["interface"] = 'alert';
         /**
          * Any additional options that the `alert`, `action-sheet` or `popover` interface
          * can take. See the [AlertController API docs](../../alert/AlertController/#create), the
@@ -167,63 +175,71 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function connectedCallback() {
-          var _this2 = this;
+        value: function () {
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this2 = this;
 
-          var checked, _checked;
+            var checked, _checked;
 
-          return regeneratorRuntime.async(function connectedCallback$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  if (this.value === undefined) {
-                    if (this.multiple) {
-                      // there are no values set at this point
-                      // so check to see who should be selected
-                      checked = this.childOpts.filter(function (o) {
-                        return o.selected;
-                      });
-                      this.value = checked.map(function (o) {
-                        return getOptionValue(o);
-                      });
-                    } else {
-                      _checked = this.childOpts.find(function (o) {
-                        return o.selected;
-                      });
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    if (this.value === undefined) {
+                      if (this.multiple) {
+                        // there are no values set at this point
+                        // so check to see who should be selected
+                        checked = this.childOpts.filter(function (o) {
+                          return o.selected;
+                        });
+                        this.value = checked.map(function (o) {
+                          return getOptionValue(o);
+                        });
+                      } else {
+                        _checked = this.childOpts.find(function (o) {
+                          return o.selected;
+                        });
 
-                      if (_checked) {
-                        this.value = getOptionValue(_checked);
-                      }
-                    }
-                  }
-
-                  this.updateOptions();
-                  this.updateOverlayOptions();
-                  this.emitStyle();
-                  this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_5__["w"])(this.el, 'ion-select-option', function _callee() {
-                    return regeneratorRuntime.async(function _callee$(_context) {
-                      while (1) {
-                        switch (_context.prev = _context.next) {
-                          case 0:
-                            _this2.updateOptions();
-
-                            _this2.updateOverlayOptions();
-
-                          case 2:
-                          case "end":
-                            return _context.stop();
+                        if (_checked) {
+                          this.value = getOptionValue(_checked);
                         }
                       }
-                    });
-                  });
+                    }
 
-                case 5:
-                case "end":
-                  return _context2.stop();
+                    this.updateOptions();
+                    this.updateOverlayOptions();
+                    this.emitStyle();
+                    this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_5__["w"])(this.el, 'ion-select-option', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                      return regeneratorRuntime.wrap(function _callee$(_context) {
+                        while (1) {
+                          switch (_context.prev = _context.next) {
+                            case 0:
+                              _this2.updateOptions();
+
+                              _this2.updateOverlayOptions();
+
+                            case 2:
+                            case "end":
+                              return _context.stop();
+                          }
+                        }
+                      }, _callee);
+                    })));
+
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
+          }
+
+          return connectedCallback;
+        }()
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
@@ -246,51 +262,59 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "open",
-        value: function open(event) {
-          var _this3 = this;
+        value: function () {
+          var _open = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(event) {
+            var _this3 = this;
 
-          var overlay;
-          return regeneratorRuntime.async(function open$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  if (!(this.disabled || this.isExpanded)) {
-                    _context3.next = 2;
-                    break;
-                  }
+            var overlay;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    if (!(this.disabled || this.isExpanded)) {
+                      _context3.next = 2;
+                      break;
+                    }
 
-                  return _context3.abrupt("return", undefined);
+                    return _context3.abrupt("return", undefined);
 
-                case 2:
-                  _context3.next = 4;
-                  return regeneratorRuntime.awrap(this.createOverlay(event));
+                  case 2:
+                    _context3.next = 4;
+                    return this.createOverlay(event);
 
-                case 4:
-                  overlay = this.overlay = _context3.sent;
-                  this.isExpanded = true;
-                  overlay.onDidDismiss().then(function () {
-                    _this3.overlay = undefined;
-                    _this3.isExpanded = false;
+                  case 4:
+                    overlay = this.overlay = _context3.sent;
+                    this.isExpanded = true;
+                    overlay.onDidDismiss().then(function () {
+                      _this3.overlay = undefined;
+                      _this3.isExpanded = false;
 
-                    _this3.setFocus();
-                  });
-                  _context3.next = 9;
-                  return regeneratorRuntime.awrap(overlay.present());
+                      _this3.setFocus();
+                    });
+                    _context3.next = 9;
+                    return overlay.present();
 
-                case 9:
-                  return _context3.abrupt("return", overlay);
+                  case 9:
+                    return _context3.abrupt("return", overlay);
 
-                case 10:
-                case "end":
-                  return _context3.stop();
+                  case 10:
+                  case "end":
+                    return _context3.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee3, this);
+          }));
+
+          function open(_x) {
+            return _open.apply(this, arguments);
+          }
+
+          return open;
+        }()
       }, {
         key: "createOverlay",
         value: function createOverlay(ev) {
-          var selectInterface = this.interface;
+          var selectInterface = this["interface"];
 
           if ((selectInterface === 'action-sheet' || selectInterface === 'popover') && this.multiple) {
             console.warn("Select interface cannot be \"".concat(selectInterface, "\" with a multi-value select. Using the \"alert\" interface instead."));
@@ -323,7 +347,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var childOpts = this.childOpts;
 
-          switch (this.interface) {
+          switch (this["interface"]) {
             case 'action-sheet':
               overlay.buttons = this.createActionSheetButtons(childOpts);
               break;
@@ -402,105 +426,129 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "openPopover",
-        value: function openPopover(ev) {
-          var interfaceOptions, mode, popoverOpts;
-          return regeneratorRuntime.async(function openPopover$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  interfaceOptions = this.interfaceOptions;
-                  mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-                  popoverOpts = Object.assign(Object.assign({
-                    mode: mode
-                  }, interfaceOptions), {
-                    component: 'ion-select-popover',
-                    cssClass: ['select-popover', interfaceOptions.cssClass],
-                    event: ev,
-                    componentProps: {
-                      header: interfaceOptions.header,
-                      subHeader: interfaceOptions.subHeader,
-                      message: interfaceOptions.message,
-                      value: this.value,
-                      options: this.createPopoverOptions(this.childOpts)
-                    }
-                  });
-                  return _context4.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["c"].create(popoverOpts));
+        value: function () {
+          var _openPopover = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(ev) {
+            var interfaceOptions, mode, popoverOpts;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    interfaceOptions = this.interfaceOptions;
+                    mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
+                    popoverOpts = Object.assign(Object.assign({
+                      mode: mode
+                    }, interfaceOptions), {
+                      component: 'ion-select-popover',
+                      cssClass: ['select-popover', interfaceOptions.cssClass],
+                      event: ev,
+                      componentProps: {
+                        header: interfaceOptions.header,
+                        subHeader: interfaceOptions.subHeader,
+                        message: interfaceOptions.message,
+                        value: this.value,
+                        options: this.createPopoverOptions(this.childOpts)
+                      }
+                    });
+                    return _context4.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["c"].create(popoverOpts));
 
-                case 4:
-                case "end":
-                  return _context4.stop();
+                  case 4:
+                  case "end":
+                    return _context4.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee4, this);
+          }));
+
+          function openPopover(_x2) {
+            return _openPopover.apply(this, arguments);
+          }
+
+          return openPopover;
+        }()
       }, {
         key: "openActionSheet",
-        value: function openActionSheet() {
-          var mode, interfaceOptions, actionSheetOpts;
-          return regeneratorRuntime.async(function openActionSheet$(_context5) {
-            while (1) {
-              switch (_context5.prev = _context5.next) {
-                case 0:
-                  mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-                  interfaceOptions = this.interfaceOptions;
-                  actionSheetOpts = Object.assign(Object.assign({
-                    mode: mode
-                  }, interfaceOptions), {
-                    buttons: this.createActionSheetButtons(this.childOpts),
-                    cssClass: ['select-action-sheet', interfaceOptions.cssClass]
-                  });
-                  return _context5.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["b"].create(actionSheetOpts));
+        value: function () {
+          var _openActionSheet = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            var mode, interfaceOptions, actionSheetOpts;
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
+                    interfaceOptions = this.interfaceOptions;
+                    actionSheetOpts = Object.assign(Object.assign({
+                      mode: mode
+                    }, interfaceOptions), {
+                      buttons: this.createActionSheetButtons(this.childOpts),
+                      cssClass: ['select-action-sheet', interfaceOptions.cssClass]
+                    });
+                    return _context5.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["b"].create(actionSheetOpts));
 
-                case 4:
-                case "end":
-                  return _context5.stop();
+                  case 4:
+                  case "end":
+                    return _context5.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee5, this);
+          }));
+
+          function openActionSheet() {
+            return _openActionSheet.apply(this, arguments);
+          }
+
+          return openActionSheet;
+        }()
       }, {
         key: "openAlert",
-        value: function openAlert() {
-          var _this6 = this;
+        value: function () {
+          var _openAlert = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            var _this6 = this;
 
-          var label, labelText, interfaceOptions, inputType, mode, alertOpts;
-          return regeneratorRuntime.async(function openAlert$(_context6) {
-            while (1) {
-              switch (_context6.prev = _context6.next) {
-                case 0:
-                  label = this.getLabel();
-                  labelText = label ? label.textContent : null;
-                  interfaceOptions = this.interfaceOptions;
-                  inputType = this.multiple ? 'checkbox' : 'radio';
-                  mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-                  alertOpts = Object.assign(Object.assign({
-                    mode: mode
-                  }, interfaceOptions), {
-                    header: interfaceOptions.header ? interfaceOptions.header : labelText,
-                    inputs: this.createAlertInputs(this.childOpts, inputType),
-                    buttons: [{
-                      text: this.cancelText,
-                      role: 'cancel',
-                      handler: function handler() {
-                        _this6.ionCancel.emit();
-                      }
-                    }, {
-                      text: this.okText,
-                      handler: function handler(selectedValues) {
-                        _this6.value = selectedValues;
-                      }
-                    }],
-                    cssClass: ['select-alert', interfaceOptions.cssClass, this.multiple ? 'multiple-select-alert' : 'single-select-alert']
-                  });
-                  return _context6.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["a"].create(alertOpts));
+            var label, labelText, interfaceOptions, inputType, mode, alertOpts;
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    label = this.getLabel();
+                    labelText = label ? label.textContent : null;
+                    interfaceOptions = this.interfaceOptions;
+                    inputType = this.multiple ? 'checkbox' : 'radio';
+                    mode = Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
+                    alertOpts = Object.assign(Object.assign({
+                      mode: mode
+                    }, interfaceOptions), {
+                      header: interfaceOptions.header ? interfaceOptions.header : labelText,
+                      inputs: this.createAlertInputs(this.childOpts, inputType),
+                      buttons: [{
+                        text: this.cancelText,
+                        role: 'cancel',
+                        handler: function handler() {
+                          _this6.ionCancel.emit();
+                        }
+                      }, {
+                        text: this.okText,
+                        handler: function handler(selectedValues) {
+                          _this6.value = selectedValues;
+                        }
+                      }],
+                      cssClass: ['select-alert', interfaceOptions.cssClass, this.multiple ? 'multiple-select-alert' : 'single-select-alert']
+                    });
+                    return _context6.abrupt("return", _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_3__["a"].create(alertOpts));
 
-                case 7:
-                case "end":
-                  return _context6.stop();
+                  case 7:
+                  case "end":
+                    return _context6.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee6, this);
+          }));
+
+          function openAlert() {
+            return _openAlert.apply(this, arguments);
+          }
+
+          return openAlert;
+        }()
         /**
          * Close the select interface.
          */
@@ -524,12 +572,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               childOpts = this.childOpts,
               compareWith = this.compareWith,
               multiple = this.multiple;
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
+
+          var _iterator = _createForOfIteratorHelper(childOpts),
+              _step;
 
           try {
-            for (var _iterator = childOpts[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
               var selectOption = _step.value;
               var optValue = getOptionValue(selectOption);
               var selected = canSelect && isOptionSelected(value, optValue, compareWith);
@@ -541,18 +589,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
             }
           } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _iterator.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
+            _iterator.f();
           }
         }
       }, {
@@ -635,14 +674,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             "aria-disabled": disabled ? 'true' : null,
             "aria-expanded": "".concat(isExpanded),
             "aria-labelledby": labelId,
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_4__["h"])('ion-item', el)), _defineProperty(_class, 'select-disabled', disabled), _class)
+            "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_4__["h"])('ion-item', el)), _defineProperty(_class, 'select-disabled', disabled), _class)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: selectTextClasses
+            "class": selectTextClasses
           }, selectText), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "select-icon",
+            "class": "select-icon",
             role: "presentation"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "select-icon-inner"
+            "class": "select-icon-inner"
           })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             type: "button",
             onFocus: this.onFocus,
@@ -748,9 +787,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var selectIds = 0;
 
-    var SelectOption =
-    /*#__PURE__*/
-    function () {
+    var SelectOption = /*#__PURE__*/function () {
       function SelectOption(hostRef) {
         _classCallCheck(this, SelectOption);
 
@@ -774,7 +811,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "option",
             id: this.inputId,
-            class: Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
+            "class": Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
           });
         }
       }, {
@@ -794,9 +831,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var selectOptionIds = 0;
 
-    var SelectPopover =
-    /*#__PURE__*/
-    function () {
+    var SelectPopover = /*#__PURE__*/function () {
       function SelectPopover(hostRef) {
         _classCallCheck(this, SelectPopover);
 
@@ -821,9 +856,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "render",
         value: function render() {
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
+            "class": Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this)
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-list", null, this.header !== undefined && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-list-header", null, this.header), (this.subHeader !== undefined || this.message !== undefined) && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-item", null, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-label", {
-            class: "ion-text-wrap"
+            "class": "ion-text-wrap"
           }, this.subHeader !== undefined && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h3", null, this.subHeader), this.message !== undefined && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("p", null, this.message))), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-radio-group", null, this.options.map(function (option) {
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-item", null, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-label", null, option.text), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-radio", {
               checked: option.checked,

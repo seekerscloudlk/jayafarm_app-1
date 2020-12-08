@@ -1,5 +1,11 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -145,9 +151,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return baseAnimation.addElement(baseEl).easing('ease-in-out').duration(150).addAnimation([backdropAnimation, wrapperAnimation]);
     };
 
-    var Alert =
-    /*#__PURE__*/
-    function () {
+    var Alert = /*#__PURE__*/function () {
       function Alert(hostRef) {
         var _this = this;
 
@@ -309,28 +313,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "rbClick",
         value: function rbClick(selectedInput) {
-          var _iteratorNormalCompletion = true;
-          var _didIteratorError = false;
-          var _iteratorError = undefined;
+          var _iterator = _createForOfIteratorHelper(this.processedInputs),
+              _step;
 
           try {
-            for (var _iterator = this.processedInputs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
               var input = _step.value;
               input.checked = input === selectedInput;
             }
           } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
+            _iterator.e(err);
           } finally {
-            try {
-              if (!_iteratorNormalCompletion && _iterator.return != null) {
-                _iterator.return();
-              }
-            } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
-              }
-            }
+            _iterator.f();
           }
 
           this.activeId = selectedInput.id;
@@ -448,7 +442,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "alert-checkbox-group",
+            "class": "alert-checkbox-group",
             "aria-labelledby": labelledby
           }, inputs.map(function (i) {
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
@@ -461,7 +455,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               disabled: i.disabled,
               tabIndex: 0,
               role: "checkbox",
-              class: {
+              "class": {
                 'alert-tappable': true,
                 'alert-checkbox': true,
                 'alert-checkbox-button': true,
@@ -469,13 +463,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 'alert-checkbox-button-disabled': i.disabled || false
               }
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-button-inner"
+              "class": "alert-button-inner"
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-checkbox-icon"
+              "class": "alert-checkbox-icon"
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-checkbox-inner"
+              "class": "alert-checkbox-inner"
             })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-checkbox-label"
+              "class": "alert-checkbox-label"
             }, i.label)), mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null));
           }));
         }
@@ -491,7 +485,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "alert-radio-group",
+            "class": "alert-radio-group",
             role: "radiogroup",
             "aria-labelledby": labelledby,
             "aria-activedescendant": this.activeId
@@ -505,7 +499,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               disabled: i.disabled,
               id: i.id,
               tabIndex: 0,
-              class: {
+              "class": {
                 'alert-radio-button': true,
                 'alert-tappable': true,
                 'alert-radio': true,
@@ -514,13 +508,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               },
               role: "radio"
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-button-inner"
+              "class": "alert-button-inner"
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-radio-icon"
+              "class": "alert-radio-icon"
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-radio-inner"
+              "class": "alert-radio-inner"
             })), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-radio-label"
+              "class": "alert-radio-label"
             }, i.label)));
           }));
         }
@@ -534,11 +528,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "alert-input-group",
+            "class": "alert-input-group",
             "aria-labelledby": labelledby
           }, inputs.map(function (i) {
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "alert-input-wrapper"
+              "class": "alert-input-wrapper"
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
               placeholder: i.placeholder,
               value: i.value,
@@ -551,7 +545,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               id: i.id,
               disabled: i.disabled,
               tabIndex: 0,
-              class: {
+              "class": {
                 'alert-input': true,
                 'alert-input-disabled': i.disabled || false
               }
@@ -570,17 +564,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             'alert-button-group-vertical': buttons.length > 2
           };
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: alertButtonGroupClass
+            "class": alertButtonGroupClass
           }, buttons.map(function (button) {
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
               type: "button",
-              class: buttonClass(button),
+              "class": buttonClass(button),
               tabIndex: 0,
               onClick: function onClick() {
                 return _this5.buttonClick(button);
               }
             }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-              class: "alert-button-inner"
+              "class": "alert-button-inner"
             }, button.text), mode === 'md' && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null));
           }));
         }
@@ -610,24 +604,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             style: {
               zIndex: "".concat(20000 + overlayIndex)
             },
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'alert-translucent', this.translucent), _Object$assign)),
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'alert-translucent', this.translucent), _Object$assign)),
             onIonAlertWillDismiss: this.dispatchCancelHandler,
             onIonBackdropTap: this.onBackdropTap
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
             tappable: this.backdropDismiss
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "alert-wrapper"
+            "class": "alert-wrapper"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "alert-head"
+            "class": "alert-head"
           }, header && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
             id: hdrId,
-            class: "alert-title"
+            "class": "alert-title"
           }, header), subHeader && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", {
             id: subHdrId,
-            class: "alert-sub-title"
+            "class": "alert-sub-title"
           }, subHeader)), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             id: msgId,
-            class: "alert-message",
+            "class": "alert-message",
             innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_6__["s"])(this.message)
           }), this.renderAlertInputs(labelledById), this.renderAlertButtons()));
         }

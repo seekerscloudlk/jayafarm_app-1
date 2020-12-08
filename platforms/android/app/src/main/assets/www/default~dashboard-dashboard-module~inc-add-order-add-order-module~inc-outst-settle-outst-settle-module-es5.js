@@ -234,9 +234,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ../../../services/authentication.service */
     "./src/app/services/authentication.service.ts");
 
-    var OutstSettlePage =
-    /*#__PURE__*/
-    function () {
+    var OutstSettlePage = /*#__PURE__*/function () {
       function OutstSettlePage(modalController, navParams, authService) {
         _classCallCheck(this, OutstSettlePage);
 
@@ -292,9 +290,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openOutstMore",
         value: function openOutstMore(out) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             var modal, ret, pay;
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
@@ -375,10 +371,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-outst-settle',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./outst-settle.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/outst-settle/outst-settle.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/outst-settle/outst-settle.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./outst-settle.page.scss */
-      "./src/app/members/inc/outst-settle/outst-settle.page.scss")).default]
+      "./src/app/members/inc/outst-settle/outst-settle.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"]])], OutstSettlePage);
     /***/
   }

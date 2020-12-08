@@ -234,9 +234,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
 
-    var OutstMorePage =
-    /*#__PURE__*/
-    function () {
+    var OutstMorePage = /*#__PURE__*/function () {
       function OutstMorePage(modalController, navParams, authService, storage, http) {
         _classCallCheck(this, OutstMorePage);
 
@@ -358,10 +356,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-outst-more',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./outst-more.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/outst-more/outst-more.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/outst-more/outst-more.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./outst-more.page.scss */
-      "./src/app/members/inc/outst-more/outst-more.page.scss")).default]
+      "./src/app/members/inc/outst-more/outst-more.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])], OutstMorePage);
     /***/
   }

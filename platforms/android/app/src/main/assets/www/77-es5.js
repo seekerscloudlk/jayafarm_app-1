@@ -1,8 +1,18 @@
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[77], {
   /***/
@@ -47,30 +57,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var updateVDom = function updateVDom(dom, heightIndex, cells, range) {
       // reset dom
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      var _iterator = _createForOfIteratorHelper(dom),
+          _step;
 
       try {
-        for (var _iterator = dom[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var node = _step.value;
           node.change = NODE_CHANGE_NONE;
           node.d = true;
         } // try to match into exisiting dom
 
       } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
+        _iterator.e(err);
       } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
+        _iterator.f();
       }
 
       var toMutate = [];
@@ -374,9 +374,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return -1;
     };
 
-    var VirtualScroll =
-    /*#__PURE__*/
-    function () {
+    var VirtualScroll = /*#__PURE__*/function () {
       function VirtualScroll(hostRef) {
         var _this = this;
 
@@ -445,39 +443,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "connectedCallback",
-        value: function connectedCallback() {
-          var contentEl;
-          return regeneratorRuntime.async(function connectedCallback$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  contentEl = this.el.closest('ion-content');
+        value: function () {
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var contentEl;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    contentEl = this.el.closest('ion-content');
 
-                  if (contentEl) {
-                    _context.next = 4;
-                    break;
-                  }
+                    if (contentEl) {
+                      _context.next = 4;
+                      break;
+                    }
 
-                  console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
-                  return _context.abrupt("return");
+                    console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
+                    return _context.abrupt("return");
 
-                case 4:
-                  _context.next = 6;
-                  return regeneratorRuntime.awrap(contentEl.getScrollElement());
+                  case 4:
+                    _context.next = 6;
+                    return contentEl.getScrollElement();
 
-                case 6:
-                  this.scrollEl = _context.sent;
-                  this.contentEl = contentEl;
-                  this.calcCells();
-                  this.updateState();
+                  case 6:
+                    this.scrollEl = _context.sent;
+                    this.contentEl = contentEl;
+                    this.calcCells();
+                    this.updateState();
 
-                case 10:
-                case "end":
-                  return _context.stop();
+                  case 10:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
+          }
+
+          return connectedCallback;
+        }()
       }, {
         key: "componentDidUpdate",
         value: function componentDidUpdate() {
@@ -512,41 +518,49 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "checkRange",
-        value: function checkRange(offset) {
-          var len,
-              length,
-              cellIndex,
-              cells,
-              _args2 = arguments;
-          return regeneratorRuntime.async(function checkRange$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  len = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : -1;
+        value: function () {
+          var _checkRange = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(offset) {
+            var len,
+                length,
+                cellIndex,
+                cells,
+                _args2 = arguments;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    len = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : -1;
 
-                  if (this.items) {
-                    _context2.next = 3;
-                    break;
-                  }
+                    if (this.items) {
+                      _context2.next = 3;
+                      break;
+                    }
 
-                  return _context2.abrupt("return");
+                    return _context2.abrupt("return");
 
-                case 3:
-                  length = len === -1 ? this.items.length - offset : len;
-                  cellIndex = findCellIndex(this.cells, offset);
-                  cells = _calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, cellIndex, offset, length);
-                  this.cells = inplaceUpdate(this.cells, cells, cellIndex);
-                  this.lastItemLen = this.items.length;
-                  this.indexDirty = Math.max(offset - 1, 0);
-                  this.scheduleUpdate();
+                  case 3:
+                    length = len === -1 ? this.items.length - offset : len;
+                    cellIndex = findCellIndex(this.cells, offset);
+                    cells = _calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, cellIndex, offset, length);
+                    this.cells = inplaceUpdate(this.cells, cells, cellIndex);
+                    this.lastItemLen = this.items.length;
+                    this.indexDirty = Math.max(offset - 1, 0);
+                    this.scheduleUpdate();
 
-                case 10:
-                case "end":
-                  return _context2.stop();
+                  case 10:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function checkRange(_x) {
+            return _checkRange.apply(this, arguments);
+          }
+
+          return checkRange;
+        }()
         /**
          * This method marks the tail the items array as dirty, so they can be re-rendered.
          *
@@ -559,22 +573,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "checkEnd",
-        value: function checkEnd() {
-          return regeneratorRuntime.async(function checkEnd$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  if (this.items) {
-                    this.checkRange(this.lastItemLen);
-                  }
+        value: function () {
+          var _checkEnd = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    if (this.items) {
+                      this.checkRange(this.lastItemLen);
+                    }
 
-                case 1:
-                case "end":
-                  return _context3.stop();
+                  case 1:
+                  case "end":
+                    return _context3.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee3, this);
+          }));
+
+          function checkEnd() {
+            return _checkEnd.apply(this, arguments);
+          }
+
+          return checkEnd;
+        }()
       }, {
         key: "updateVirtualScroll",
         value: function updateVirtualScroll() {
@@ -818,7 +840,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return utils.map(children, function (child, i) {
         var node = dom[i];
         var vattrs = child.vattrs || {};
-        var classes = vattrs.class || '';
+        var classes = vattrs["class"] || '';
         classes += 'virtual-item ';
 
         if (!node.visible) {
@@ -827,7 +849,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         return Object.assign(Object.assign({}, child), {
           vattrs: Object.assign(Object.assign({}, vattrs), {
-            class: classes,
+            "class": classes,
             style: Object.assign(Object.assign({}, vattrs.style), {
               transform: "translate3d(0,".concat(node.top, "px,0)")
             })

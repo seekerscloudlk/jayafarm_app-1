@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -266,9 +270,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return baseAnimation.addElement(baseEl).easing('ease').duration(500).addAnimation([backdropAnimation, wrapperAnimation]);
     };
 
-    var Popover =
-    /*#__PURE__*/
-    function () {
+    var Popover = /*#__PURE__*/function () {
       function Popover(hostRef) {
         var _this = this;
 
@@ -343,51 +345,59 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(Popover, [{
         key: "present",
-        value: function present() {
-          var container, data;
-          return regeneratorRuntime.async(function present$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (!this.presented) {
-                    _context.next = 2;
-                    break;
-                  }
+        value: function () {
+          var _present = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var container, data;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (!this.presented) {
+                      _context.next = 2;
+                      break;
+                    }
 
-                  return _context.abrupt("return");
+                    return _context.abrupt("return");
 
-                case 2:
-                  container = this.el.querySelector('.popover-content');
+                  case 2:
+                    container = this.el.querySelector('.popover-content');
 
-                  if (container) {
-                    _context.next = 5;
-                    break;
-                  }
+                    if (container) {
+                      _context.next = 5;
+                      break;
+                    }
 
-                  throw new Error('container is undefined');
+                    throw new Error('container is undefined');
 
-                case 5:
-                  data = Object.assign(Object.assign({}, this.componentProps), {
-                    popover: this.el
-                  });
-                  _context.next = 8;
-                  return regeneratorRuntime.awrap(Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_7__["a"])(this.delegate, container, this.component, ['popover-viewport', this.el['s-sc']], data));
+                  case 5:
+                    data = Object.assign(Object.assign({}, this.componentProps), {
+                      popover: this.el
+                    });
+                    _context.next = 8;
+                    return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_7__["a"])(this.delegate, container, this.component, ['popover-viewport', this.el['s-sc']], data);
 
-                case 8:
-                  this.usersElement = _context.sent;
-                  _context.next = 11;
-                  return regeneratorRuntime.awrap(Object(_index_4d91f03a_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this.usersElement));
+                  case 8:
+                    this.usersElement = _context.sent;
+                    _context.next = 11;
+                    return Object(_index_4d91f03a_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this.usersElement);
 
-                case 11:
-                  return _context.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["e"])(this, 'popoverEnter', iosEnterAnimation, mdEnterAnimation, this.event));
+                  case 11:
+                    return _context.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["e"])(this, 'popoverEnter', iosEnterAnimation, mdEnterAnimation, this.event));
 
-                case 12:
-                case "end":
-                  return _context.stop();
+                  case 12:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function present() {
+            return _present.apply(this, arguments);
+          }
+
+          return present;
+        }()
         /**
          * Dismiss the popover overlay after it has been presented.
          *
@@ -397,36 +407,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "dismiss",
-        value: function dismiss(data, role) {
-          var shouldDismiss;
-          return regeneratorRuntime.async(function dismiss$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  _context2.next = 2;
-                  return regeneratorRuntime.awrap(Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["f"])(this, data, role, 'popoverLeave', iosLeaveAnimation, mdLeaveAnimation, this.event));
+        value: function () {
+          var _dismiss = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(data, role) {
+            var shouldDismiss;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_5__["f"])(this, data, role, 'popoverLeave', iosLeaveAnimation, mdLeaveAnimation, this.event);
 
-                case 2:
-                  shouldDismiss = _context2.sent;
+                  case 2:
+                    shouldDismiss = _context2.sent;
 
-                  if (!shouldDismiss) {
+                    if (!shouldDismiss) {
+                      _context2.next = 6;
+                      break;
+                    }
+
                     _context2.next = 6;
-                    break;
-                  }
+                    return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_7__["d"])(this.delegate, this.usersElement);
 
-                  _context2.next = 6;
-                  return regeneratorRuntime.awrap(Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_7__["d"])(this.delegate, this.usersElement));
+                  case 6:
+                    return _context2.abrupt("return", shouldDismiss);
 
-                case 6:
-                  return _context2.abrupt("return", shouldDismiss);
-
-                case 7:
-                case "end":
-                  return _context2.stop();
+                  case 7:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function dismiss(_x, _x2) {
+            return _dismiss.apply(this, arguments);
+          }
+
+          return dismiss;
+        }()
         /**
          * Returns a promise that resolves when the popover did dismiss.
          */
@@ -458,7 +476,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             style: {
               zIndex: "".concat(20000 + this.overlayIndex)
             },
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'popover-translucent', this.translucent), _Object$assign)),
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.cssClass)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'popover-translucent', this.translucent), _Object$assign)),
             onIonPopoverDidPresent: onLifecycle,
             onIonPopoverWillPresent: onLifecycle,
             onIonPopoverWillDismiss: onLifecycle,
@@ -469,11 +487,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             tappable: this.backdropDismiss,
             visible: this.showBackdrop
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "popover-wrapper"
+            "class": "popover-wrapper"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "popover-arrow"
+            "class": "popover-arrow"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "popover-content"
+            "class": "popover-content"
           })));
         }
       }, {

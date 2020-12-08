@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -57,9 +61,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./index-3476b023.js */
     "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
 
-    var Searchbar =
-    /*#__PURE__*/
-    function () {
+    var Searchbar = /*#__PURE__*/function () {
       function Searchbar(hostRef) {
         var _this = this;
 
@@ -314,22 +316,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "setFocus",
-        value: function setFocus() {
-          return regeneratorRuntime.async(function setFocus$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (this.nativeInput) {
-                    this.nativeInput.focus();
-                  }
+        value: function () {
+          var _setFocus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (this.nativeInput) {
+                      this.nativeInput.focus();
+                    }
 
-                case 1:
-                case "end":
-                  return _context.stop();
+                  case 1:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function setFocus() {
+            return _setFocus.apply(this, arguments);
+          }
+
+          return setFocus;
+        }()
         /**
          * Returns the native `<input>` element used under the hood.
          */
@@ -484,7 +494,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             tabIndex: mode === 'ios' && !this.shouldShowCancelButton() ? -1 : undefined,
             onMouseDown: this.onCancelSearchbar,
             onTouchStart: this.onCancelSearchbar,
-            class: "searchbar-cancel-button"
+            "class": "searchbar-cancel-button"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", null, mode === 'md' ? Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
             "aria-hidden": "true",
             mode: mode,
@@ -494,16 +504,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "search",
             "aria-disabled": this.disabled ? 'true' : null,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'searchbar-animated', animated), _defineProperty(_Object$assign, 'searchbar-disabled', this.disabled), _defineProperty(_Object$assign, 'searchbar-no-animate', animated && this.noAnimate), _defineProperty(_Object$assign, 'searchbar-has-value', this.hasValue()), _defineProperty(_Object$assign, 'searchbar-left-aligned', this.shouldAlignLeft), _defineProperty(_Object$assign, 'searchbar-has-focus', this.focused), _defineProperty(_Object$assign, 'searchbar-should-show-cancel', this.shouldShowCancelButton()), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'searchbar-animated', animated), _defineProperty(_Object$assign, 'searchbar-disabled', this.disabled), _defineProperty(_Object$assign, 'searchbar-no-animate', animated && this.noAnimate), _defineProperty(_Object$assign, 'searchbar-has-value', this.hasValue()), _defineProperty(_Object$assign, 'searchbar-left-aligned', this.shouldAlignLeft), _defineProperty(_Object$assign, 'searchbar-has-focus', this.focused), _defineProperty(_Object$assign, 'searchbar-should-show-cancel', this.shouldShowCancelButton()), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "searchbar-input-container"
+            "class": "searchbar-input-container"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
             "aria-label": "search text",
             disabled: this.disabled,
             ref: function ref(el) {
               return _this4.nativeInput = el;
             },
-            class: "searchbar-input",
+            "class": "searchbar-input",
             inputMode: this.inputmode,
             onInput: this.onInput,
             onBlur: this.onBlur,
@@ -518,12 +528,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             mode: mode,
             icon: searchIcon,
             lazy: false,
-            class: "searchbar-search-icon"
+            "class": "searchbar-search-icon"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
             "aria-label": "reset",
             type: "button",
             "no-blur": true,
-            class: "searchbar-clear-button",
+            "class": "searchbar-clear-button",
             onMouseDown: this.onClearInput,
             onTouchStart: this.onClearInput
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
@@ -531,7 +541,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             mode: mode,
             icon: clearIcon,
             lazy: false,
-            class: "searchbar-clear-icon"
+            "class": "searchbar-clear-icon"
           }))), mode === 'ios' && cancelButton);
         }
       }, {

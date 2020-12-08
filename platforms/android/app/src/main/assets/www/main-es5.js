@@ -788,13 +788,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (mod != null) for (var k in mod) {
         if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
       }
-      result.default = mod;
+      result["default"] = mod;
       return result;
     }
 
     function __importDefault(mod) {
       return mod && mod.__esModule ? mod : {
-        default: mod
+        "default": mod
       };
     }
     /***/
@@ -952,9 +952,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic-native/keyboard/ngx */
     "./node_modules/@ionic-native/keyboard/ngx/index.js");
 
-    var AppComponent =
-    /*#__PURE__*/
-    function () {
+    var AppComponent = /*#__PURE__*/function () {
       function AppComponent(platform, splashScreen, statusBar, authService, router, event, modalController, keyboard, alertController) {
         var _this = this;
 
@@ -1034,9 +1032,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "logout",
         value: function logout() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             var _this3 = this;
 
             var alert;
@@ -1077,9 +1073,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openTrip",
         value: function openTrip() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee2() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             var modal;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
@@ -1109,9 +1103,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openPrint",
         value: function openPrint() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
             var modal;
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
@@ -1174,7 +1166,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-root',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./app.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html"))["default"]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Events"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"], _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_9__["Keyboard"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]])], AppComponent);
     /***/
   },
@@ -1323,7 +1315,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
         hardwareBackButton: false
       }), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_9__["IonicStorageModule"].forRoot(), _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"], _members_inc_trips_trips_module__WEBPACK_IMPORTED_MODULE_12__["TripsPageModule"], _members_inc_print_print_module__WEBPACK_IMPORTED_MODULE_13__["PrintPageModule"], _members_inc_trips_more_trips_more_module__WEBPACK_IMPORTED_MODULE_14__["TripsMorePageModule"], ngx_pipes__WEBPACK_IMPORTED_MODULE_17__["NgPipesModule"]],
-      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
+      providers: [_angular_common__WEBPACK_IMPORTED_MODULE_18__["CurrencyPipe"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
       }, _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_15__["Base64"], _ionic_native_keyboard_ngx__WEBPACK_IMPORTED_MODULE_16__["Keyboard"], _angular_common__WEBPACK_IMPORTED_MODULE_18__["DatePipe"]],
@@ -1370,9 +1362,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ../services/authentication.service */
     "./src/app/services/authentication.service.ts");
 
-    var AuthGuard =
-    /*#__PURE__*/
-    function () {
+    var AuthGuard = /*#__PURE__*/function () {
       function AuthGuard(auth) {
         _classCallCheck(this, AuthGuard);
 
@@ -1592,9 +1582,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic-native/base64/ngx */
     "./node_modules/@ionic-native/base64/ngx/index.js");
 
-    var PrintPage =
-    /*#__PURE__*/
-    function () {
+    var PrintPage = /*#__PURE__*/function () {
       //   constructor() { }
       function PrintPage(base64) {
         _classCallCheck(this, PrintPage);
@@ -1637,10 +1625,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-print',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./print.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/print/print.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/print/print.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./print.page.scss */
-      "./src/app/members/inc/print/print.page.scss")).default]
+      "./src/app/members/inc/print/print.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_2__["Base64"]])], PrintPage);
     /***/
   },
@@ -1854,9 +1842,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
 
-    var TripsMorePage =
-    /*#__PURE__*/
-    function () {
+    var TripsMorePage = /*#__PURE__*/function () {
       function TripsMorePage(modalController, authService, storage, navParams, http) {
         _classCallCheck(this, TripsMorePage);
 
@@ -1939,10 +1925,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-trips-more',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./trips-more.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/trips-more/trips-more.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/trips-more/trips-more.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./trips-more.page.scss */
-      "./src/app/members/inc/trips-more/trips-more.page.scss")).default]
+      "./src/app/members/inc/trips-more/trips-more.page.scss"))["default"]]
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _services_storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])], TripsMorePage);
     /***/
   },
@@ -2162,9 +2148,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ../trips-more/trips-more.page */
     "./src/app/members/inc/trips-more/trips-more.page.ts");
 
-    var TripsPage =
-    /*#__PURE__*/
-    function () {
+    var TripsPage = /*#__PURE__*/function () {
       function TripsPage(modalController, authService, http, storage, plt) {
         _classCallCheck(this, TripsPage);
 
@@ -2207,9 +2191,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openTripMore",
         value: function openTripMore(trip) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
             var modal;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
@@ -2403,10 +2385,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selector: 'app-trips',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./trips.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/trips/trips.page.html")).default,
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/members/inc/trips/trips.page.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./trips.page.scss */
-      "./src/app/members/inc/trips/trips.page.scss")).default]
+      "./src/app/members/inc/trips/trips.page.scss"))["default"]]
     }), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _services_authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _services_storage_service__WEBPACK_IMPORTED_MODULE_5__["StorageService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]])], TripsPage);
@@ -2565,9 +2547,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var REP_KEY = '_jf_app_rep_key_';
 
-    var AuthenticationService =
-    /*#__PURE__*/
-    function () {
+    var AuthenticationService = /*#__PURE__*/function () {
       function AuthenticationService(storage, storageService, plt, toastController, http, event, apiService) {
         var _this11 = this;
 
@@ -2676,9 +2656,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showToast",
         value: function showToast(msg) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
             var toast;
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
               while (1) {
@@ -2806,9 +2784,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var CURR_TRIP_KEY = '_jf_trip_info_key_';
     var TRIP_ITEMS_KEY = '_jf_trip_item_info_key_';
 
-    var StorageService =
-    /*#__PURE__*/
-    function () {
+    var StorageService = /*#__PURE__*/function () {
       function StorageService(storage, plt) {
         var _this16 = this;
 
@@ -2977,7 +2953,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
     }
 
-    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"]).catch(function (err) {
+    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])["catch"](function (err) {
       return console.log(err);
     });
     /***/
@@ -2994,7 +2970,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! D:\Dev\Projects\JF\App\jayafarm\src\main.ts */
+    /*! /media/hasika/_dde_data/SEEKERS CLOUD/other/anton/JF App/jayafarm_app/src/main.ts */
     "./src/main.ts");
     /***/
   }

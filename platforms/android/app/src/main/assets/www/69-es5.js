@@ -1,3 +1,7 @@
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -49,9 +53,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./framework-delegate-c2e2e1f4.js */
     "./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js");
 
-    var Tab =
-    /*#__PURE__*/
-    function () {
+    var Tab = /*#__PURE__*/function () {
       function Tab(hostRef) {
         _classCallCheck(this, Tab);
 
@@ -69,24 +71,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "setActive",
-        value: function setActive() {
-          return regeneratorRuntime.async(function setActive$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  _context.next = 2;
-                  return regeneratorRuntime.awrap(this.prepareLazyLoaded());
+        value: function () {
+          var _setActive = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.prepareLazyLoaded();
 
-                case 2:
-                  this.active = true;
+                  case 2:
+                    this.active = true;
 
-                case 3:
-                case "end":
-                  return _context.stop();
+                  case 3:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function setActive() {
+            return _setActive.apply(this, arguments);
+          }
+
+          return setActive;
+        }()
       }, {
         key: "prepareLazyLoaded",
         value: function prepareLazyLoaded() {
@@ -112,7 +122,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             role: "tabpanel",
             "aria-hidden": !active ? 'true' : null,
             "aria-labelledby": "tab-button-".concat(tab),
-            class: {
+            "class": {
               'ion-page': component === undefined,
               'tab-hidden': !active
             }
@@ -133,9 +143,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Tab;
     }();
 
-    var Tabs =
-    /*#__PURE__*/
-    function () {
+    var Tabs = /*#__PURE__*/function () {
       function Tabs(hostRef) {
         var _this = this;
 
@@ -170,35 +178,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       _createClass(Tabs, [{
         key: "componentWillLoad",
-        value: function componentWillLoad() {
-          var tabs;
-          return regeneratorRuntime.async(function componentWillLoad$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  if (!this.useRouter) {
-                    this.useRouter = !!document.querySelector('ion-router') && !this.el.closest('[no-router]');
-                  }
+        value: function () {
+          var _componentWillLoad = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var tabs;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    if (!this.useRouter) {
+                      this.useRouter = !!document.querySelector('ion-router') && !this.el.closest('[no-router]');
+                    }
 
-                  if (this.useRouter) {
+                    if (this.useRouter) {
+                      _context2.next = 5;
+                      break;
+                    }
+
+                    tabs = this.tabs;
                     _context2.next = 5;
-                    break;
-                  }
+                    return this.select(tabs[0]);
 
-                  tabs = this.tabs;
-                  _context2.next = 5;
-                  return regeneratorRuntime.awrap(this.select(tabs[0]));
+                  case 5:
+                    this.ionNavWillLoad.emit();
 
-                case 5:
-                  this.ionNavWillLoad.emit();
-
-                case 6:
-                case "end":
-                  return _context2.stop();
+                  case 6:
+                  case "end":
+                    return _context2.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee2, this);
+          }));
+
+          function componentWillLoad() {
+            return _componentWillLoad.apply(this, arguments);
+          }
+
+          return componentWillLoad;
+        }()
       }, {
         key: "componentWillRender",
         value: function componentWillRender() {
@@ -217,40 +233,48 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "select",
-        value: function select(tab) {
-          var selectedTab;
-          return regeneratorRuntime.async(function select$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  selectedTab = _getTab(this.tabs, tab);
+        value: function () {
+          var _select = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(tab) {
+            var selectedTab;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    selectedTab = _getTab(this.tabs, tab);
 
-                  if (this.shouldSwitch(selectedTab)) {
-                    _context3.next = 3;
-                    break;
-                  }
+                    if (this.shouldSwitch(selectedTab)) {
+                      _context3.next = 3;
+                      break;
+                    }
 
-                  return _context3.abrupt("return", false);
+                    return _context3.abrupt("return", false);
 
-                case 3:
-                  _context3.next = 5;
-                  return regeneratorRuntime.awrap(this.setActive(selectedTab));
+                  case 3:
+                    _context3.next = 5;
+                    return this.setActive(selectedTab);
 
-                case 5:
-                  _context3.next = 7;
-                  return regeneratorRuntime.awrap(this.notifyRouter());
+                  case 5:
+                    _context3.next = 7;
+                    return this.notifyRouter();
 
-                case 7:
-                  this.tabSwitch();
-                  return _context3.abrupt("return", true);
+                  case 7:
+                    this.tabSwitch();
+                    return _context3.abrupt("return", true);
 
-                case 9:
-                case "end":
-                  return _context3.stop();
+                  case 9:
+                  case "end":
+                    return _context3.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee3, this);
+          }));
+
+          function select(_x) {
+            return _select.apply(this, arguments);
+          }
+
+          return select;
+        }()
         /**
          * Get a specific tab by the value of its `tab` property or an element reference.
          *
@@ -259,20 +283,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "getTab",
-        value: function getTab(tab) {
-          return regeneratorRuntime.async(function getTab$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  return _context4.abrupt("return", _getTab(this.tabs, tab));
+        value: function () {
+          var _getTab2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(tab) {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    return _context4.abrupt("return", _getTab(this.tabs, tab));
 
-                case 1:
-                case "end":
-                  return _context4.stop();
+                  case 1:
+                  case "end":
+                    return _context4.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee4, this);
+          }));
+
+          function getTab(_x2) {
+            return _getTab2.apply(this, arguments);
+          }
+
+          return getTab;
+        }()
         /**
          * Get the currently selected tab.
          */
@@ -286,69 +318,85 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       }, {
         key: "setRouteId",
-        value: function setRouteId(id) {
-          var _this2 = this;
+        value: function () {
+          var _setRouteId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(id) {
+            var _this2 = this;
 
-          var selectedTab;
-          return regeneratorRuntime.async(function setRouteId$(_context5) {
-            while (1) {
-              switch (_context5.prev = _context5.next) {
-                case 0:
-                  selectedTab = _getTab(this.tabs, id);
+            var selectedTab;
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    selectedTab = _getTab(this.tabs, id);
 
-                  if (this.shouldSwitch(selectedTab)) {
-                    _context5.next = 3;
-                    break;
-                  }
-
-                  return _context5.abrupt("return", {
-                    changed: false,
-                    element: this.selectedTab
-                  });
-
-                case 3:
-                  _context5.next = 5;
-                  return regeneratorRuntime.awrap(this.setActive(selectedTab));
-
-                case 5:
-                  return _context5.abrupt("return", {
-                    changed: true,
-                    element: this.selectedTab,
-                    markVisible: function markVisible() {
-                      return _this2.tabSwitch();
+                    if (this.shouldSwitch(selectedTab)) {
+                      _context5.next = 3;
+                      break;
                     }
-                  });
 
-                case 6:
-                case "end":
-                  return _context5.stop();
+                    return _context5.abrupt("return", {
+                      changed: false,
+                      element: this.selectedTab
+                    });
+
+                  case 3:
+                    _context5.next = 5;
+                    return this.setActive(selectedTab);
+
+                  case 5:
+                    return _context5.abrupt("return", {
+                      changed: true,
+                      element: this.selectedTab,
+                      markVisible: function markVisible() {
+                        return _this2.tabSwitch();
+                      }
+                    });
+
+                  case 6:
+                  case "end":
+                    return _context5.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee5, this);
+          }));
+
+          function setRouteId(_x3) {
+            return _setRouteId.apply(this, arguments);
+          }
+
+          return setRouteId;
+        }()
         /** @internal */
 
       }, {
         key: "getRouteId",
-        value: function getRouteId() {
-          var tabId;
-          return regeneratorRuntime.async(function getRouteId$(_context6) {
-            while (1) {
-              switch (_context6.prev = _context6.next) {
-                case 0:
-                  tabId = this.selectedTab && this.selectedTab.tab;
-                  return _context6.abrupt("return", tabId !== undefined ? {
-                    id: tabId,
-                    element: this.selectedTab
-                  } : undefined);
+        value: function () {
+          var _getRouteId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            var tabId;
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    tabId = this.selectedTab && this.selectedTab.tab;
+                    return _context6.abrupt("return", tabId !== undefined ? {
+                      id: tabId,
+                      element: this.selectedTab
+                    } : undefined);
 
-                case 2:
-                case "end":
-                  return _context6.stop();
+                  case 2:
+                  case "end":
+                    return _context6.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee6, this);
+          }));
+
+          function getRouteId() {
+            return _getRouteId.apply(this, arguments);
+          }
+
+          return getRouteId;
+        }()
       }, {
         key: "setActive",
         value: function setActive(selectedTab) {
@@ -413,7 +461,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "top"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "tabs-inner"
+            "class": "tabs-inner"
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "bottom"
           }));

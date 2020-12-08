@@ -1,5 +1,9 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -51,9 +55,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var Range =
-    /*#__PURE__*/
-    function () {
+    var Range = /*#__PURE__*/function () {
       function Range(hostRef) {
         var _this = this;
 
@@ -240,52 +242,59 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "componentDidLoad",
-        value: function componentDidLoad() {
-          var _this2 = this;
+        value: function () {
+          var _componentDidLoad = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this2 = this;
 
-          var rangeSlider;
-          return regeneratorRuntime.async(function componentDidLoad$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  rangeSlider = this.rangeSlider;
+            var rangeSlider;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    rangeSlider = this.rangeSlider;
 
-                  if (!rangeSlider) {
-                    _context.next = 7;
-                    break;
-                  }
-
-                  _context.next = 4;
-                  return regeneratorRuntime.awrap(Promise.resolve().then(__webpack_require__.bind(null,
-                  /*! ./index-624eea58.js */
-                  "./node_modules/@ionic/core/dist/esm/index-624eea58.js")));
-
-                case 4:
-                  _context.t0 = {
-                    el: rangeSlider,
-                    gestureName: 'range',
-                    gesturePriority: 100,
-                    threshold: 0,
-                    onStart: function onStart(ev) {
-                      return _this2.onStart(ev);
-                    },
-                    onMove: function onMove(ev) {
-                      return _this2.onMove(ev);
-                    },
-                    onEnd: function onEnd(ev) {
-                      return _this2.onEnd(ev);
+                    if (!rangeSlider) {
+                      _context.next = 6;
+                      break;
                     }
-                  };
-                  this.gesture = _context.sent.createGesture(_context.t0);
-                  this.gesture.setDisabled(this.disabled);
 
-                case 7:
-                case "end":
-                  return _context.stop();
+                    _context.next = 4;
+                    return Promise.resolve().then(__webpack_require__.bind(null,
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
+
+                  case 4:
+                    this.gesture = _context.sent.createGesture({
+                      el: rangeSlider,
+                      gestureName: 'range',
+                      gesturePriority: 100,
+                      threshold: 0,
+                      onStart: function onStart(ev) {
+                        return _this2.onStart(ev);
+                      },
+                      onMove: function onMove(ev) {
+                        return _this2.onMove(ev);
+                      },
+                      onEnd: function onEnd(ev) {
+                        return _this2.onEnd(ev);
+                      }
+                    });
+                    this.gesture.setDisabled(this.disabled);
+
+                  case 6:
+                  case "end":
+                    return _context.stop();
+                }
               }
-            }
-          }, null, this);
-        }
+            }, _callee, this);
+          }));
+
+          function componentDidLoad() {
+            return _componentDidLoad.apply(this, arguments);
+          }
+
+          return componentDidLoad;
+        }()
       }, {
         key: "getValue",
         value: function getValue() {
@@ -456,11 +465,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             onFocusin: this.onFocus,
             onFocusout: this.onBlur,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'range-disabled', disabled), _defineProperty(_Object$assign, 'range-pressed', pressedKnob !== undefined), _defineProperty(_Object$assign, 'range-has-pin', pin), _Object$assign))
+            "class": Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'range-disabled', disabled), _defineProperty(_Object$assign, 'range-pressed', pressedKnob !== undefined), _defineProperty(_Object$assign, 'range-has-pin', pin), _Object$assign))
           }, Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
             name: "start"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "range-slider",
+            "class": "range-slider",
             ref: function ref(rangeEl) {
               return _this3.rangeSlider = rangeEl;
             }
@@ -468,16 +477,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
               style: tickStyle(tick),
               role: "presentation",
-              class: {
+              "class": {
                 'range-tick': true,
                 'range-tick-active': tick.active
               }
             });
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "range-bar",
+            "class": "range-bar",
             role: "presentation"
           }), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "range-bar range-bar-active",
+            "class": "range-bar range-bar-active",
             role: "presentation",
             style: barStyle
           }), renderKnob(isRTL, {
@@ -590,7 +599,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             ev.stopPropagation();
           }
         },
-        class: {
+        "class": {
           'range-knob-handle': true,
           'range-knob-a': knob === 'A',
           'range-knob-b': knob === 'B',
@@ -606,10 +615,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         "aria-disabled": disabled ? 'true' : null,
         "aria-valuenow": value
       }, pin && Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: "range-pin",
+        "class": "range-pin",
         role: "presentation"
       }, Math.round(value)), Object(_core_feeeff0d_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-        class: "range-knob",
+        "class": "range-knob",
         role: "presentation"
       }));
     };
